@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --bg-color: #030508;
+            --accent: #ff8c00;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.12);
+        }
+
+        body {
+            margin: 0; padding: 0;
+            width: 1080px; height: 1080px;
+            background-color: var(--bg-color);
+            background-image: url('{{AI_BG_URL}}');
+            background-size: cover; background-position: center;
+            font-family: 'Bahnschrift', sans-serif;
+            color: white; overflow: hidden;
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        .overlay {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(3,5,8,0.7) 0%, rgba(3,5,8,0.95) 100%);
+            z-index: 1;
+        }
+
+        .content {
+            position: relative; z-index: 10;
+            width: 1040px; height: 1040px;
+            padding: 40px; display: flex; flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        /* SCOREBOARD V9 (MASSIVE LOGOS) */
+        .match-header {
+            display: flex; justify-content: space-between; align-items: center;
+            height: 320px; margin-bottom: 25px;
+        }
+
+        .team-block {
+            width: 320px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .logo-wrap {
+            width: 250px; height: 250px;
+            display: flex; justify-content: center; align-items: center;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+        }
+
+        .logo-img { max-width: 230px; max-height: 230px; object-fit: contain; }
+
+        .team-name-big {
+            font-size: 38px; font-weight: 800; margin-top: 10px;
+            text-transform: uppercase; color: #ddd;
+        }
+
+        .score-box {
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        .final-badge {
+            background: var(--accent); color: white; padding: 4px 20px;
+            border-radius: 6px; font-weight: 800; font-size: 22px; margin-bottom: 10px;
+        }
+
+        .score-text {
+            font-size: 180px; font-family: 'Impact', sans-serif; letter-spacing: 12px;
+            line-height: 0.8;
+        }
+
+        /* STATS V9 (CLEANER) */
+        .stats-wrap {
+            background: var(--glass); backdrop-filter: blur(15px);
+            border: 1px solid var(--border); border-radius: 25px;
+            padding: 25px 40px; margin-bottom: 30px;
+        }
+
+        .stat-line { margin-bottom: 15px; }
+        .stat-labels { display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 700; font-size: 19px; }
+        .stat-name { color: #aaa; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
+
+        .bar-bg { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; display: flex; overflow: hidden; }
+        .bar-h { background: var(--accent); }
+        .bar-a { background: #00ca84; }
+
+        /* LOWER HALF V9 (SQUARE MOTM) */
+        .bottom-grid {
+            display: grid; grid-template-columns: 1fr 400px; gap: 30px;
+            flex-grow: 1; align-items: start;
+        }
+
+        .timeline-card {
+            border-left: 5px solid var(--accent); padding-left: 20px;
+        }
+
+        .event-item {
+            font-size: 20px; font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+        }
+        .event-item b { color: var(--accent); min-width: 35px; }
+
+        .motm-square-card {
+            background: var(--glass); border: 1px solid var(--border);
+            border-radius: 20px; padding: 20px; display: flex; flex-direction: column;
+        }
+
+        .motm-label { font-size: 16px; font-weight: 800; color: var(--accent); margin-bottom: 15px; letter-spacing: 2px; }
+
+        .motm-row { display: flex; gap: 20px; align-items: center; }
+
+        .motm-photo {
+            width: 140px; height: 140px; border-radius: 12px;
+            object-fit: cover; background: #111; border: 1px solid var(--border);
+        }
+
+        .rating-badge {
+            background: rgba(255,255,255,0.05); padding: 10px; border-radius: 15px;
+            text-align: center; width: 80px;
+        }
+
+        .rating-num { font-size: 40px; font-family: 'Impact', sans-serif; color: var(--accent); }
+
+        .footer {
+            margin-top: 15px; font-size: 16px; color: #666; font-weight: 500;
+            text-align: center; letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="content">
+        <!-- HEADER -->
+        <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+             <div style="font-size: 18px; font-weight: 800; letter-spacing: 2px; color: #888;">MATCH DAY INSIGHTS</div>
+             <img src="{{LEAGUE_LOGO_URL}}" style="height: 50px;" onerror="this.style.display='none'">
+        </div>
+
+        <div class="match-header">
+            <div class="team-block">
+                <div class="logo-wrap">
+                    <img class="logo-img" src="{{HOME_LOGO_URL}}" onerror="this.src='{{HOME_FALLBACK}}'">
+                </div>
+                <div class="team-name-big">{{HOME_TEAM}}</div>
+            </div>
+
+            <div class="score-box">
+                <div class="final-badge">MAÇ SONUCU</div>
+                <div class="score-text">{{HOME_SCORE}}-{{AWAY_SCORE}}</div>
+                <div style="font-size: 16px; font-weight: 800; color: #444; margin-top: 5px;">{{STADIUM}}</div>
+            </div>
+
+            <div class="team-block">
+                <div class="logo-wrap">
+                    <img class="logo-img" src="{{AWAY_LOGO_URL}}" onerror="this.src='{{AWAY_FALLBACK}}'">
+                </div>
+                <div class="team-name-big">{{AWAY_TEAM}}</div>
+            </div>
+        </div>
+
+        <div class="stats-wrap">
+            {{STAT_ROWS}}
+        </div>
+
+        <div class="bottom-grid">
+            <div class="timeline-card">
+                {{TIMELINE_ITEMS}}
+            </div>
+
+            <div class="motm-square-card">
+                <div class="motm-label">MAÇIN ADAMI</div>
+                <div class="motm-row">
+                    <img class="motm-photo" src="{{MOTM_PHOTO_URL}}" onerror="this.src='https://image.pollinations.ai/prompt/professional%20football%20player%20silhouette%20profile%20dark%20background%20minimalist?nologo=true'">
+                    <div style="flex-grow: 1;">
+                        <div style="font-size: 26px; font-weight: 800;">{{MOTM_NAME}}</div>
+                        <div style="font-size: 14px; opacity: 0.5; margin-top: 5px;">KEY PERFORMANCE METRICS</div>
+                    </div>
+                    <div class="rating-badge">
+                        <div style="font-size: 10px; font-weight: 800; opacity: 0.6;">OVR</div>
+                        <div class="rating-num">{{MOTM_RATING}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            {{DATE}} | 90:00+4' | DURUM: TAMAMLANDI | TÜRKİYE SÜPER LİG
+        </div>
+    </div>
+</body>
+</html>

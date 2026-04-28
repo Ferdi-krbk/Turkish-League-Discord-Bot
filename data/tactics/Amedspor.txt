@@ -1,0 +1,57 @@
+Erce Kardeşler | Gk | 32 | 400B € | Türkiye
+Andres Garcia | RB | 23 | 7M€ | ispanya
+Rav van den Berg | CB | 21 | 8M € | Hollanda
+Coulibaly | CB | 22 | 7M € | Fransa
+Luca Netz | LB | 22 | 6M € | İngiltere
+Eric Martel | CM | 23 | 8M € | Almanya
+Raphael guererrio | CM | 32 | 6M € | Portekiz
+Afena-Gyan | RM | 23 | 1.4M € | Gana
+Bruma | LM | 31 | 5M € | Portekiz
+C.ronaldo | ST | 20  | 17.9M | Portekiz
+YEDEK KULÜBESİ
+Veysel Sapan | GK | 32 | 250B € | Türkiye
+
+
+Sinan Kurt | CM | 31 | 450B € | Türkiye/Almanya
+
+
+Daniel Moreno | RW | 31 | 400B € | İspanya
+
+
+Dia Saba | AM | 33* | 800B € | İsrail
+
+Florent Hasani | ST | 29 | 900B € | Kosova
+
+Adama Traore | LW | 30 | 900B € | Mali
+
+Kaleci: Erce Kardeşler (Tecrübeli eldiven).
+
+Defans: * Rav van den Berg & Coulibaly: İkisi de genç ve fiziksel olarak çok güçlü. Savunmayı orta sahaya yakın kurup rakibi ofsayt tuzağına düşürebilirler.
+
+Luca Netz (Hücumcu Sol Bek): Kanat gibi oynayacak. Bruma içeri kat ettiğinde Netz sol çizgiyi otobana çevirecek.
+
+Andres Garcia (Dengeli Sağ Bek): Netz ileri çıktığında savunmayı üçleyerek emniyeti sağlar.
+
+Orta Saha:
+
+Eric Martel (Dinamik Ön Libero): Orta sahanın sigortası. Savunma ile hücum arasındaki köprü.
+
+Raphael Guerreiro (Oyun Kurucu): Tekniği ve pas kalitesiyle takımı yönetecek "beyin". Netz bindirdiğinde ona o öldürücü pasları Guerreiro atacak.
+
+Kanatlar:
+
+Bruma (İç Forvet - Sol): Ters ayakla içeri dalarak Ronaldo ve Mustafa'ya alan açar veya direkt kaleyi yoklar.
+
+Afena-Gyan (Kanat Forvet - Sağ): Hızıyla çizgiyi zorlar, sıfıra inip içeri etkili toplar keser.
+
+Forvet Hattı:
+
+C. Ronaldo (Komple Forvet): 20 yaşındaki hızı ve bitiriciliğiyle ana gol silahımız.
+
+Mustafa Can (Yaratıcı Forvet): Ronaldo ile sürekli yer değiştirerek rakip savunmanın dengesini bozar.
+
+Gole İhtiyaç Varsa	Netz'e "Sürekli Bindir" talimatı ver. Takımı 2-4-4 gibi sahaya yay.
+
+Skoru Korurken	Bruma ve Afena-Gyan'ı orta sahaya çekip 4-4-2 "Dar Blok" yap. Savunmayı biraz geriye çek.
+
+Ronaldo Markaj altındaysa	Mustafa Can'ı "Sahte 9" gibi derine çekip stoperleri üzerine almasını sağla, Bruma'yı onun boşalttığı alana kaçır.

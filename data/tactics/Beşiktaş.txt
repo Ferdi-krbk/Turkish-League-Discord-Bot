@@ -1,0 +1,128 @@
+İLK 11 (4-3-3 HYBRID FALSE-9)
+
+Filip Jørgensen | GK | 22 | 50.0 M € | Denmark
+Murillo | RB | 22 | 45.0 M € | Brazil
+Sven Botman | CB | 26 | 55.0 M € | Netherlands
+Marcos Senesi | CB | 26 | 52.0 M € | Argentina
+Mário Jr. | LB | 24 | 42.0 M € | Brazil
+Yves Bissouma | DM | 29 | 45.0 M € | Mali
+Orkun Kökçü | CM | 23 | 60.0 M € | Turkey
+Eduardo Camavinga | CM | 20 | 60.0 M € | France
+Lamine Yamal | RW | 17 | 121 M € | Spain
+Ademola Lookman | LW | 28 | 50.0 M € | Nigeria
+V.Osimhen | ST | 23 | 88.0 M € | Nigeria
+
+
+YEDEK KULÜBESİ
+Ersin Destanoğlu | GK | 23 | 14.0 M € | Turkey
+Mert Kömür | AM | 20 | 35.0 M € | Germany
+Darlin Yongwa | ST | 22 | 25.0 M € | Cameroon
+Semih Kılıçsoy | ST | 18 | 35.0 M € | Turkey
+Christos Tzolis | LW | 24 | 60.0 M € | Greece
+Hyeon-gyu Oh | ST | 23 | 35.0 M € | South Korea
+İsak Vural | CM | 19 | 28.0 M € | Turkey
+Fisnik Asllani | ST | 23 | 60.0 M € | Kosovo
+Max Dowman | RW | 16 | 65.0 M € | England
+
+==================================================
+BEŞİKTAŞ J.K. — ELITE TACTICAL DOCTRINE v5.0
+[CONTROLLED CHAOS: HYBRID PRESS & DIRECT PLAY]
+==================================================
+
+I. STRATEJİK VİZYON (TACTICAL PHILOSOPHY)
+
+Bu sistem saf “positional play” değil; hibrit yapıdadır. Amaç:
+→ Gereksiz risk almadan merkez kontrolü
+→ Kazanılan toplarda hızlı dikine oyun
+→ False-9 + koşucu orta saha kombinasyonu
+
+Takım hücumda 3-2-4-1, savunmada 4-1-4-1’e döner.
+
+II. ANA YAPI VE POZİSYONEL ROLLER
+
+GK — FILIP JØRGENSEN (Sweeper Keeper - Balanced)
+Riskli kısa oyun zorunlu değil. Baskı varsa direkt uzun oynar.
+Ana görev: hat arkası topları süpürmek.
+
+RB — MURILLO (Inverted Full-Back - Support)
+İçe kat eder ama sürekli değil. Gerektiğinde çizgi de kullanır.
+Bissouma’ya destek olur.
+
+CB — AGBADOU & SENESI
+Agbadou: Fizik + savunma
+Senesi: Oyun kurulum
+Defans çizgisi biraz daha kontrollü (çok aşırı high-line yok)
+
+LB — MÁRIO JR. (Balanced Fullback)
+Sürekli bindirme yok.
+Lookman içe girdiğinde destek verir, ama pozisyon kaybetmez.
+
+DM — BISSOUMA (Anchor Man)
+Yerini terk etmez.
+Ana görev: kontrayı kesmek + basit pas
+
+CM — ORKUN KÖKÇÜ (Deep Playmaker)
+Topu dağıtan ana oyuncu.
+Zor pasları seçer ama gereksiz risk azaltıldı.
+
+CM — CAMAVINGA (Box-to-Box)
+Denge oyuncusu.
+Ne çok ileri ne çok geri — sürekli bağlantı kurar.
+
+RW — DOWMAN (Inside Forward)
+İçe kat + şut
+Ama sürekli merkezde kaybolmaz, genişliği korur.
+
+LW — LOOKMAN (Direct Winger)
+Tzolis yerine daha direkt oyun:
+→ çizgi + hız + birebir
+Takımı ileri taşır.
+
+ST — ASLLANI (False-9 Light)
+Tam falso 9 değil:
+→ Bazen geri gelir
+→ Ama çoğunlukla ceza sahasına girer
+Gol tehdidi artırıldı.
+
+III. HÜCUM PLANI
+
+Plan A:
+→ Orkun → kanat → içe kat → şut
+
+Plan B:
+→ Bissouma → uzun top → Asllani
+→ ikinci top Camavinga
+
+Plan C:
+→ Lookman bireysel aksiyon
+
+IV. SAVUNMA YAPISI
+
+Diziliş: 4-1-4-1
+
+- Blok arası mesafe: 10-12 metre (daha gerçekçi)
+- Pres: orta blok (full pres yok)
+- Kanat yönlendirme var ama agresif değil
+
+V. GEÇİŞ OYUNU
+
+Top kazanılınca:
+
+→ 3 saniye içinde ileri
+→ Orkun ya da direkt kanat
+
+Yavaşlatmak gerekirse:
+→ top Orkun’a, set kur
+
+VI. KRİTİK DÜZELTMELER
+
+✔ Aşırı teori kaldırıldı
+✔ Riskli build-up azaltıldı
+✔ Kanatlar daha etkili hale geldi
+✔ Asllani gol tehdidi arttı
+✔ Savunma çizgisi daha stabil
+
+==================================================
+[Sistem Durumu: COMPETITIVE ELITE v5.0]
+[Kod: BLACK EAGLE BALANCED DOMINATION]
+==================================================

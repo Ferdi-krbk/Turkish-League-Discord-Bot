@@ -1,0 +1,23 @@
+# Takım Taktikleri
+# Format: Takım Adı | Diziliş | Taktik | Oyun Stili
+# Örnek: Galatasaray | 4-2-3-1 | High Press | Possession
+
+Galatasaray | 4-2-3-1 | High Press | Possession
+Fenerbahçe | 4-2-3-1 | Balanced | Counter
+Beşiktaş | 4-3-3 | Attacking | High Press
+Trabzonspor | 4-4-2 | Defensive | Counter
+Başakşehir | 3-5-2 | Balanced | Possession
+Sivasspor | 5-3-2 | Defensive | Long Ball
+Alanyaspor | 4-3-3 | Attacking | Wing Play
+Antalyaspor | 4-4-2 | Balanced | Balanced
+Konyaspor | 4-2-3-1 | Defensive | Counter
+Kayserispor | 4-4-2 | Defensive | Long Ball
+Gaziantep FK | 4-3-3 | Balanced | Counter
+Hatayspor | 4-4-2 | Defensive | Counter
+Kasımpaşa | 4-3-3 | Attacking | Wing Play
+Adana Demirspor | 4-2-3-1 | Balanced | Possession
+Ankaragücü | 4-4-2 | Defensive | Long Ball
+Rizespor | 4-2-3-1 | Balanced | Counter
+Samsunspor | 4-4-2 | Defensive | Long Ball
+Eyüpspor | 4-3-3 | Balanced | Possession
+Bodrum FK | 4-4-2 | Defensive | Counter
