@@ -1,4 +1,6 @@
 <div align="center">
+
+<img src="data/assets/logo.png" width="200" height="200" alt="Turkish League Bot Logo">
   
 # 🏆 Turkish Super League Discord Bot
 
