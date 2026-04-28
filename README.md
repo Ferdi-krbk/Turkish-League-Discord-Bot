@@ -17,13 +17,14 @@
 
 ## ✨ Özellikler
 
-- 🤖 **Yapay Zeka Destekli Maç Simülasyonu** (`!mac`): OpenRouter modellerini kullanarak takımların taktiklerini analiz eder, 15-25+ olay içeren aşırı detaylı ve gerçekçi maç senaryoları üretir.
+- 🤖 **Yapay Zeka Destekli Maç Simülasyonu** (`!mac`): OpenRouter, Free Gemini ve Groq modellerini kullanarak takımların taktiklerini analiz eder, 15-25+ olay içeren aşırı detaylı ve gerçekçi maç senaryoları üretir.
 - 💰 **Gelişmiş Transfer Sistemi** (`!transfer`): Gerçekçi transfer bedelleri, bütçe yönetimi ve medyanın transfere verdiği tepkileri simüle eder.
-- 🏥 **Sakatlık & Ceza Mekanikleri** (`!sakatlik`): Oyuncu sakatlıkları ve takım üzerindeki etkilerini dinamik olarak hesaplar.
+- 🏥 **Sakatlık & Ceza Mekanikleri** (`!sakatlik`, `!cezalilar`): Oyuncu sakatlıkları ve cezalıların takım üzerindeki etkilerini dinamik olarak hesaplar.
 - 📰 **Medya & Basın Sistemi**: Türk spor medyası tarzında flaş manşetler, teknik direktör açıklamaları ve taraftar reaksiyonları üretir.
 - 📊 **Lig Yönetimi**:
-  - `!standings`: Otomatik güncellenen canlı lig tablosu
-  - `!topscorers`: Detaylı gol krallığı takibi
+  - `!lig` / `!standings`: Otomatik güncellenen canlı lig tablosu
+  - `!gol` / `!topscorers`: Detaylı gol krallığı takibi
+  - `!asist`: Detaylı asist krallığı takibi
 - ⚡ **Hızlı ve Güvenilir**: SQLite tabanlı hafif veritabanı altyapısıyla kesintisiz veri yönetimi sağlar.
 
 ---
