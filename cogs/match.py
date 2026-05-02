@@ -58,7 +58,8 @@ class MatchCog(commands.Cog):
             "yellow_card": "🟨", "red_card": "🟥", "var_check": "📺",
             "substitution": "🔄", "great_save": "🧤", "foul": "🦶", "block": "🛡️", "injury": "🚑",
             "offside": "🚩", "corner": "🚩", "tactic": "📋", "pressure": "🔥", "save": "🧤",
-            "shot": "⚽", "header": "⚽", "cross": "👟", "tackle": "🦶", "interference": "✋"
+            "shot": "⚽", "header": "⚽", "cross": "👟", "tackle": "🦶", "interference": "✋",
+            "atmosphere": "📣", "choreography": "🏳️", "manager_dispute": "🤬", "referee_talk": "🗣️", "fan_reaction": "🥁"
         }
         
         if etype in mapping:
@@ -310,9 +311,22 @@ class MatchCog(commands.Cog):
         # 1. Önbellek ve Standart Anahtar Tanımı
         cache_key = f"ext_squad_v2_{self.clean_tn(team_name)}"
 
-        # 0. Hızlı simülasyon ise 75.0 kullan
+        # 0. Hızlı simülasyon ise veritabanındaki gerçek OVR'yi çekmeye çalış
         if is_fast_sim:
-            return f"{team_name} Kadrosu (Simülasyon)", 500.0, 75.0
+            async with database.get_db() as db:
+                # Row factory'i güvenli bir şekilde ayarla
+                db.row_factory = aiosqlite.Row
+                async with db.execute("SELECT overall FROM teams WHERE name = ?", (team_name,)) as cur:
+                    row = await cur.fetchone()
+                    # Eğer Row factory başarılı olduysa row["overall"], olmadıysa row[0]
+                    if row:
+                        try:
+                            real_ovr = row["overall"]
+                        except (TypeError, IndexError):
+                            real_ovr = row[0]
+                    else:
+                        real_ovr = 75.0
+            return f"{team_name} Kadrosu (Simülasyon)", 500.0, real_ovr
 
         # 1. YEREL DOSYA KONTROLÜ (Öncelikli Kaynak)
         tactic_path = os.path.join("data", "tactics", f"{team_name}.txt")
@@ -323,8 +337,10 @@ class MatchCog(commands.Cog):
                 t_text, l_text, t_val, t_ovr = self._parse_tactic_file(content)
                 # Taktik dosyasından dinamik hesaplanan OVR'yi kullan
                 final_squad = l_text if l_text else t_text
-                print(f"DEBUG: [LOCAL_FILE_LOAD] {team_name} verisi yüklendi. OVR: {t_ovr}")
-                return f"GÜNCEL {team_name} KADROSU (YEDEK): " + final_squad[:1200], t_val, t_ovr
+                # Safe print for Windows encoding
+                safe_team = team_name.encode('ascii', 'ignore').decode('ascii')
+                print(f"DEBUG: [LOCAL_FILE_LOAD] {safe_team} verisi yuklendi. OVR: {t_ovr}")
+                return f"GUNCEL {team_name} KADROSU (YEDEK): " + final_squad[:1200], t_val, t_ovr
             except Exception as e:
                 print(f"DEBUG: Local file load failed for {team_name}: {e}")
 
@@ -386,7 +402,9 @@ class MatchCog(commands.Cog):
                 
                 avg_11 = sum(int(p.get('overall') or 70) for p in top_11) / 11 if top_11 else 70
                 avg_bench = sum(int(p.get('overall') or 70) for p in bench_7) / 7 if bench_7 else avg_11
-                avg_ovr = round((avg_11 * 0.75) + (avg_bench * 0.25), 1)
+                # Veritabanı ile uyumlu olması için %70-%30 oranına çekildi
+                avg_ovr = round((avg_11 * 0.70) + (avg_bench * 0.30), 1)
+
                 
                 # Kadro textini optimize et (Sadece Top 18)
                 optimized_squad_text = ", ".join([f"{p.get('name', 'Bilinmeyen')} ({p.get('overall') or 80})" for p in sorted_players[:18]])
@@ -412,7 +430,10 @@ class MatchCog(commands.Cog):
         
         # 1. Temel text ayıklama
         lines = file_text.split("\n")
-        all_text = file_text[:2000]
+        # AI'nın taktikleri TAMAMINI okuması için limiti kaldırdık. Artık dosya ne kadar uzunsa o kadarını okuyacak.
+        all_text = file_text
+
+
         lineup_lines = []
         is_lineup = False
         
@@ -425,7 +446,7 @@ class MatchCog(commands.Cog):
             if not line_clean: continue
             
             # Lineup bloğunu birleştir
-            if any(x in line_clean.upper() for x in ["İLK 11", "LINEUP", "XI", "YEDEK", "KULÜBESİ"]):
+            if any(x in line_clean.upper() for x in ["İLK 11", "LINEUP", "XI", "YEDEK", "KULÜBESİ", "KADRO"]):
                 is_lineup = True
                 lineup_lines.append(line_clean)
                 continue
@@ -435,27 +456,30 @@ class MatchCog(commands.Cog):
                  # Bazı dosyalarda açıklama satırları olabilir, tamamen kesme
                  pass
             
-            if is_lineup and "|" in line_clean:
+            # Eğer satırda | veya : varsa ve oyuncu gibi duruyorsa lineup say
+            is_player_line = "|" in line_clean or (":" in line_clean and len(line_clean.split(":")) == 2 and len(line_clean.split(":")[1].strip()) > 3)
+            
+            if is_player_line:
                 lineup_lines.append(line_clean)
                 
                 # OVR Analizi (Esnek format: Oyuncu | ... | Değer | ...)
-                parts = [p.strip() for p in line_clean.split("|")]
+                parts = [p.strip() for p in line_clean.split("|")] if "|" in line_clean else [p.strip() for p in line_clean.split(":")]
                 
                 # Değer Ayıkla
                 mv_m = 0.0
-                if len(parts) >= 4:
-                    mv_m = database.parse_market_value(parts[3]) / 1_000_000.0
-                elif len(parts) >= 3:
-                    mv_m = database.parse_market_value(parts[2]) / 1_000_000.0
+                for part in parts:
+                    if any(x in part.upper() for x in ["M", "K", "€", "BİN"]):
+                        mv_m = database.parse_market_value(part) / 1_000_000.0
+                        break
                 
                 if mv_m > 0:
                     total_val_m += mv_m
                     ovr = self._estimate_ovr_from_val(mv_m * 1_000_000)
                     player_ovrs.append(ovr)
                 else:
-                    # Değer bulunamadıysa ama oyuncu satırıysa (Varsayılan 70)
+                    # Değer bulunamadıysa ama oyuncu satırıysa (Varsayılan 78 Masterclass için)
                     if len(parts) >= 2:
-                        player_ovrs.append(70)
+                        player_ovrs.append(78)
 
         # 3. Team OVR Hesaplama (Yerel Dosyalarda Tüm Oyuncuların Eşit Ortalaması)
         team_ovr = 75.0
@@ -671,7 +695,14 @@ class MatchCog(commands.Cog):
             tournament_info = f"\n=== TURNUVA BAĞLAMI ({importance}) ===\n"
             tournament_info += f"Tür: Eleme Usulü (Knockout) | Maç: {leg}. Ayak\n"
             if leg == 2 and agg_context:
-                tournament_info += f"İLK MAÇ SKORU: {agg_context['first_leg_score']}\n"
+                first_leg = "Bilinmiyor"
+                if isinstance(agg_context, dict):
+                    first_leg = agg_context.get('first_leg_score', 'Bilinmiyor')
+                elif isinstance(agg_context, (list, tuple)) and len(agg_context) > 0:
+                    # Fallback for unexpected tuple format
+                    first_leg = str(agg_context[0])
+                
+                tournament_info += f"İLK MAÇ SKORU: {first_leg}\n"
                 tournament_info += "!!! KRİTİK MATEMATİK KURALI !!!\n"
                 tournament_info += "1. Bu maçın 90 dakika skoru ile ilk maç skorunu TOPLA (Aggregate).\n"
                 tournament_info += "2. Eğer TOPLAM SKOR (Aggregate) EŞİT DEĞİLSE: Maç 90 dakikada biter. KESİNLİKLE uzatma veya penaltı yapma!\n"
@@ -736,6 +767,8 @@ MATCH SPIRIT: This isn't just a match report; it must be the most epic football 
     3. **GOAL MASTERPIECES**: Each goal must be a 3-4 sentence masterpiece describing the build-up, technical execution, and the stadium's explosion.
     4. **REALISM GUARD**: If GPR difference is < 12, keep the score gap within 3 goals (e.g. 3-0, 2-2) unless there are red cards.
     5. **SYNCED GOALS**: Every goal in 'goals' MUST be in 'events' with a deeply detailed 'description'.
+    6. **NO SPOILERS [CRITICAL]**: DO NOT start the match with a barrage of repetitive fouls or yellow cards for a specific team just to signal they are "frustrated" or losing. Keep the first 15-20 minutes focused on tactical play, stadium atmosphere, and close chances. The winner should NOT be obvious from the opening events.
+    7. **ATMOSPHERIC EVENTS [NEW]**: Include at least 2-3 events that are NOT about the ball (e.g., a massive choreography at kickoff, a heated argument between the manager and the 4th official, a VAR tension moment, or a dramatic fan reaction). Use types like 'atmosphere', 'choreography', 'manager_dispute', or 'referee_talk'.
 
 ATTENTION: THE CURRENT DATE IS APRIL 1, 2026! 
 {tournament_info}
@@ -818,6 +851,8 @@ DEPLASMAN: {team_b_name}
 MATCH: {team_a_name} vs {team_b_name} | SCENARIO: {match_flow}
 CRITICAL: Generate AT LEAST 12-15 events. NEVER use generic phrases like 'steps up to the plate'. 
 VARIETY: Event descriptions must be unique. Every minute should describe a different tactical action, player movement, or stadium detail. ABSOLUTELY avoid repetitive sentences.
+NO SPOILERS: Avoid repetitive early fouls or cards that signal the winner too early. Keep the start of the match neutral and unpredictable.
+ATMOSPHERE: Include 1-2 events about the fans, choreographies, or manager reactions to make the match feel alive.
 
 === KADROLAR VE TAKTİKLER ===
 EV SAHİBİ: {team_a_name}
@@ -947,21 +982,30 @@ ONLY return JSON:
             result["home_score"] = final_home
             result["away_score"] = final_away
 
-            # Correct impossible stats
-            h_s, a_s = final_home, final_away
-            sot_h = result.get("shots_on_target_home", 0)
-            s_h = result.get("shots_home", 0)
-            if h_s > 0 and sot_h < h_s: sot_h = h_s + random.randint(0, 2)
-            if s_h < sot_h: s_h = sot_h + random.randint(2, 6)
-            result["shots_on_target_home"], result["shots_home"] = sot_h, s_h
-
-            sot_a = result.get("shots_on_target_away", 0)
-            s_a = result.get("shots_away", 0)
-            if a_s > 0 and sot_a < a_s: sot_a = a_s + random.randint(0, 2)
-            if s_a < sot_a: s_a = sot_a + random.randint(2, 6)
-            result["shots_on_target_away"], result["shots_away"] = sot_a, s_a
-            
-            result["possession_away"] = 100 - result.get("possession_home", 50)
+            # Correct impossible stats (Ensure numeric types)
+            try:
+                h_s, a_s = int(final_home), int(final_away)
+                sot_h = int(result.get("shots_on_target_home", 0) or 0)
+                s_h = int(result.get("shots_home", 0) or 0)
+                if h_s > 0 and sot_h < h_s: sot_h = h_s + random.randint(0, 2)
+                if s_h < sot_h: s_h = sot_h + random.randint(2, 6)
+                result["shots_on_target_home"], result["shots_home"] = sot_h, s_h
+    
+                sot_a = int(result.get("shots_on_target_away", 0) or 0)
+                s_a = int(result.get("shots_away", 0) or 0)
+                if a_s > 0 and sot_a < a_s: sot_a = a_s + random.randint(0, 2)
+                if s_a < sot_a: s_a = sot_a + random.randint(2, 6)
+                result["shots_on_target_away"], result["shots_away"] = sot_a, s_a
+                
+                pos_h = float(result.get("possession_home", 50) or 50)
+                result["possession_home"] = pos_h
+                result["possession_away"] = 100.0 - pos_h
+            except Exception as e:
+                print(f"DEBUG: Stats correction error: {e}")
+                # Fallback to defaults if something is really broken
+                result["shots_home"], result["shots_away"] = 12, 10
+                result["shots_on_target_home"], result["shots_on_target_away"] = 5, 4
+                result["possession_home"], result["possession_away"] = 50.0, 50.0
             
             # 3. Replace "Bilinmeyen" or Tactical Headers with real players
             def fix_players(items, team_names):
@@ -1417,6 +1461,12 @@ ONLY return JSON:
         else:
             main_embed.add_field(name="⚽ GOLLER", value="*Gol sesi çıkmadı.*", inline=False)
 
+        # Kırmızı Kartlar (Varsa göster)
+        red_cards = [e for e in result.get("events", []) if e.get("type") == "red_card"]
+        if red_cards:
+            rc_list = [f"**{rc['minute']}'** 🟥 {rc.get('player', 'Bilinmeyen')} ({rc['team']})" for rc in red_cards]
+            main_embed.add_field(name="🟥 KIRMIZI KARTLAR", value="\n".join(rc_list), inline=False)
+
         # İstatistikler (Yan yana)
         main_embed.add_field(
             name="📊 İSTATİSTİKLER", 
@@ -1478,27 +1528,35 @@ ONLY return JSON:
         # 3. ANALİZ VE MOTM EMBED
         analysis_embed = discord.Embed(title="📋 Teknik Analiz & Maç Sonu", color=embed_color)
         
-        # Taktiksel Özet (apr_reason kullanımı fixlendi)
-        tactical_summary = result.get('tactical_summary') or result.get('apr_reason', 'Analiz mevcut değil.')
-        self._add_split_fields(embed=analysis_embed, name="🧠 Taktiksel Analiz & Karar", value=f"_{tactical_summary}_", inline=False)
+        # Dizilişler
+        analysis_embed.add_field(name="🎮 Dizilişler", value=f"🏠 {home_team}: {result.get('formation_a', '4-4-2')}\n🚌 {away_team}: {result.get('formation_b', '4-4-2')}", inline=True)
         
-        # GPR Detaylı (Yeni)
+        # GPR & OVR Detaylı (Analizden gelen veriler)
+        # Always define apr_h/apr_a first so footer never gets a NameError
         apr_h = result.get('apr_home', 0)
         apr_a = result.get('apr_away', 0)
-        analysis_embed.add_field(
-            name="⚖️ Performans Reytingleri (GPR)", 
-            value=f"🏠 **{home_team}:** {apr_h}\n🚌 **{away_team}:** {apr_a}", 
-            inline=True
-        )
+        pm_stats = result.get("pre_match_stats")
+        if pm_stats:
+            h = pm_stats.get("home", {})
+            a = pm_stats.get("away", {})
+            analysis_embed.add_field(
+                name="📊 GÜÇ KIYASLAMASI (ANALİZ)",
+                value=f"🏠 **{home_team}**: OVR `{h.get('ovr',0)}` | GPR `{h.get('gpr',0)}` | Tactic `+{h.get('boost',0)}`\n"
+                      f"🚌 **{away_team}**: OVR `{a.get('ovr',0)}` | GPR `{a.get('gpr',0)}` | Tactic `+{a.get('boost',0)}`",
+                inline=False
+            )
+        else:
+            analysis_embed.add_field(
+                name="⚖️ Performans Reytingleri (GPR)", 
+                value=f"🏠 **{home_team}:** {apr_h}\n🚌 **{away_team}:** {apr_a}", 
+                inline=True
+            )
 
         # Maçın Adamı
         motm = result.get("motm", {})
         rating = motm.get("rating", 0)
         stars = "⭐" * int(rating / 2) if rating > 0 else "⭐⭐⭐⭐"
         analysis_embed.add_field(name="🏆 Maçın Adamı", value=f"**{motm.get('player', 'Bilinmeyen')}** ({motm.get('team', '')})\nReyting: {rating}/10 {stars}", inline=True)
-        
-        # Dizilişler
-        analysis_embed.add_field(name="🎮 Dizilişler", value=f"🏠 {home_team}: {result.get('formation_a', '4-4-2')}\n🚌 {away_team}: {result.get('formation_b', '4-4-2')}", inline=True)
 
         # KADRO DEĞERİ KIYASLAMASI (YENİ)
         val_a = result.get("value_a", 0.0)
@@ -1675,6 +1733,8 @@ SADECE aşağıdaki JSON formatında cevap ver:
 
         # 1. Temizleme
         query = query.strip()
+        if query.lower().startswith("!mac "):
+            query = query[5:].strip()
 
         # 1.5 Turnuva anahtarlarını takım adından ayır (WORLD_CUP, UCL, UEL, UECL vb.)
         # Not: Bu fonksiyon "competition" döndürmüyor; sadece team_name'a yapışmasını engelliyoruz.
@@ -1813,7 +1873,9 @@ SADECE aşağıdaki JSON formatında cevap ver:
                 rows = await cursor.fetchall()
                 for row in rows:
                     if row["overall"]:
-                        all_players.append((int(row["overall"]), row["market_value"] or 0))
+                        mv_str = str(row["market_value"] or "0")
+                        mv_int = database.parse_market_value(mv_str)
+                        all_players.append((int(row["overall"]), mv_int))
         
         if not all_players:
             return 0.0, 0.0
@@ -1825,12 +1887,12 @@ SADECE aşağıdaki JSON formatında cevap ver:
         # İlk 11 (As Kadro)
         top_11 = all_players[:11]
         while len(top_11) < 11:
-            top_11.append((70, 1000000)) # Eksikse 70 OVR / 1M tamamla
+            top_11.append((70, 0)) # Eksikse 70 OVR / 0 PD tamamla
             
         # Sonraki 7 (Yedekler)
         next_7 = all_players[11:18]
         while len(next_7) < 7:
-            next_7.append((70, 1000000))
+            next_7.append((70, 0))
             
         # Ağırlıklı OVR Ortalama: İlk 11 %80, Yedekler %20
         avg_11_ovr = sum(p[0] for p in top_11) / 11
@@ -1846,13 +1908,12 @@ SADECE aşağıdaki JSON formatında cevap ver:
     @commands.command(name="mac", aliases=["maç", "match"])
     async def mac_command(self, ctx: commands.Context, *, query: str = None):
         """
-        İki takım arasında detaylı maç simüle et (Admin Only)
-
-        Kullanım: !mac [Takım A] vs [Takım B] [önem] [hava]
-        Örnek: !mac Real Madrid Beşiktaş Derby Clear
-
-        📁 Taktik dosyalarını (.txt) mesaja ekleyebilirsin!
+        Iki takim arasinda detayli mac simule et (Admin Only)
+        Kullanim: !mac [Takim A] vs [Takim B] [onem] [hava]
         """
+        def format_currency(val_m):
+            if val_m >= 1000: return f"{val_m/1000.0:.2f}B €"
+            return f"{val_m:.1f}M €"
         # Trial maçı değilse ve admin değilse engelle
         is_trial = getattr(ctx, "is_trial", False)
         if not is_trial and not ctx.author.guild_permissions.administrator:
@@ -1875,6 +1936,10 @@ SADECE aşağıdaki JSON formatında cevap ver:
         is_world_cup = any(tok in q_upper for tok in ["WORLD_CUP", "WORLDCUP", "WORLD CUP", "WC"])
 
         team_a, team_b, importance, weather, is_live = await self._smart_parse_match_query(query)
+
+        # --- Resolve Canonical Names Early ---
+        team_a = await database.resolve_canonical_team(team_a)
+        team_b = await database.resolve_canonical_team(team_b)
 
         # Eklentileri kontrol et
         txt_files = [att for att in ctx.message.attachments if att.filename.endswith('.txt')]
@@ -2024,7 +2089,16 @@ SADECE aşağıdaki JSON formatında cevap ver:
             t_round = t_fixture['round'] if t_fixture else None
 
         # Bekleme mesajı erken atılır çünkü arama uzun sürebilir
-        wait_msg = await ctx.send("🤖 **Takım kadroları inceleniyor ve maç simüle ediliyor (AI)...** ⚽\n_Maç 10-30 saniye sürebilir._")
+        # Bekleme mesajı (Premium Embed)
+        load_embed = discord.Embed(
+            title="🏟️ Maç Günü Hazırlıkları",
+            description=f"⚔️ **{team_a_data['name']} vs {team_b_data['name']}**\n\n"
+                        f"🔄 **Durum:** Taktikler ve kadrolar inceleniyor...\n"
+                        f"⏳ _AI simülasyonu 10-30 saniye sürebilir._",
+            color=0x2b2d31
+        )
+        load_embed.set_footer(text="Premium Match Engine v4.0 • AI-Powered Narrative")
+        wait_msg = await ctx.send(embed=load_embed)
         
         external_squad_a = ""
         external_value_a = 0.0
@@ -2263,35 +2337,39 @@ SADECE aşağıdaki JSON formatında cevap ver:
 
         # --- STRATEGIC BOOSTS & MORALE (MATHEMATICAL MOTOR) ---
         # Morale Boosts
-        moral_a = team_a_data.get("morale_boost", 0)
-        moral_b = team_b_data.get("morale_boost", 0)
-        rating_a += moral_a
-        rating_b += moral_b
+        # Morale Boosts (Enforce numeric types to prevent TypeError)
+        try:
+            moral_a = float(team_a_data.get("morale_boost", 0) or 0)
+            moral_b = float(team_b_data.get("morale_boost", 0) or 0)
+        except:
+            moral_a, moral_b = 0.0, 0.0
+            
+        rating_a = float(rating_a or 75) + moral_a
+        rating_b = float(rating_b or 75) + moral_b
         
         # --- ÖZEL TAKIM BONUSLARI (MATEMATİKSEL MOTOR) ---
         
         # 2. Kocaelispor Genel Bonusu (+1)
-        if "kocaelispor" in team_a_data["name"].lower():
-            rating_a += 1
-            print("🟢 Kocaelispor'a +1 performans bonusu eklendi.")
-        if "kocaelispor" in team_b_data["name"].lower():
-            rating_b += 1
-            print("🟢 Kocaelispor'a +1 performans bonusu eklendi.")
+        try:
+            if "kocaelispor" in team_a_data["name"].lower():
+                rating_a = float(rating_a) + 1.0
+                print("🟢 Kocaelispor'a +1 performans bonusu eklendi.")
+            if "kocaelispor" in team_b_data["name"].lower():
+                rating_b = float(rating_b) + 1.0
+                print("🟢 Kocaelispor'a +1 performans bonusu eklendi.")
+        except Exception as e:
+            print(f"DEBUG: Performance bonus error: {e}")
 
-        # 3. BEŞİKTAŞ GÜÇ BONUSU (+7 FIX)
-        if "beşiktaş" in team_a_data["name"].lower():
-            rating_a += 7
-            print("🦅 Beşiktaş'a +7 FİKS taktik bonusu eklendi.")
-        if "beşiktaş" in team_b_data["name"].lower():
-            rating_b += 7
-            print("🦅 Beşiktaş'a +7 FİKS taktik bonusu eklendi.")
+        # 3. BEŞİKTAŞ GÜÇ BONUSU (KALDIRILDI - Sadece AI Taktik Puanı Alacak)
+        bjk_bonus_a = 0
+        bjk_bonus_b = 0
         # --- GPR HARD LIMITS VE BONUSLAR ---
         has_tactic_a = bool(stored_a)
         has_tactic_b = bool(stored_b)
 
         # BAZ GPR HESABI (Dinamik Bonuslar Dahil)
-        suggested_a = rating_a
-        suggested_b = rating_b
+        suggested_a = float(rating_a or 75)
+        suggested_b = float(rating_b or 75)
         
         # 1. Ev Sahibi / Tarafsız Saha Belirleme
         is_neutral = False
@@ -2302,7 +2380,7 @@ SADECE aşağıdaki JSON formatında cevap ver:
             
         # 1. Ev Sahibi Atmosfer Bonusu (SADECE Ev Sahibine +2, Tarafsız Sahada Uygulanmaz)
         if not is_neutral:
-            suggested_a += 2
+            suggested_a = float(suggested_a) + 2.0
             print(f"🏟️ EV SAHİBİ AVANTAJI (+2) UYGULANDI.")
         else:
             print(f"🏟️ TARAFSIZ SAHA: Ev sahibi avantajı uygulanmadı.")
@@ -2322,31 +2400,53 @@ SADECE aşağıdaki JSON formatında cevap ver:
 
             # Taktiği olan AI puanını alır (Empty Tactic / Roster Only = +4), olmayan sabit 2-3
             # AVRUPA TAKIMI BONUSU: Eğer taktiği yoksa ama Avrupa takımıysa (Europe ligi), default 4.5 boost verilir.
-            is_euro_a = team_a_data.get("league") == "Europe"
-            is_euro_b = team_b_data.get("league") == "Europe"
+            is_euro_a = team_a_data.get("league") == "Europe" or (is_tourney and team_a_data.get("is_external"))
+            is_euro_b = team_b_data.get("league") == "Europe" or (is_tourney and team_b_data.get("is_external"))
+            # Sadece Beşiktaş için 7 sabitlendi, diğerleri AI puanına bırakıldı (max(4,...) kaldırıldı)
+            tactic_bonus_a = scores.get("home", 0) if has_tactic_a else (4.5 if is_euro_a else random.randint(2, 3))
+            tactic_bonus_b = scores.get("away", 0) if has_tactic_b else (4.5 if is_euro_b else random.randint(2, 3))
 
-            tactic_bonus_a = max(4, scores.get("home", 0)) if has_tactic_a else (4.5 if is_euro_a else random.randint(2, 3))
-            tactic_bonus_b = max(4, scores.get("away", 0)) if has_tactic_b else (4.5 if is_euro_b else random.randint(2, 3))
             
-            if is_euro_a and not has_tactic_a: print(f"🇪🇺 {team_a_data['name']} (Europe) için +4.5 default taktik boostu uygulandı.")
-            if is_euro_b and not has_tactic_b: print(f"🇪🇺 {team_b_data['name']} (Europe) için +4.5 default taktik boostu uygulandı.")
+            # --- BEŞİKTAŞ SPECIAL RULE: Always 7 Tactical Boost ---
+            if "beşiktaş" in team_a_data["name"].lower():
+                tactic_bonus_a = 7
+                print("🦅 Beşiktaş için taktik boostu 7 olarak sabitlendi.")
+            if "beşiktaş" in team_b_data["name"].lower():
+                tactic_bonus_b = 7
+                print("🦅 Beşiktaş için taktik boostu 7 olarak sabitlendi.")
+
+            if is_euro_a and not has_tactic_a and "beşiktaş" not in team_a_data["name"].lower(): print(f"🇪🇺 {team_a_data['name']} (Europe) için +4.5 default taktik boostu uygulandı.")
+            if is_euro_b and not has_tactic_b and "beşiktaş" not in team_b_data["name"].lower(): print(f"🇪🇺 {team_b_data['name']} (Europe) için +4.5 default taktik boostu uygulandı.")
             
             tactical_reason = scores.get("reason", "Analiz tamamlandı.")
         else:
             # İkisinin de taktiği yoksa
-            is_euro_a = team_a_data.get("league") == "Europe"
-            is_euro_b = team_b_data.get("league") == "Europe"
+            is_euro_a = team_a_data.get("league") == "Europe" or (is_tourney and team_a_data.get("is_external"))
+            is_euro_b = team_b_data.get("league") == "Europe" or (is_tourney and team_b_data.get("is_external"))
             
             tactic_bonus_a = 4.5 if is_euro_a else random.randint(2, 3)
             tactic_bonus_b = 4.5 if is_euro_b else random.randint(2, 3)
+            
+            # --- BEŞİKTAŞ SPECIAL RULE: Always 7 Tactical Boost ---
+            if "beşiktaş" in team_a_data["name"].lower():
+                tactic_bonus_a = 7
+                print("🦅 Beşiktaş için taktik boostu 7 olarak sabitlendi.")
+            if "beşiktaş" in team_b_data["name"].lower():
+                tactic_bonus_b = 7
+                print("🦅 Beşiktaş için taktik boostu 7 olarak sabitlendi.")
             
             if is_euro_a: print(f"🇪🇺 {team_a_data['name']} (Europe) için +4.5 default taktik boostu uygulandı.")
             if is_euro_b: print(f"🇪🇺 {team_b_data['name']} (Europe) için +4.5 default taktik boostu uygulandı.")
             
             tactical_reason = "Her iki takım da standart jenerik taktikle sahada."
 
-        suggested_a += tactic_bonus_a
-        suggested_b += tactic_bonus_b
+        try:
+            suggested_a = float(suggested_a) + float(tactic_bonus_a or 0)
+            suggested_b = float(suggested_b) + float(tactic_bonus_b or 0)
+        except Exception as e:
+            print(f"DEBUG: Tactic bonus conversion error: {e}")
+            suggested_a = float(suggested_a)
+            suggested_b = float(suggested_b)
 
         # --- GPR HARD LIMITS (MAĞDURİYET ÖNLEME AYARLARI) ---
         # ÖNEMLİ: r_gap artık tüm bonuslar eklenmiş FİNAL GPR üzerinden hesaplanır.
@@ -2500,10 +2600,10 @@ SADECE aşağıdaki JSON formatında cevap ver:
         if is_extreme:
             # Şans Faktörü: Ekstrem havuzdan seçilir ve GPR etkilenir
             scenario_obj = random.choice(extreme_scenarios)
-            luck_gpr_bonus_a = scenario_obj["a"]
-            luck_gpr_bonus_b = scenario_obj["b"]
-            suggested_a += luck_gpr_bonus_a
-            suggested_b += luck_gpr_bonus_b
+            luck_gpr_bonus_a = float(scenario_obj.get("a", 0) or 0)
+            luck_gpr_bonus_b = float(scenario_obj.get("b", 0) or 0)
+            suggested_a = float(suggested_a) + luck_gpr_bonus_a
+            suggested_b = float(suggested_b) + luck_gpr_bonus_b
             chosen_luck = scenario_obj["text"]
             
             # Maç Akışı: Wildcard (Sürpriz/Şok) havuzundan seçilir
@@ -2527,23 +2627,17 @@ SADECE aşağıdaki JSON formatında cevap ver:
             stronger_team = team_a_data["name"] if rating_a > rating_b else team_b_data["name"]
             chosen_flow = f"{chosen_flow} ({stronger_team} LEHİNE)"
 
-        # --- GELİŞMİŞ MAÇ ÖNÜ ANALİZ PANELİ (DEBUG) ---
-        def format_currency(val_m):
-            if val_m >= 1000: return f"{val_m/1000.0:>4.2f}B €"
-            return f"{val_m:>6.1f}M €"
-
+        # Store stats for the final result embed (moved from pre-match guide)
+        result_stats = {
+            "home": {"ovr": calculated_ovr_a, "val": format_currency(value_a), "gpr": suggested_a, "boost": tactic_bonus_a+moral_a+bjk_bonus_a},
+            "away": {"ovr": calculated_ovr_b, "val": format_currency(value_b), "gpr": suggested_b, "boost": tactic_bonus_b+moral_b+bjk_bonus_b}
+        }
+        
+        # Konsol logu için kalsın
         print("\n" + "="*60)
-        print(f"🏟️  MAÇ ÖNÜ SAVAŞ ANALİZİ: {team_a_data['name']} vs {team_b_data['name']}")
-        print("-"*60)
-        print(f"🏠 {team_a_data['name']:<20} | Avg OVR: {calculated_ovr_a:>4} | Value: {format_currency(value_a)} | GPR: {suggested_a:>4}")
-        print(f"   Limits: [{min_gpr_a}-{max_gpr_a}] | Moral: +{rating_a - calculated_ovr_a} | Taktik: +{tactic_bonus_a}")
-        print("-"*60)
-        print(f"🚌 {team_b_data['name']:<20} | Avg OVR: {calculated_ovr_b:>4} | Value: {format_currency(value_b)} | GPR: {suggested_b:>4}")
-        print(f"   Limits: [{min_gpr_b}-{max_gpr_b}] | Moral: +{rating_b - calculated_ovr_b} | Taktik: +{tactic_bonus_b}")
-        print("-"*60)
-        print(f"🧠 TAKTİKSEL ANALİZ: {tactical_reason}")
-        print(f"🎭 MAÇ AKIŞI (TORBA): {chosen_flow}")
-        print(f"🍀 ŞANS FAKTÖRÜ: {chosen_luck} {'[EKSTREM]' if is_extreme else ''} (Eşik: %{luck_threshold*100:.0f})")
+        print(f"🏟️  MAÇ ANALİZİ: {team_a_data['name']} vs {team_b_data['name']}")
+        print(f"🏠 {team_a_data['name']} | GPR: {suggested_a} | Boost: {tactic_bonus_a+moral_a+bjk_bonus_a}")
+        print(f"🚌 {team_b_data['name']} | GPR: {suggested_b} | Boost: {tactic_bonus_b+moral_b+bjk_bonus_b}")
         print("="*60 + "\n")
 
 
@@ -2571,7 +2665,11 @@ SADECE aşağıdaki JSON formatında cevap ver:
             random.shuffle(steps)
             for step in steps:
                 try:
-                    await msg.edit(content=f"⌛ **{step}**")
+                    current_embed = msg.embeds[0]
+                    current_embed.description = f"⚔️ **{team_a_data['name']} vs {team_b_data['name']}**\n\n" \
+                                                f"🔄 **Durum:** {step}\n" \
+                                                f"⏳ _Lütfen bekleyin, maç kurgulanıyor..._"
+                    await msg.edit(embed=current_embed)
                     await asyncio.sleep(4)
                 except: break
 
@@ -2592,7 +2690,7 @@ SADECE aşağıdaki JSON formatında cevap ver:
                 has_tactic_a, has_tactic_b,
                 value_a, value_b,
                 is_tournament=is_tourney,
-                leg=t_fixture["leg"] if t_fixture else 1,
+                leg=t_fixture.get("leg", 1) if (t_fixture and isinstance(t_fixture, dict)) else 1,
                 agg_context=agg_ctx,
                 match_flow=chosen_flow,
                 luck_scenario=chosen_luck,
@@ -2603,16 +2701,13 @@ SADECE aşağıdaki JSON formatında cevap ver:
         finally:
             wait_task.cancel()
 
-        if is_tourney and t_fixture:
-            # Update tournament fixture in DB
-            h_s = result.get("home_score", 0)
-            a_s = result.get("away_score", 0)
-            await database.update_tournament_fixture_score(t_fixture["id"], h_s, a_s)
-            
-            # AUTO-POST TO TOURNAMENT CHANNEL
-            tournament_cog = self.bot.get_cog("Kupa")
-            if tournament_cog:
-                self.bot.loop.create_task(tournament_cog._post_to_tournament_channel(ctx, comp_name))
+        if is_tourney and t_fixture and isinstance(t_fixture, dict):
+            # Update tournament fixture score in DB only (post will happen after embeds are sent)
+            h_s = result.get("home_score", 0) if isinstance(result, dict) else 0
+            a_s = result.get("away_score", 0) if isinstance(result, dict) else 0
+            t_id_val = t_fixture.get("id")
+            if t_id_val:
+                await database.update_tournament_fixture_score(t_id_val, h_s, a_s)
 
         await wait_msg.delete()
 
@@ -2621,6 +2716,11 @@ SADECE aşağıdaki JSON formatında cevap ver:
             return
 
         # Skoru gol listesinden yeniden hesapla (AI tutarsizligini onle)
+        if not isinstance(result, dict):
+            await ctx.send("❌ **HATA:** Maç verisi geçersiz bir formatta (tuple) döndü. Lütfen tekrar deneyin.")
+            return
+
+        result["pre_match_stats"] = result_stats # Inject stats for embed
         goals = result.get("goals", [])
         # AI tarafında eksik anahtar gelirse hata almamak için orjinal isimleri ekleyelim
         result["home_team"] = result.get("home_team", team_a_data["name"])
@@ -2778,6 +2878,13 @@ SADECE aşağıdaki JSON formatında cevap ver:
         for embed in embeds:
             await ctx.send(embed=embed)
 
+        # AUTO-POST TO TOURNAMENT CHANNEL (after embeds sent so score is already revealed)
+        if is_tourney and t_fixture and isinstance(t_fixture, dict):
+            tournament_cog = self.bot.get_cog("Kupa")
+            if tournament_cog:
+                await asyncio.sleep(2)  # Small delay to ensure embeds are fully delivered
+                self.bot.loop.create_task(tournament_cog._post_to_tournament_channel(ctx, comp_name))
+
         # --- GÖRSEL MAÇ SONUCU OLUŞTURUCU (AUTO-LOGO INTEGRATION) ---
         try:
             # Otomatik Logo İndirme (Eğer yoksa)
@@ -2829,13 +2936,10 @@ SADECE aşağıdaki JSON formatında cevap ver:
         except Exception as e:
             print(f"DEBUG: Match Graphic generation failed: {e}")
 
-        # --- GEMMA İLE MEDYA REAKSİYONLARI (OTOMATİK TWEET DAHİL) ---
-        # BUG FIX: Toplu hafta oynatmalarda (!haftayi_oynat) AI'yı devre dışı bırakalım.
-        # Bu hem rate limit'i engeller hem de simülasyonu hızlandırır.
-        skip_media = getattr(ctx, "skip_groq", False) # Değişken adı geriye uyumluluk için korundu
+        # --- MEDYA REAKSİYONLARI (TASARRUF MODU: DEVRE DIŞI) ---
         media_reactions = {}
-        if not skip_media:
-            media_reactions = await self._generate_media_reactions(result)
+        # User requested to skip AI reactions to save API calls
+        skip_media = True 
         
         result["media_reactions"] = media_reactions
         
@@ -3741,7 +3845,7 @@ Kadro Şablonu:
             await database.record_match(h_name, a_name, score_h, score_a, "Lig", "Clear", [], events=[])
             
             # Store result line
-            results.append(f"• **{h_name} {score_h} - {score_a} {a_name}** | *(GPR: {gpr_h}-{gpr_a})*")
+            results.append(f"• **{h_name} {score_h} - {score_a} {a_name}** | *(GPR: {gpr_h}-{gpr_a})* | 📊 *OVR: {ovr_h}-{ovr_a}*")
             await asyncio.sleep(0.1)
 
         embed = discord.Embed(

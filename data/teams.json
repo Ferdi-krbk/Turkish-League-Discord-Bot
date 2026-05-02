@@ -4,7 +4,7 @@
             "name": "Galatasaray",
             "city": "İstanbul",
             "stadium": "RAMS Park",
-            "overall": 80.1,
+            "overall": 81.8,
             "home_advantage": 0.15,
             "rivals": [
                 "Fenerbahçe",
@@ -15,7 +15,7 @@
             "name": "Fenerbahçe",
             "city": "İstanbul",
             "stadium": "Ülker Stadyumu",
-            "overall": 80.6,
+            "overall": 79.8,
             "home_advantage": 0.15,
             "rivals": [
                 "Galatasaray",
@@ -26,7 +26,7 @@
             "name": "Beşiktaş",
             "city": "İstanbul",
             "stadium": "Tüpraş Stadyumu",
-            "overall": 82.9,
+            "overall": 83.2,
             "home_advantage": 0.14,
             "rivals": [
                 "Galatasaray",
@@ -37,7 +37,7 @@
             "name": "Trabzonspor",
             "city": "Trabzon",
             "stadium": "Şenol Güneş Spor Kompleksi",
-            "overall": 75.8,
+            "overall": 76.7,
             "home_advantage": 0.18,
             "rivals": [
                 "Galatasaray",
@@ -56,7 +56,7 @@
             "name": "Konyaspor",
             "city": "Konya",
             "stadium": "Konya Büyükşehir Stadyumu",
-            "overall": 75.9,
+            "overall": 75.1,
             "home_advantage": 0.12,
             "rivals": []
         },
@@ -64,7 +64,7 @@
             "name": "Kayserispor",
             "city": "Kayseri",
             "stadium": "Kadir Has Şehir Stadyumu",
-            "overall": 71.2,
+            "overall": 70.7,
             "home_advantage": 0.11,
             "rivals": []
         },
@@ -72,7 +72,7 @@
             "name": "Gaziantep FK",
             "city": "Gaziantep",
             "stadium": "Kalyon Stadyumu",
-            "overall": 69.8,
+            "overall": 65.0,
             "home_advantage": 0.1,
             "rivals": []
         },
@@ -80,7 +80,7 @@
             "name": "Kasımpaşa",
             "city": "İstanbul",
             "stadium": "Recep Tayyip Erdoğan Stadyumu",
-            "overall": 72.8,
+            "overall": 72.5,
             "home_advantage": 0.08,
             "rivals": []
         },
@@ -88,7 +88,7 @@
             "name": "Samsunspor",
             "city": "Samsun",
             "stadium": "Yeni 19 Mayıs Stadyumu",
-            "overall": 78.8,
+            "overall": 65.0,
             "home_advantage": 0.12,
             "rivals": []
         },
@@ -96,7 +96,7 @@
             "name": "Kocaelispor",
             "city": "Kocaeli",
             "stadium": "Yıldız Entegre Kocaeli Stadyumu",
-            "overall": 83.7,
+            "overall": 82.9,
             "home_advantage": 0.13,
             "rivals": []
         },
@@ -104,7 +104,7 @@
             "name": "Göztepe",
             "city": "İzmir",
             "stadium": "Gürsel Aksel Stadyumu",
-            "overall": 72.1,
+            "overall": 72.9,
             "home_advantage": 0.14,
             "rivals": []
         },
@@ -112,7 +112,7 @@
             "name": "Alanyaspor",
             "city": "Antalya",
             "stadium": "Bahçeşehir Okulları Stadyumu",
-            "overall": 70.8,
+            "overall": 70.4,
             "home_advantage": 0.08,
             "rivals": []
         },
@@ -120,7 +120,7 @@
             "name": "Amedspor",
             "city": "Diyarbakır",
             "stadium": "Diyarbakır Stadyumu",
-            "overall": 70.5,
+            "overall": 67.8,
             "home_advantage": 0.15,
             "rivals": []
         },
@@ -128,7 +128,7 @@
             "name": "Erzurumspor",
             "city": "Erzurum",
             "stadium": "Kazım Karabekir Stadyumu",
-            "overall": 68.0,
+            "overall": 49.6,
             "home_advantage": 0.12,
             "rivals": []
         },
@@ -136,7 +136,7 @@
             "name": "Erokspor",
             "city": "İstanbul",
             "stadium": "Esenler Erokspor Stadyumu",
-            "overall": 75.7,
+            "overall": 65.0,
             "home_advantage": 0.08,
             "rivals": []
         },
@@ -144,7 +144,7 @@
             "name": "Eyüpspor",
             "city": "İstanbul",
             "stadium": "Eyüp Stadyumu",
-            "overall": 67.7,
+            "overall": 67.5,
             "home_advantage": 0.1,
             "rivals": []
         },
@@ -152,7 +152,7 @@
             "name": "Sakaryaspor",
             "city": "Sakarya",
             "stadium": "Yeni Sakarya Atatürk Stadyumu",
-            "overall": 65.3,
+            "overall": 65.5,
             "home_advantage": 0.12,
             "rivals": [
                 "Kocaelispor"

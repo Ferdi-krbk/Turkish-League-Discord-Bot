@@ -557,7 +557,11 @@ class AIManager:
                     pythonic = content.replace('null', 'None').replace('true', 'True').replace('false', 'False')
                     repaired = self.repair_json(pythonic)
                     repaired = '\n'.join([l.strip() for l in repaired.split('\n')])
-                    return ast.literal_eval(repaired)
+                    val = ast.literal_eval(repaired)
+                    # If it's a tuple/list, we probably wanted a dict (AI quirk)
+                    if isinstance(val, (list, tuple)) and len(val) > 0 and isinstance(val[0], dict):
+                        return val[0]
+                    return val if isinstance(val, dict) else None
                 except: return None
 
     async def _query_openrouter(self, prompt: str, system: str, temp: float, max_tokens: int, timeout: int = 60, is_json: bool = False, json_retry: bool = False) -> Optional[str]:

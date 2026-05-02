@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkish League Bot | Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">⚽</span>
+                <span class="logo-text">TURKISH<span>LEAGUE</span></span>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-tab="league">
+                    <span class="icon">🏆</span> Puan Durumu
+                </li>
+                <li data-tab="europe">
+                    <span class="icon">🌍</span> Avrupa Kupaları
+                </li>
+                <li data-tab="fixtures">
+                    <span class="icon">📅</span> Fikstür & Sonuçlar
+                </li>
+                <li data-tab="squads">
+                    <span class="icon">👕</span> Kadrolar
+                </li>
+                <li data-tab="transfers">
+                    <span class="icon">💸</span> Transferler
+                </li>
+                <li data-tab="logs">
+                    <span class="icon">📜</span> Sistem Logları
+                </li>
+                <li data-tab="management">
+                    <span class="icon">⚙️</span> Sezon Yönetimi
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <p>Bot v2.0</p>
+                <button id="refresh-btn">Yenile 🔄</button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <header class="top-bar">
+                <h1 id="page-title">Süper Lig Puan Durumu</h1>
+                <div class="user-info">
+                    <span id="live-indicator" class="live-dot hidden">● CANLI</span>
+                    <span class="date-str">Nisan 2026</span>
+                </div>
+            </header>
+
+            <div id="tab-content" class="tab-pane">
+                <!-- Content will be injected here by app.js -->
+                <div class="loader">Yükleniyor...</div>
+            </div>
+        </main>
+    </div>
+
+    <div id="notification-container" class="notification-container"></div>
+    <script src="app.js"></script>
+</body>
+</html>

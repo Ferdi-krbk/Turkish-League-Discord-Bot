@@ -4,3 +4,5 @@ aiohttp>=3.9.0
 beautifulsoup4>=4.12.0
 google-generativeai>=0.4.0
 wikipedia>=1.4.0
+eel>=0.16.0
+pyinstaller>=6.0.0

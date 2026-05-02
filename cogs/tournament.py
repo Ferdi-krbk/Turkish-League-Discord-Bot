@@ -1052,6 +1052,8 @@ class TournamentCog(commands.Cog, name="Kupa"):
         
         fixtures = await database.get_tournament_fixtures(t_id)
         if not fixtures: return
+        # Defensive: ensure all rows are plain dicts
+        fixtures = [dict(f) if not isinstance(f, dict) else f for f in fixtures]
 
         rounds = {}
         for f in fixtures:
@@ -1109,9 +1111,15 @@ class TournamentCog(commands.Cog, name="Kupa"):
                     status_icon = "✅"
                     score_text = f"**{f['home_score']} - {f['away_score']}**"
                 
-                opp = f["away_team"] if f["home_team"] == target_team else f["home_team"]
-                venue = "🏠 (E)" if f["home_team"] == target_team else "🚌 (D)"
-                match_list += f"{status_icon} **{md_label}:** {venue} {target_team} {score_text} {opp}\n"
+                is_home = f["home_team"] == target_team
+                opp = f["away_team"] if is_home else f["home_team"]
+                venue = "🏠 (E)" if is_home else "🚌 (D)"
+                
+                # Natural home/away order: if Turkish team is away, opponent is on left
+                if is_home:
+                    match_list += f"{status_icon} **{md_label}:** {venue} {target_team} {score_text} {opp}\n"
+                else:
+                    match_list += f"{status_icon} **{md_label}:** {venue} {opp} {score_text} {target_team}\n"
 
             embed.add_field(name="🏟️ KARŞILAŞMALAR", value=match_list, inline=False)
             embed.set_footer(text=f"Son Güncelleme: {discord.utils.format_dt(discord.utils.utcnow(), 'R')}")
@@ -1119,33 +1127,8 @@ class TournamentCog(commands.Cog, name="Kupa"):
             await target_channel.send(embed=embed)
             print(f"DEBUG: [Tournament] Journey for {target_team} posted to #{target_channel.name}")
         
-        match_lines = []
-        processed_ties = set()
-        for f in r_matches:
-            tie_key = tuple(sorted([f["home_team"], f["away_team"]]))
-            if tie_key in processed_ties: continue
-            
-            tie_matches = [m for m in r_matches if tuple(sorted([m["home_team"], m["away_team"]])) == tie_key]
-            tie_matches.sort(key=lambda x: x["leg"])
-            
-            leg1 = tie_matches[0]
-            leg2 = tie_matches[1] if len(tie_matches) > 1 else None
-            status_emoji = "✅" if all(m["status"] == "Played" for m in tie_matches) else "⏳"
-            
-            line = f"{status_emoji} **{leg1['home_team']} {leg1['home_score']}-{leg1['away_score']} {leg1['away_team']}**"
-            if leg2:
-                line += f"\n   ↳ 2. Maç: {leg2['home_score']}-{leg2['away_score']}"
-                agg = await database.get_aggregate_score(t_id, f["round"], leg1['home_team'], leg1['away_team'])
-                line += f" | **TOPLAM: {agg[leg1['home_team']]}-{agg[leg1['away_team']]}**"
-            
-            match_lines.append(line + "\n")
-            processed_ties.add(tie_key)
-
-        embed.add_field(name=f"📍 {latest_round}", value="\n".join(match_lines) or "Maç yok.", inline=False)
-        embed.set_footer(text=f"Son Güncelleme: {discord.utils.format_dt(discord.utils.utcnow(), 'R')}")
-        
-        await target_channel.send(embed=embed)
-        print(f"DEBUG: [Tournament] Fixture auto-posted to #{target_channel.name}")
+        # Phase 3 (Bracket Summary) was removed per user request to only show individual team journeys.
+        pass
 
     @commands.command(name="kupa_paylas", aliases=["kupa_kanal", "share_fixture"])
     @commands.has_permissions(administrator=True)

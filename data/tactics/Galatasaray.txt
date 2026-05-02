@@ -1,18 +1,77 @@
-RB Arnau Martinez | 84 | 45 M € | Dengeleyici Bek
-CB Wilfred Singo | 84 | 40 M € | Fiziksel Lider Stoper
-CB Davinson Sánchez | 79 | 30 M € | Kademe ve Hamle Stoperi
-LB Mathias Oliveira | 84 | 35 M € | Ofansif Bek (Bindirmeci)
-CDM Fabián Ruiz | 82 | 45 M € | Defansif Blok (Çapa)
-CM Hakan Çalhanoğlu | 80 | 35 M € | Oyun Kurucu (Ritm Belirleyici)
-AM/W Florian Wirtz | 91 | 145 M € | Yaratıcı Motor (Half-space)
-AM/W Rayan Cherki | 84 | 65 M € | Çalımcı / Oyunun Kilidini Açan
-ST Victor Osimhen | 90 | 125 M € | Hedef Forvet (Bitirici)
-ST/RW Mohamed Salah | 81 | 40 M € | İçe Kat Eden / Serbest Golcü 
-Orta Saha Denklemi (Fabián Ruiz Etkisi): Torreira'nın yokluğunda Fabián Ruiz, savunmanın önünde tek başına "çapa" görevini üstlenecek. Fiziksel ve teknik kapasitesiyle oyunu geriden kurarken aynı zamanda savunma hattını korumalı.
-​Yaratıcılık Üçgeni (Hakan - Wirtz - Cherki):
-​Hakan: Derinden oyun kurar, Salah ve Osimhen'e uzun/dikine paslar atar.
-​Wirtz & Cherki: Bu iki isim forvet arkasında serbest oynayacak. Wirtz taktiksel zekasıyla, Cherki ise bireysel yeteneği ve çalımlarıyla rakip savunmayı dağıtacak. Bu iki oyuncu, Salah ve Osimhen'in etrafında sürekli yer değiştirerek rakibin savunma dengesini bozacak.
-​Hücumda Salah ve Osimhen: Taktiğimiz aynı; topu kazandığın an dikine Salah'a veya Osimhen'in koşu yoluna oyna. Bu kadroda pas trafiğin o kadar hızlı olacak ki, rakibin savunma yerleşmesine fırsat kalmayacak.
-​Jonathan David (84 | 55 M €) ve Barış Alper Yılmaz (80 | 35 M €): Bu isimler rotasyonun için çok değerli. Eğer maçta tempo düşerse, Cherki veya Wirtz'in yerine Jonathan David'i alarak hücum hattını daha fiziksel ve hızlı (3 forvetli bir yapıya) dönüştürebilirsin.
-​Özetle: Kadron şu an "gol atmak üzerine kurulu" bir yapıya dönüştü. Savunmada Fabián Ruiz'in pozisyonunu kaybetmemesine (çok öne çıkmamasına) dikkat ettiğin sürece,
-RW Jeremy Doku | 72 | 1 M € | RP Oyuncusu
+🏛️ GALATASARAY v20.0: "THE SUPREMACY" (MASTERCLASS)
+KADRO LİSTESİ
+
+Gianluigi Donnarumma | LİBERO KALECİ | 25 Yaş | 50M€ | İtalya
+(Hızlı çekilen şutlarda her zaman dikkatli davranacak ve gol yemicez 1 e 1 de karşı rakip oyuncu ceza sahası içindeyse soğuk kanlılığını koruyarak rakibin üstüne gidicek yavaş yavaş ve şut gelince hızlı refleksiyle tutacak libero kaleci özelliklerini kullanacak.)
+
+Alphonso Davies | SOL BEK | 22 Yaş | 70M€ | Kanada
+(Sol kanata yardım etmek için ileri gidip gelecek tıp rakibe kaptırılınca koşarak yerine geri döncek ve rakibe şut açısı vermeyecek)
+
+Eder Militao | STOPER | 26 Yaş | 50M€ | Brezilya
+(Agrasif ve hırslı olucak defans da kuş uçurtmayacak hırçın tavrıyla rakip forvete geçit vermeyecek rakib forvet ayağına gelir gelmez karşısına çıkıp topu kapacak)
+
+Yann Bisseck | STOPER | 23 Yaş | 75M€ | Almanya
+(Eder Militao nun yaptığı top kayıplarında hemen topu kapacak ve herkesi rahatlatacak Militao nun hatalarını düzeltecek Eyer Militao forvet geçirirse karşısına Yann bissecek olucak)
+
+Arnau Martinez | SAĞ BEK | 21 Yaş | 35M€ | İspanya
+(Yerinden ayrılmıcak ve üstüne gelen kanatı Foul yapmadan hırçın şekilde topu ayağından alacak ve hızlıca ilerideki Wirtz e topu atacak)
+
+Hakan Çalhanoğlu | ORTA SAHA | 30 Yaş | 40M€ | Türkiye
+(Sahada Kaptan ruhunu yansıtacak ve top ayağına geldiği gibi Wirtz e atıcak sahadaki diktatör lüğünü konuşturacak)
+
+Rayan Cherki | ORTA SAHA | 20 Yaş | 50M€ | Fransa
+(Ayağındaki topları hızlıca Wirtz e vericek ve hızlıca atağa çıkıcaz Eyer Wirtz doluysa hızlıca sağ veya sol kanata pas atacak 2 side doluysa tek başına çalımlarla topu Furkan’a atacak)
+
+Florian Wirtz | ON NUMARA | 21 Yaş | 42M€ | Almanya
+(Top ayağına geldiği gibi forvet Furkan boştaysa ona topu atacak ve gol olucak Eyer Furkan doluysa sağ kanattaki yamala topu verecek ve onla ver kaç yapıcak sonra Furkan kendini unutturacak ve Wirtz harika pasla Furkan atıcak ve gol atıcak Eyer son dakika sa ve herkes doluysa şut emri her yerden bomba gibi şutlar vuracak ve kaleciyi avlicak)
+
+Raphinha | SOL KANAT | 27 Yaş | 100M€ | Brezilya
+(Sol kanatta klasını konuşturacak ve plase gibi ortalar yapıcak çalımlarıyla rakip defansını çökertecek Eyer orta açamicaksa bomba gibi plase leri yapıştıracak kaleye ve rakip kaleyi avlicak)
+
+Lamine Yamal | SAĞ KANAT | 16 Yaş | 60M€ | İspanya
+(Ayağındaki topları orta yapacak Eyer gerideysek topu sağ çekip plase yapıştıracak ve kaleciyi avlicak Eyer 2 sinide yapamicaksa ceza sahasına girip çalım atıcak ve penaltı almaya çalışacak alamicaksa furkana pas atsın)
+
+Furkan Tosun | FORVET | 19 Yaş | 97M€ | Türkiye
+(Wirtz den aldığı topları kaleye klas şekilde atıcak ve kaleciyi avlicak hava toplarında sahneye çıkıp kafayla top atacak Eyer gerideysek ve top ondaysa uzaktan bomboş gibi şut çeksin defansın korkulu rüyası koştuğu zaman rakip defansın ayağı tir tir titreyecek)
+
+Courtois | KALECİ | 24 Yaş | 15M€ | Belçika
+(Hızlı çekilen şutlarda her zaman dikkatli davranacak ve gol yemicez 1 e 1 de karşı rakip oyuncu ceza sahası içindeyse soğuk kanlılığını koruyarak rakibin üstüne gidicek yavaş yavaş ve şut gelince hızlı refleksiyle tutacak libero kaleci özelliklerini kullanacak.)
+
+Sergiño Gianni Dest | SAĞ BEK | 21 Yaş | 30M€ | ABD
+Ognjen Ugresic | KALECİ | 24 Yaş | 15M€ | Sırbistan
+Dakika 85: Furkan çıkacak Haaland Giricek taze kan olarak
+
+Eyer dakika 70 ve öndeysek beton dizilişi geçiyoruz yamal çıkıyor ve dest giriyor dest defansa geliyor ve 5 Li defans oluyoruz herkes defans geliyor
+"ULTIMATE PRESS" (YZ'Yİ KENDİ KALESİNE HAPSETME)
+Rakip kaleci topu ayağına aldığı an kabusu başlayacak.
+
+Ayar: Savunma Hattı "Much Higher", Pres Hattı "Much Higher", Pres Şiddeti "Extremely Urgent".
+
+Cheat: Rakip kaleciye "Mark Specifically" (Özel Markaj) ver ve en hızlı forvetini ona yapıştır.
+
+Sonuç: Rakip kaleci topu dikemez, kısa pas veremez. Ya taca atar ya da senin forvetine hediye eder. Maçın %80'i rakip ceza sahasında geçer.
+
+"DURAN TOP KATLİAMI" (Maç Başı +2 Gol)
+Kornerleri birer penaltıya çeviriyoruz.
+
+Ayar: Kornerleri "Near Post" (Ön Direk) kullan.
+
+Cheat: Militao'yi "Attack Near Post"a koy. Bisseck'ı "Mark Keeper" (Kaleciyi Markajla) yap. Cherki'u "Attack Far Post"a koy.
+
+Sonuç: Bisseck kalecinin zıplamasını engeller, Militao ön direkten çivi gibi çakar. Eğer top sekerse Cherki arka direkte boş kaleye tamamlar.
+
+"SCRIPT-BREAKER" (Geri Dönüşleri Engelleme)
+Oyunun "3-0'dan 3-3'e getirme" (Momentum) hilesini bozuyoruz.
+
+Ayar: Skor 3-0 olduğu an tempoyu "Standard"a çek ama "Be More Expressive" (Daha Yaratıcı Ol) talimatını kapatma.
+
+Cheat: "Play Out Of Defence" (Defanstan Kısa Pasla Çık) aç.
+
+Sonuç: Oyuncuların topu kaptırmaz, rakibi peşinden koşturur. YZ sinirlenir, kontrolsüz saldırır ve sen kontradan 4'ü, 5'i atarsın.
+------------------------------------------------------------
+⚙️ ÖZEL TALİMATLAR VE YZ KIRICI AYARLAR
+- Oyun Kurucu: Florian Wirtz
+- Kaptan: Hakan Çalhanoğlu
+- Duran Toplar: Hakan Çalhanoğlu & Florian Wirtz
+- Oyun Felsefesi: Hızlı Geçiş ve "Furkan'ı Bul" Protokolü
+- Savunma Hattı: Militao (Süpürücü) & Bisseck (Emniyet Sibobu)

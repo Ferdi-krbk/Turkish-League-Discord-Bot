@@ -247,6 +247,19 @@ async def init_db():
                 await db.executemany("INSERT INTO referees (name, strictness, var_freq, personality) VALUES (?,?,?,?)", refs)
                 await db.commit()
 
+        # GUI Commands table
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS gui_commands (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                command TEXT,
+                channel TEXT DEFAULT 'exxen-1',
+                status TEXT DEFAULT 'Pending',
+                error TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        await db.commit()
+
         # Goal scorers table
         await db.execute("""
             CREATE TABLE IF NOT EXISTS goal_scorers (
@@ -458,17 +471,78 @@ async def search_team(query: str) -> Optional[Dict[str, Any]]:
             row = await cursor.fetchone()
             if row: return dict(row)
             
-        # 2. Fallback to start match on name
+        # 2. Fallback to exact lower name
+        async with db.execute("SELECT * FROM teams WHERE LOWER(name) = LOWER(?)", (q,)) as cursor:
+            row = await cursor.fetchone()
+            if row: return dict(row)
+
+        # 3. Fallback to start match on name
         async with db.execute("SELECT * FROM teams WHERE LOWER(name) LIKE ?", (f"{q.lower()}%",)) as cursor:
             row = await cursor.fetchone()
             if row: return dict(row)
             
-        # 3. Fallback to start match on slug (e.g. 'fener' finds 'fenerbahce')
+        # 4. Fallback to start match on slug (e.g. 'fener' finds 'fenerbahce')
         async with db.execute("SELECT * FROM teams WHERE slug LIKE ?", (f"{slug}%",)) as cursor:
             row = await cursor.fetchone()
             if row: return dict(row)
+
+        # 5. Fallback to fuzzy match (contains)
+            async with db.execute("SELECT * FROM teams WHERE slug LIKE ? OR LOWER(name) LIKE ?", (f"%{slug}%", f"%{q.lower()}%")) as cursor:
+                row = await cursor.fetchone()
+                if row: return dict(row)
                 
         return None
+
+
+async def resolve_canonical_team(q_name: str) -> str:
+    """Resolves a team name to its canonical version in the database.
+    Checks 'teams' table first, then 'tournament_fixtures' for international teams."""
+    if not q_name: return q_name
+    
+    # Clean redundant prefixes often found in GUI/Bot interactions
+    clean_name = re.sub(r'^!(mac|maclar)\s+', '', q_name, flags=re.IGNORECASE).strip()
+    q_slug = slugify(clean_name)
+    
+    async with get_db() as db:
+        db.row_factory = aiosqlite.Row
+        
+        # 1. Check 'teams' table (League Teams)
+        for table in ["teams", "tournament_fixtures"]:
+            name_col = "name" if table == "teams" else "home_team"
+            
+            # Exact Slug/Name
+            query = f"SELECT {name_col} as name FROM {table} WHERE LOWER({name_col}) = LOWER(?) "
+            params = [clean_name]
+            if table == "teams": 
+                query += "OR slug = ?"
+                params.append(q_slug)
+            
+            async with db.execute(query, params) as cursor:
+                row = await cursor.fetchone()
+                if row: return row["name"]
+
+            # Fuzzy (Contains)
+            async with db.execute(f"SELECT {name_col} as name FROM {table} WHERE LOWER({name_col}) LIKE ?", (f"%{clean_name.lower()}%",)) as cursor:
+                row = await cursor.fetchone()
+                if row: return row["name"]
+            
+            # Slug Inclusion (e.g. 'Besiktas JK' contains 'besiktas' slug)
+            if table == "teams":
+                async with db.execute(f"SELECT name FROM teams WHERE ? LIKE '%' || slug || '%'", (q_slug,)) as cursor:
+                    row = await cursor.fetchone()
+                    if row: return row["name"]
+
+        # 2. Word-based matching (Last resort)
+        q_words = [w for w in re.split(r'[^a-z0-9]', clean_name.lower()) if len(w) > 3]
+        for word in q_words:
+            if word in ["spor", "city", "united", "real", "club", "town", "lig", "ligi"]: continue
+            for table in ["teams", "tournament_fixtures"]:
+                name_col = "name" if table == "teams" else "home_team"
+                async with db.execute(f"SELECT {name_col} as name FROM {table} WHERE LOWER({name_col}) LIKE ?", (f"%{word}%",)) as cursor:
+                    row = await cursor.fetchone()
+                    if row: return row["name"]
+                
+    return clean_name
 
 
 def estimate_player_ovr(value_eur: Optional[int]) -> int:
@@ -537,7 +611,9 @@ async def calculate_team_overall(team_name: str) -> float:
         await db.commit()
 
         # Fetch refreshed players and league
+        db.row_factory = aiosqlite.Row
         async with db.execute("SELECT * FROM players WHERE LOWER(team) = LOWER(?)", (team_name,)) as cursor:
+
             rows = await cursor.fetchall()
             refreshed_players = [dict(r) for r in rows]
 
@@ -846,6 +922,57 @@ async def get_players_by_team(team: str) -> List[Dict[str, Any]]:
         ) as cursor:
             return [dict(row) for row in await cursor.fetchall()]
 
+async def add_player(name: str, team: str, position: str, overall: int, market_value: int, age: int = 25) -> bool:
+    """Add a new player to a team's squad"""
+    async with get_db() as db:
+        try:
+            # Generate slug for search/matching
+            p_slug = slugify(name)
+            
+            # Use overall as base for physical stats if not provided
+            stat = int(overall)
+            
+            await db.execute(
+                """INSERT INTO players (name, team, position, overall, market_value, age, pace, shooting, passing, defending, slug, nationality) 
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (name, team, position, overall, market_value, age, stat, stat, stat, stat, p_slug, "Bilinmeyen")
+            )
+            await db.commit()
+            return True
+        except Exception as e:
+            print(f"Error adding player: {e}")
+            return False
+
+async def delete_player(player_id: int) -> bool:
+    """Delete a player from the database by ID"""
+    async with get_db() as db:
+        try:
+            await db.execute("DELETE FROM players WHERE id = ?", (player_id,))
+            await db.commit()
+            return True
+        except Exception as e:
+            print(f"Error deleting player: {e}")
+            return False
+
+async def edit_player(player_id: int, name: str, position: str, overall: int, market_value: int, age: int) -> bool:
+    """Edit an existing player's details in the database"""
+    async with get_db() as db:
+        try:
+            # Refresh slug in case name changed
+            p_slug = slugify(name)
+            await db.execute(
+                """UPDATE players 
+                   SET name = ?, position = ?, overall = ?, market_value = ?, age = ?, slug = ?
+                   WHERE id = ?""",
+                (name, position, overall, market_value, age, p_slug, player_id)
+            )
+            await db.commit()
+            return True
+        except Exception as e:
+            print(f"Error editing player: {e}")
+            return False
+
+
 
 async def record_match(home_team: str, away_team: str, home_score: int,
                        away_score: int, importance: str = "Normal",
@@ -854,6 +981,10 @@ async def record_match(home_team: str, away_team: str, home_score: int,
     """Record a match result. Detects if it is a League or Europe/Friendly match."""
     async with get_db() as db:
         db.row_factory = aiosqlite.Row
+
+        # --- 0. CANONICAL NAME RESOLUTION (BUG FIX: Resolve names BEFORE anything else) ---
+        resolved_home = await resolve_canonical_team(home_team)
+        resolved_away = await resolve_canonical_team(away_team)
         
         # 1. KATEGORİ TESPİTİ (Kesin Keyword Şartı + Türkçe Normalizasyon)
         imp_lower = (importance or "Normal").lower().replace("İ", "i").replace("I", "ı")
@@ -903,11 +1034,11 @@ async def record_match(home_team: str, away_team: str, home_score: int,
             is_league = False
             competition = "Friendly"
 
-        # Insert match
+        # Insert match (Using RESOLVED NAMES for consistent history)
         cursor = await db.execute("""
             INSERT INTO matches (date, home_team, away_team, home_score, away_score, importance, weather, competition)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """, (datetime.now().strftime("%Y-%m-%d"), home_team, away_team,
+        """, (datetime.now().strftime("%Y-%m-%d"), resolved_home, resolved_away,
               home_score, away_score, importance, weather, competition))
         match_id = cursor.lastrowid
 
@@ -1030,12 +1161,11 @@ async def record_match(home_team: str, away_team: str, home_score: int,
                                     """, (canonical_p, p_team))
                                     print(f"DEBUG: [CEZA] {canonical_p} kırmızı karttan 2 MAÇ cezalı duruma düştü.")
 
-        # --- BÜTÇE VE PUAN DURUMU ---
+        # 3. BÜTÇE GÜNCELLEME (Tüm maçlar için)
         home_won = home_score > away_score
         away_won = away_score > home_score
         drawn = home_score == away_score
 
-        # Fiyat Ayarları (Detaylı Avrupa Primi)
         # Fiyat Ayarları (Detaylı Avrupa Primi)
         if competition == "League":
             win_reward, draw_reward = 300000, 150000
@@ -1045,7 +1175,7 @@ async def record_match(home_team: str, away_team: str, home_score: int,
             win_reward, draw_reward = 3000000, 1000000
         elif competition == "UECL":
             win_reward, draw_reward = 2000000, 500000
-        elif competition == "Europe": # Genel Avrupa kelimesi için fallback
+        elif competition == "Europe": 
             win_reward, draw_reward = 2000000, 500000
         else: # Friendly/Hazırlık
             win_reward, draw_reward = 0, 0
@@ -1053,38 +1183,12 @@ async def record_match(home_team: str, away_team: str, home_score: int,
         home_income = win_reward if home_won else (draw_reward if drawn else 0)
         away_income = win_reward if away_won else (draw_reward if drawn else 0)
         
-        for team_name, income in [(home_team, home_income), (away_team, away_income)]:
+        for t_name, income in [(resolved_home, home_income), (resolved_away, away_income)]:
             if income > 0:
-                await db.execute("UPDATE teams SET budget = budget + ? WHERE name = ?", (income, team_name))
+                await db.execute("UPDATE teams SET budget = budget + ? WHERE name = ?", (income, t_name))
 
-        # 2. Puan Durumu ve Form (Sadece Lig maçıysa)
+        # 4. Puan Durumu ve Form (Sadece Lig maçıysa)
         if is_league:
-            # CANONICAL NAME RESOLUTION (BUG FIX: Ensure teams exist in DB before update)
-            # This ensures "Besiktas" matches "Beşiktaş" and "Goztepe" matches "Göztepe"
-            async def resolve_canonical(q_name):
-                q_slug = slugify(q_name)
-                print(f"DEBUG: Resolving '{q_name}' -> slug: '{q_slug}'", flush=True)
-                # First try slug
-                async with db.execute("SELECT name FROM teams WHERE slug = ?", (q_slug,)) as cursor:
-                    row = await cursor.fetchone()
-                    if row:
-                        print(f"DEBUG: Found canonical name: '{row[0]}'", flush=True)
-                        return row[0]
-                # Then try lower name
-                async with db.execute("SELECT name FROM teams WHERE LOWER(name) = LOWER(?)", (q_name,)) as cursor:
-                    row = await cursor.fetchone()
-                    if row: return row[0]
-                
-                # Try partial match if nothing found
-                async with db.execute("SELECT name FROM teams WHERE slug LIKE ?", (f"%{q_slug}%",)) as cursor:
-                    row = await cursor.fetchone()
-                    if row: return row[0]
-
-                print(f"DEBUG: RESOLUTION FAILED for '{q_name}'", flush=True)
-                return q_name
-
-            resolved_home = await resolve_canonical(home_team)
-            resolved_away = await resolve_canonical(away_team)
 
             home_form_streak = await get_team_form_streak(resolved_home)
             away_form_streak = await get_team_form_streak(resolved_away)
@@ -1150,7 +1254,7 @@ async def record_match(home_team: str, away_team: str, home_score: int,
                 await db.execute("""
                     UPDATE players SET form_rating = MAX(-3, form_rating - 1) 
                     WHERE LOWER(team) = LOWER(?)
-                """, (loser,))
+                """, (loser.lower(),))
             
             # Galip takımın (gol atmayanlar dahil) formunu artır (+1)
             winner = None
@@ -1161,7 +1265,7 @@ async def record_match(home_team: str, away_team: str, home_score: int,
                 await db.execute("""
                     UPDATE players SET form_rating = MIN(3, form_rating + 1) 
                     WHERE LOWER(team) = LOWER(?)
-                """, (winner,))
+                """, (winner.lower(),))
 
         await db.commit()
         
@@ -1172,13 +1276,14 @@ async def record_match(home_team: str, away_team: str, home_score: int,
         # Turnuva eşleşmesini otomatik güncelle (UCL, UEL, UECL ise)
         if competition in ["UCL", "UEL", "UECL"] or norm_comp in ["UCL", "UEL", "UECL"]:
             sync_name = norm_comp if norm_comp != "Friendly" else competition
-            await sync_tournament_fixture(home_team, away_team, home_score, away_score, sync_name, leg=leg)
+            await sync_tournament_fixture(resolved_home, resolved_away, home_score, away_score, sync_name, leg=leg)
         
         return match_id, competition
 
 async def sync_tournament_fixture(home_team: str, away_team: str, h_score: int, a_score: int, t_name: str, leg: int = None):
     """Find a pending tournament fixture and update it automatically. Uses 'leg' if provided for precision."""
     async with get_db() as db:
+        db.row_factory = aiosqlite.Row
         # Turnuvayı bul
         t_id = await get_tournament_by_name(t_name)
         if not t_id: return
@@ -1191,17 +1296,38 @@ async def sync_tournament_fixture(home_team: str, away_team: str, h_score: int, 
             WHERE id IN (
                 SELECT id FROM tournament_fixtures 
                 WHERE tournament_id = ? 
-                AND (LOWER(home_team) = LOWER(?) OR home_team LIKE ?) 
-                AND (LOWER(away_team) = LOWER(?) OR away_team LIKE ?)
+                AND (LOWER(home_team) = LOWER(?) OR home_team = ?) 
+                AND (LOWER(away_team) = LOWER(?) OR away_team = ?)
                 AND status = 'Pending'
                 {leg_filter}
                 ORDER BY leg ASC LIMIT 1
             )
         """
-        params = [h_score, a_score, t_id, home_team, f"%{home_team}%", away_team, f"%{away_team}%"]
+        params = [h_score, a_score, t_id, home_team.lower(), home_team, away_team.lower(), away_team]
         if leg: params.append(leg)
 
-        await db.execute(query, params)
+        cursor = await db.execute(query, params)
+        if cursor.rowcount == 0:
+            # TRY SLUG MATCHING IF DIRECT MATCH FAILED
+            h_slug = slugify(home_team)
+            a_slug = slugify(away_team)
+            
+            # Fetch pending fixtures to match in Python (reliable for SQLite)
+            async with db.execute("SELECT id, home_team, away_team FROM tournament_fixtures WHERE tournament_id = ? AND status = 'Pending' " + leg_filter, [t_id] + ([leg] if leg else [])) as cursor_f:
+                rows = await cursor_f.fetchall()
+                for row in rows:
+                    fh_slug = slugify(row["home_team"])
+                    fa_slug = slugify(row["away_team"])
+                    
+                    # Robust matching: Exact slug OR one contains the other
+                    h_match = (fh_slug == h_slug or h_slug in fh_slug or fh_slug in h_slug)
+                    a_match = (fa_slug == a_slug or a_slug in fa_slug or fa_slug in a_slug)
+                    
+                    if h_match and a_match:
+                        await db.execute("UPDATE tournament_fixtures SET home_score = ?, away_score = ?, status = 'Played' WHERE id = ?", (h_score, a_score, row["id"]))
+                        print(f"DEBUG: [SYNC] Tournament fixture resolved via slug: {row['home_team']} vs {row['away_team']}")
+                        break
+        
         await db.commit()
 
 
@@ -1294,6 +1420,34 @@ async def get_recent_transfers(limit: int = 10) -> List[Dict[str, Any]]:
         """, (limit,)) as cursor:
             return [dict(row) for row in await cursor.fetchall()]
 
+async def cancel_transfer(transfer_id: int):
+    """Undo a transfer: revert player team and refund budget"""
+    async with get_db() as db:
+        db.row_factory = aiosqlite.Row
+        async with db.execute("SELECT * FROM transfers WHERE id = ?", (transfer_id,)) as cursor:
+            t = await cursor.fetchone()
+            if not t:
+                return False
+        
+        player_name = t['player_name']
+        from_team = t['from_team']
+        to_team = t['to_team']
+        fee = t['fee']
+        
+        await db.execute("UPDATE players SET team = ? WHERE name = ?", (from_team, player_name))
+        await db.execute("UPDATE teams SET budget = budget - ? WHERE name = ?", (fee, from_team))
+        await db.execute("UPDATE teams SET budget = budget + ? WHERE name = ?", (fee, to_team))
+        await db.execute("DELETE FROM transfers WHERE id = ?", (transfer_id,))
+        await db.commit()
+        return True
+
+async def add_gui_command(command: str, channel: str = 'exxen-1'):
+    """Add a command to the GUI command queue for the bot to execute"""
+    async with get_db() as db:
+        await db.execute("INSERT INTO gui_commands (command, channel) VALUES (?, ?)", (command, channel))
+        await db.commit()
+        return True
+
 
 async def get_active_injuries() -> List[Dict[str, Any]]:
     """Get currently active injuries (return date hasn't passed yet)"""
@@ -1303,6 +1457,18 @@ async def get_active_injuries() -> List[Dict[str, Any]]:
         async with db.execute("""
             SELECT * FROM injuries WHERE return_date >= ? ORDER BY return_date ASC
         """, (today,)) as cursor:
+            return [dict(row) for row in await cursor.fetchall()]
+
+async def get_league_suspensions() -> List[Dict[str, Any]]:
+    """Get only players who are currently suspended"""
+    async with get_db() as db:
+        db.row_factory = aiosqlite.Row
+        async with db.execute("""
+            SELECT name, team, yellow_cards, red_cards, suspension_matches 
+            FROM players 
+            WHERE suspension_matches > 0
+            ORDER BY suspension_matches DESC
+        """) as cursor:
             return [dict(row) for row in await cursor.fetchall()]
 
 
@@ -1913,3 +2079,199 @@ async def get_random_referee() -> Optional[Dict[str, Any]]:
         async with db.execute("SELECT * FROM referees ORDER BY RANDOM() LIMIT 1") as cursor:
             row = await cursor.fetchone()
             return dict(row) if row else None
+
+async def reset_league_standings():
+    """Resets all league standings and deletes match history, fixtures, and stats."""
+    async with get_db() as db:
+        # Reset team stats
+        await db.execute("""
+            UPDATE teams 
+            SET played = 0, won = 0, drawn = 0, lost = 0, 
+                gf = 0, ga = 0, points = 0, form_streak = ''
+        """)
+        # Clear match history and fixtures
+        await db.execute("DELETE FROM matches")
+        await db.execute("DELETE FROM fixtures")
+        await db.execute("DELETE FROM goal_scorers")
+        
+        # Clear player stats
+        await db.execute("DELETE FROM player_stats")
+        
+        # Clear injuries & suspensions
+        await db.execute("UPDATE players SET suspension_matches = 0, goals = 0, assists = 0, yellow_cards = 0, red_cards = 0")
+        await db.execute("DELETE FROM injuries")
+        
+        await db.commit()
+    return True
+
+async def reset_europe_tournaments():
+    """Deletes all data related to European tournaments (fixtures, standings, etc.)"""
+    async with get_db() as db:
+        await db.execute("DELETE FROM tournament_fixtures")
+        await db.execute("DELETE FROM tournament_standings")
+        await db.execute("DELETE FROM tournaments")
+        await db.commit()
+    return True
+
+async def get_all_teams_simple():
+    """Returns a simple list of all team names for selection menus (Filtered for Super Lig)."""
+    async with get_db() as db:
+        db.row_factory = aiosqlite.Row
+        # Sadece Süper Lig takımlarını getir ki küme düşürme listesi şişmesin
+        async with db.execute("SELECT name FROM teams WHERE league = 'Super Lig' ORDER BY name ASC") as cursor:
+            rows = await cursor.fetchall()
+            return [row["name"] for row in rows]
+
+async def handle_promotion_relegation(relegated_names: List[str], promoted_names: List[str]):
+    """Handles season transition by removing relegated teams and adding promoted ones."""
+    async with get_db() as db:
+        # Delete relegated teams
+        for name in relegated_names:
+            await db.execute("DELETE FROM teams WHERE name = ?", (name,))
+        
+        # Add promoted teams with default stats
+        for name in promoted_names:
+            await db.execute("""
+                INSERT OR IGNORE INTO teams (name, overall, budget, league)
+                VALUES (?, 75, 5000000, 'Super Lig')
+            """, (name,))
+        
+        await db.commit()
+    return True
+
+async def setup_europe_from_gui(tournament_name: str, round_name: str, team_names: List[str], legs: int = 2):
+    """Bridge function to setup a tournament from the GUI."""
+    t_id = await create_tournament(tournament_name)
+    # Clear existing fixtures for this round to avoid duplicates
+    async with get_db() as db:
+        await db.execute("DELETE FROM tournament_fixtures WHERE tournament_id = ? AND round = ?", (t_id, round_name))
+        await db.commit()
+    
+    if round_name == "Lig Aşaması":
+        return await setup_league_stage_from_gui(tournament_name, team_names)
+    
+    await create_tournament_fixtures(t_id, round_name, team_names, legs)
+    return True
+
+async def setup_league_stage_from_gui(t_name: str, manual_teams: List[str]):
+    """Sets up a 36-team Swiss system league stage for Europe from GUI."""
+    import random
+    t_id = await create_tournament(t_name)
+    
+    # Realistic Giants for filling
+    UCL_GIANTS = ["Real Madrid", "Manchester City", "Bayern München", "PSG", "Arsenal", "Inter", "Atletico", "Leverkusen", "Barcelona", "Dortmund", "Juventus", "Liverpool", "Milan", "Aston Villa", "Sporting", "Benfica", "Atalanta", "Feyenoord", "PSV", "Salzburg", "Celtic", "Monaco", "Stuttgart", "Girona", "Bologna", "Lille", "Brest", "Leipzig", "Club Brugge", "Shakhtar", "Crvena Zvezda", "Sparta Praha", "Dinamo Zagreb", "Sturm Graz", "Young Boys", "Slovan Bratislava"]
+    UEL_GIANTS = ["AS Roma", "Man Utd", "Tottenham", "Ajax", "Lazio", "FC Porto", "Real Sociedad", "Lyon", "Frankfurt", "Marseille", "Villarreal", "Rangers", "Athletic Bilbao", "Nice", "Betis", "Olympiacos", "PAOK", "Braga", "Slavia Praha", "AZ", "Ludogorets", "Malmö", "FCSB", "Qarabağ", "Galatasaray", "Fenerbahçe", "Beşiktaş", "Union St Gilloise", "Dynamo Kyiv", "Ferencváros", "Bodø/Glimt", "Viktoria Plzeň", "Hoffenheim", "Anderlecht", "Midtjylland", "Maccabi Tel Aviv"]
+    UECL_GIANTS = ["Chelsea", "Fiorentina", "Heidenheim", "Vitória SC", "Gent", "Legia", "Cercle Brugge", "Lugano", "Panathinaikos", "Copenhagen", "St Gallen", "Rapid Wien", "Djurgården", "Başakşehir", "Omonia", "APOEL", "Vikingur", "Larne", "Dinamo Minsk", "Noah", "Pafos", "Petrocub", "Jagiellonia", "Hearts", "Shamrock", "TNS", "Borac", "Celje", "Astana", "Mladá Boleslav", "Olimpija", "TSC", "Ballkani", "Pyunik", "Spartak Trnava", "Shkupi"]
+    
+    giants = UCL_GIANTS if t_name == "UCL" else (UEL_GIANTS if t_name == "UEL" else UECL_GIANTS)
+    
+    # 1. Fill to 36 teams
+    current_teams = list(manual_teams)
+    manual_low = [t.lower() for t in current_teams]
+    for g in giants:
+        if len(current_teams) >= 36: break
+        if g.lower() not in manual_low:
+            current_teams.append(g)
+            manual_low.append(g.lower())
+    
+    while len(current_teams) < 36:
+        current_teams.append(f"Avrupa Takımı {len(current_teams)+1}")
+
+    # 2. Assign to Pots based on OVR
+    team_data = []
+    for t in current_teams:
+        db_team = await search_team(t)
+        ovr = db_team["overall"] if db_team else (85 if t in giants else 75)
+        team_data.append({"name": db_team["name"] if db_team else t, "overall": ovr})
+    
+    team_data.sort(key=lambda x: x["overall"], reverse=True)
+    pots = [team_data[i*9:(i+1)*9] for i in range(4)]
+    
+    # 3. Create Fixtures (Simplified Swiss Style: Each team plays 2 from each pot)
+    # To keep it simple and reliable for GUI, we use a rotation-based matching
+    async with get_db() as db:
+        await db.execute("DELETE FROM tournament_fixtures WHERE tournament_id = ?", (t_id,))
+        for p_idx in range(4): # For each pot
+            pot = pots[p_idx]
+            for i in range(9): # For each team in pot
+                team = pot[i]["name"]
+                # Match with 2 teams from each pot (including own pot)
+                for opp_p_idx in range(4):
+                    opp_pot = pots[opp_p_idx]
+                    # Select 2 opponents (i+1 and i+2 mod 9)
+                    opp1 = opp_pot[(i + 1) % 9]["name"]
+                    opp2 = opp_pot[(i + 2) % 9]["name"]
+                    
+                    if opp1 != team:
+                        await db.execute("INSERT INTO tournament_fixtures (tournament_id, round, home_team, away_team, leg) VALUES (?, ?, ?, ?, ?)",
+                                        (t_id, "Lig Aşaması", team, opp1, 1))
+                    if opp2 != team:
+                        await db.execute("INSERT INTO tournament_fixtures (tournament_id, round, home_team, away_team, leg) VALUES (?, ?, ?, ?, ?)",
+                                        (t_id, "Lig Aşaması", opp2, team, 1))
+        await db.commit()
+    return True
+
+async def generate_league_fixtures():
+    """Generates a perfect double round-robin fixture for Super Lig teams."""
+    async with get_db() as db:
+        db.row_factory = aiosqlite.Row
+        async with db.execute("SELECT name FROM teams WHERE league = 'Super Lig' ORDER BY name ASC") as cursor:
+            rows = await cursor.fetchall()
+            team_names = [row["name"] for row in rows]
+    
+    if len(team_names) < 2:
+        return False
+
+    # Circle Method Algorithm
+    def create_schedule(teams):
+        if len(teams) % 2 != 0:
+            teams.append("BAY")
+        n = len(teams)
+        schedule = []
+        temp_teams = list(teams)
+        
+        # First half
+        for r in range(n - 1):
+            round_matches = []
+            for i in range(n // 2):
+                h, a = temp_teams[i], temp_teams[n - 1 - i]
+                if h != "BAY" and a != "BAY":
+                    if i == 0 and r % 2 == 1:
+                        round_matches.append((a, h))
+                    else:
+                        round_matches.append((h, a))
+            schedule.append(round_matches)
+            temp_teams = [temp_teams[0]] + [temp_teams[-1]] + temp_teams[1:-1]
+            
+        # Second half (Reversed)
+        second_half = []
+        for r_matches in schedule:
+            second_half.append([(a, h) for h, a in r_matches])
+            
+        return schedule + second_half
+
+    full_schedule = create_schedule(team_names)
+    
+    # Save to database
+    async with get_db() as db:
+        # Clear existing fixtures first
+        await db.execute("DELETE FROM fixtures")
+        for r_idx, r_matches in enumerate(full_schedule, 1):
+            for h, a in r_matches:
+                await db.execute(
+                    "INSERT INTO fixtures (round_no, home_team, away_team, status) VALUES (?, ?, ?, ?)",
+                    (r_idx, h, a, "Pending")
+                )
+        await db.commit()
+    return True
+
+async def save_fixtures(fixtures: List[Dict]):
+    """Helper to save a list of fixture dicts to the database."""
+    async with get_db() as db:
+        for f in fixtures:
+            await db.execute(
+                "INSERT INTO fixtures (round_no, home_team, away_team, status) VALUES (?, ?, ?, ?)",
+                (f["round_no"], f["home_team"], f["away_team"], f.get("status", "Pending"))
+            )
+        await db.commit()
+    return True

@@ -194,36 +194,84 @@ KRİTİK TALİMATLAR:
             import re, ast
             # Regex for anything inside curly braces
             match = re.search(r'(\{.*\})', clean_eval.replace("\n", " "), re.DOTALL)
+            
             if match:
                 content = match.group(1)
-                try:
-                    # Try strict JSON first
-                    import json
-                    res = json.loads(content)
-                    boost = res.get("boost", 0)
-                    desc = res.get("eval", "Analiz tamamlandı.")
-                except:
-                    # Fallback to ast.literal_eval for single-quote dictionaries or malformed JSON
-                    try:
-                        res = ast.literal_eval(content)
-                        boost = res.get("boost", 0)
-                        desc = res.get("eval", "Analiz tamamlandı.")
-                    except:
-                        # If still failing, try to find the "eval" text manually
-                        eval_match = re.search(r"['\"]eval['\"]\s*:\s*['\"](.*?)['\"]\s*,\s*['\"]boost", content, re.DOTALL)
-                        if eval_match:
-                            desc = eval_match.group(1)
+                
+                # --- AKILLI VE AGRESİF AYRIŞTIRMA ---
+                # A. BOOST AYIKLAMA (Öncelikli)
+                # Hem tırnaklı hem tırnaksız her türlü boost formatını yakala
+                boost_patterns = [
+                    r"['\"]boost['\"]\s*:\s*(-?\d+)", # 'boost': 1
+                    r"boost\s*:\s*(-?\d+)",           # boost: 1
+                    r"boost['\"]\s*:\s*(-?\d+)"        # boost': 1
+                ]
+                for pattern in boost_patterns:
+                    b_match = re.search(pattern, content, re.IGNORECASE)
+                    if b_match:
+                        boost = int(b_match.group(1))
+                        break
+                
+                # B. EVAL AYIKLAMA
+                # En geniş tırnak bloğunu değil, 'eval' anahtarından sonraki ilk tırnak bloğunu al
+                # 1. 'eval' anahtarını bul ve sonrasındaki tırnağı yakala
+                eval_start_match = re.search(r"['\"]eval['\"]\s*:\s*(['\"])", content, re.IGNORECASE)
+                if eval_start_match:
+                    quote_char = eval_start_match.group(1)
+                    start_pos = eval_start_match.end()
+                    
+                    # 2. Bu tırnağın kapanışını bul (Sondaki boost/kapanış parantezi öncesindeki son tırnak)
+                    # En sondaki tırnağı bulmak yerine, " , 'boost " veya " } " öncesini arayalım
+                    end_pattern = rf"{quote_char}\s*(?:,|\}})"
+                    end_match = re.search(end_pattern, content[start_pos:])
+                    if end_match:
+                        desc = content[start_pos:start_pos + end_match.start()].strip()
+                    else:
+                        # Eğer kapanış tırnağı bulunamazsa (AI tırnağı kapatmadıysa), 
+                        # boost anahtarına kadar olan her şeyi al
+                        boost_key_match = re.search(r"['\"]boost['\"]", content[start_pos:], re.IGNORECASE)
+                        if boost_key_match:
+                            desc = content[start_pos:start_pos + boost_key_match.start()].strip().rstrip(",").strip().rstrip(quote_char)
                         else:
-                            desc = clean_eval
+                            desc = content[start_pos:].strip().rstrip("}").strip().rstrip(quote_char)
+                
+                # C. FALLBACK (Eğer yukarıdakiler başarısız olursa)
+                if desc == "Analiz bitti." or "{'eval':" in str(desc):
+                    try:
+                        # Strict JSON (Tırnakları düzeltmeyi dene)
+                        json_content = content.replace("'", '"')
+                        res = json.loads(json_content)
+                        boost = res.get("boost", boost)
+                        desc = res.get("eval", desc)
+                    except:
+                        try:
+                            # Python Dict format (ast.literal_eval)
+                            res = ast.literal_eval(content)
+                            boost = res.get("boost", boost)
+                            desc = res.get("eval", desc)
+                        except:
+                            # Hala olmadıysa boost'u zaten yukarda aldık, desc'i temizleyelim
+                            if "eval" in content:
+                                # 'eval': "..." kısmını manuel buda
+                                raw_desc = re.sub(r"^.*?['\"]eval['\"]\s*:\s*['\"]", "", content, flags=re.IGNORECASE | re.DOTALL)
+                                raw_desc = re.sub(r"['\"]\s*,\s*['\"]boost.*$", "", raw_desc, flags=re.IGNORECASE | re.DOTALL)
+                                desc = raw_desc.strip().rstrip("}").strip().rstrip("'").rstrip('"')
             else:
+                # Hiç süslü parantez yoksa direkt ham metni kullan
                 desc = clean_eval
             
-            # 3. Final cleanup: If desc still contains dict-like strings, remove them
-            if "{'eval':" in str(desc) or '{"eval":' in str(desc):
-                # Hard cleanup
-                desc = re.sub(r'\{.*\}', '', str(desc)).strip()
-                if not desc: desc = "Analiz başarıyla tamamlandı."
-
+            # 3. FİNAL TEMİZLİK (Sözlük kalıntılarını temizle)
+            desc = str(desc)
+            if desc.startswith("{") and "eval" in desc:
+                # Eğer desc hala tüm sözlüğü içeriyorsa son bir regex hamlesi
+                final_eval_match = re.search(r"['\"]eval['\"]\s*:\s*['\"](.*?)['\"](?:\s*,|\s*\})", desc, re.DOTALL)
+                if final_eval_match:
+                    desc = final_eval_match.group(1)
+                else:
+                    # Manuel budama
+                    desc = desc.replace("{'eval':", "").replace('{"eval":', "").strip()
+                    desc = re.sub(r"['\"]\s*,\s*['\"]boost.*$", "", desc).strip().rstrip("'").rstrip('"')
+        
         except Exception as e:
             print(f"DEBUG: Interview Eval Error: {e}")
             desc = eval_raw if eval_raw else "Analiz bitti."
