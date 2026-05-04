@@ -58,3 +58,9 @@ scratch/
 tmp/
 tests/tmp/
 samsun_transfers_full.md
+*.lock
+*.spec
+exe_yap.py
+icon.ico
+gui.lock
+bot.lock
