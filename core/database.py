@@ -636,8 +636,8 @@ async def calculate_team_overall(team_name: str) -> float:
     avg_bench = sum(p.get('overall', 0) or 0 for p in bench_7) / len(bench_7) if bench_7 else avg_11
     
     if is_turkish:
-        # Türk takımları için klasik oran (%70-%30)
-        weighted_avg = (avg_11 * 0.7) + (avg_bench * 0.3)
+        # Türk takımları için TÜM kadro ortalaması
+        weighted_avg = sum(p.get('overall', 0) or 0 for p in refreshed_players) / len(refreshed_players) if refreshed_players else 0.0
     else:
         # Avrupa takımları için as kadro odaklı oran (%85-%15)
         weighted_avg = (avg_11 * 0.85) + (avg_bench * 0.15)

@@ -2398,15 +2398,23 @@ SADECE aşağıdaki JSON formatında cevap ver:
             scores = await self._get_tactical_scores(team_a_data["name"], eval_a, team_b_data["name"], eval_b)
             tactical_reason = scores.get("reason", "Analiz tamamlandı.")
 
-            # Taktiği olan AI puanını alır (Empty Tactic / Roster Only = +4), olmayan sabit 2-3
-            # AVRUPA TAKIMI BONUSU: Eğer taktiği yoksa ama Avrupa takımıysa (Europe ligi), default 4.5 boost verilir.
+            # Taktiği olan AI puanını alır (Empty Tactic / Roster Only = +5.5), olmayan sabit 2-3
+            # AVRUPA TAKIMI BONUSU: Eğer Avrupa takımıysa (Europe ligi), default 5.5 boost verilir.
             is_euro_a = team_a_data.get("league") == "Europe" or (is_tourney and team_a_data.get("is_external"))
             is_euro_b = team_b_data.get("league") == "Europe" or (is_tourney and team_b_data.get("is_external"))
-            # Sadece Beşiktaş için 7 sabitlendi, diğerleri AI puanına bırakıldı (max(4,...) kaldırıldı)
-            tactic_bonus_a = scores.get("home", 0) if has_tactic_a else (4.5 if is_euro_a else random.randint(2, 3))
-            tactic_bonus_b = scores.get("away", 0) if has_tactic_b else (4.5 if is_euro_b else random.randint(2, 3))
-
             
+            tactic_bonus_a = scores.get("home", 0) if has_tactic_a else (5.5 if is_euro_a else random.randint(2, 3))
+            tactic_bonus_b = scores.get("away", 0) if has_tactic_b else (5.5 if is_euro_b else random.randint(2, 3))
+
+            # --- TÜRK TAKIMLARI AVRUPA SINIRI: Maksimum 5.0 ---
+            if is_tourney:
+                if not is_euro_a and "beşiktaş" not in team_a_data["name"].lower():
+                    tactic_bonus_a = min(tactic_bonus_a, 5.0)
+                    print(f"🇹🇷 {team_a_data['name']} (TR) Avrupa maçı için taktik boostu 5.0 ile sınırlandırıldı.")
+                if not is_euro_b and "beşiktaş" not in team_b_data["name"].lower():
+                    tactic_bonus_b = min(tactic_bonus_b, 5.0)
+                    print(f"🇹🇷 {team_b_data['name']} (TR) Avrupa maçı için taktik boostu 5.0 ile sınırlandırıldı.")
+
             # --- BEŞİKTAŞ SPECIAL RULE: Always 7 Tactical Boost ---
             if "beşiktaş" in team_a_data["name"].lower():
                 tactic_bonus_a = 7
@@ -2415,8 +2423,8 @@ SADECE aşağıdaki JSON formatında cevap ver:
                 tactic_bonus_b = 7
                 print("🦅 Beşiktaş için taktik boostu 7 olarak sabitlendi.")
 
-            if is_euro_a and not has_tactic_a and "beşiktaş" not in team_a_data["name"].lower(): print(f"🇪🇺 {team_a_data['name']} (Europe) için +4.5 default taktik boostu uygulandı.")
-            if is_euro_b and not has_tactic_b and "beşiktaş" not in team_b_data["name"].lower(): print(f"🇪🇺 {team_b_data['name']} (Europe) için +4.5 default taktik boostu uygulandı.")
+            if is_euro_a and not has_tactic_a: print(f"🇪🇺 {team_a_data['name']} (Europe) için +5.5 default taktik boostu uygulandı.")
+            if is_euro_b and not has_tactic_b: print(f"🇪🇺 {team_b_data['name']} (Europe) için +5.5 default taktik boostu uygulandı.")
             
             tactical_reason = scores.get("reason", "Analiz tamamlandı.")
         else:
@@ -2424,9 +2432,16 @@ SADECE aşağıdaki JSON formatında cevap ver:
             is_euro_a = team_a_data.get("league") == "Europe" or (is_tourney and team_a_data.get("is_external"))
             is_euro_b = team_b_data.get("league") == "Europe" or (is_tourney and team_b_data.get("is_external"))
             
-            tactic_bonus_a = 4.5 if is_euro_a else random.randint(2, 3)
-            tactic_bonus_b = 4.5 if is_euro_b else random.randint(2, 3)
+            tactic_bonus_a = 5.5 if is_euro_a else random.randint(2, 3)
+            tactic_bonus_b = 5.5 if is_euro_b else random.randint(2, 3)
             
+            # --- TÜRK TAKIMLARI AVRUPA SINIRI: Maksimum 5.0 ---
+            if is_tourney:
+                if not is_euro_a and "beşiktaş" not in team_a_data["name"].lower():
+                    tactic_bonus_a = min(tactic_bonus_a, 5.0)
+                if not is_euro_b and "beşiktaş" not in team_b_data["name"].lower():
+                    tactic_bonus_b = min(tactic_bonus_b, 5.0)
+
             # --- BEŞİKTAŞ SPECIAL RULE: Always 7 Tactical Boost ---
             if "beşiktaş" in team_a_data["name"].lower():
                 tactic_bonus_a = 7
@@ -2435,8 +2450,8 @@ SADECE aşağıdaki JSON formatında cevap ver:
                 tactic_bonus_b = 7
                 print("🦅 Beşiktaş için taktik boostu 7 olarak sabitlendi.")
             
-            if is_euro_a: print(f"🇪🇺 {team_a_data['name']} (Europe) için +4.5 default taktik boostu uygulandı.")
-            if is_euro_b: print(f"🇪🇺 {team_b_data['name']} (Europe) için +4.5 default taktik boostu uygulandı.")
+            if is_euro_a: print(f"🇪🇺 {team_a_data['name']} (Europe) için +5.5 default taktik boostu uygulandı.")
+            if is_euro_b: print(f"🇪🇺 {team_b_data['name']} (Europe) için +5.5 default taktik boostu uygulandı.")
             
             tactical_reason = "Her iki takım da standart jenerik taktikle sahada."
 

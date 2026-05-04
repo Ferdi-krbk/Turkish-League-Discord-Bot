@@ -154,16 +154,15 @@ def reseed():
         league = row[0] if row else 'Europe'
         is_turkish = league in ['Super Lig', '1. Lig']
 
-        # Weighted Average: Top 11 + Bench 7
+        # Weighted Average: Top 11 + Bench 7 (85% First 11, 15% Bench)
+        top_18 = sorted(team_ovrs, reverse=True)[:18]
         top_11 = top_18[:11]
         bench_7 = top_18[11:18]
         
-        avg_11 = sum(top_11) / 11 if top_11 else 75
-        avg_bench = sum(bench_7) / 7 if bench_7 else avg_11
-        
+        avg_11 = sum(top_11) / len(top_11) if top_11 else 75
         if is_turkish:
-            # Türk takımları için klasik oran (%70-%30)
-            weighted_avg = (avg_11 * 0.7) + (avg_bench * 0.3)
+            # Türk takımları için TÜM kadro ortalaması
+            weighted_avg = sum(team_ovrs) / len(team_ovrs) if team_ovrs else 75
         else:
             # Avrupa takımları için as kadro odaklı oran (%85-%15)
             weighted_avg = (avg_11 * 0.85) + (avg_bench * 0.15)
