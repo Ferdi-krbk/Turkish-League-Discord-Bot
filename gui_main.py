@@ -1,12 +1,50 @@
-import eel
-import asyncio
-import os
 import sys
-import threading
-from core import database
+import os
+import time
 
-# Add project root to sys.path
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# 1. SETUP ERROR LOGGING IMMEDIATELY (Before any imports)
+def get_log_path():
+    base_dir = os.path.dirname(sys.executable) if getattr(sys, 'frozen', False) else os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base_dir, "launcher_error.log")
+
+def show_error_popup(title, message):
+    try:
+        import ctypes
+        ctypes.windll.user32.MessageBoxW(0, message, title, 0x10)
+    except:
+        pass
+
+try:
+    # 2. LOG ENVIRONMENT INFO
+    log_path = get_log_path()
+    with open(log_path, "a", encoding="utf-8") as f:
+        f.write(f"\n[{time.strftime('%Y-%m-%d %H:%M:%S')}] --- BAŞLATMA DENEMESİ ---\n")
+        f.write(f"EXE Yolu: {sys.executable}\n")
+        f.write(f"Çalışma Dizini: {os.getcwd()}\n")
+        f.write(f"Python Sürümü: {sys.version}\n")
+
+    import eel
+    import asyncio
+    import threading
+    import traceback
+    from core import database
+except Exception as e:
+    import traceback
+    error_msg = f"Kritik Yükleme Hatası: {e}\n\n{traceback.format_exc()}"
+    with open(get_log_path(), "a", encoding="utf-8") as f:
+        f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] IMPORT ERROR: {error_msg}\n")
+    show_error_popup("Başlatma Hatası", f"Kütüphaneler yüklenemedi: {e}")
+    sys.exit(1)
+
+# Add project root and EXE directory to sys.path
+if getattr(sys, 'frozen', False):
+    exe_dir = os.path.dirname(sys.executable)
+    sys.path.insert(0, exe_dir)
+    # Also add the internal bundle path
+    if hasattr(sys, '_MEIPASS'):
+        sys.path.append(sys._MEIPASS)
+else:
+    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Background Event Loop Logic
 _loop = asyncio.new_event_loop()
@@ -98,269 +136,161 @@ def get_team_details(team_name):
                             break
         except Exception as e:
             print(f"Error loading city/stadium: {e}")
-        
+
     return {"team": team, "players": players}
 
 @eel.expose
-def refresh_team_stats(team_name):
-    """Refreshes OVRs and total power for a specific team"""
-    new_ovr = run_async(database.calculate_team_overall(team_name))
-    return new_ovr
-
+def get_match_history(limit=50):
+    return run_async(database.get_recent_matches(limit))
 
 @eel.expose
-def add_player_gui(name, team, position, overall, market_value, age):
-    return run_async(database.add_player(name, team, position, int(overall), int(market_value), int(age)))
+def generate_fixture():
+    run_async(database.generate_fixture())
+    return "Fikstür oluşturuldu!"
 
 @eel.expose
-def delete_player_gui(player_id):
-    return run_async(database.delete_player(int(player_id)))
+def reset_database():
+    run_async(database.reset_database())
+    return "Veritabanı sıfırlandı!"
 
 @eel.expose
-def edit_player_gui(player_id, name, position, overall, market_value, age):
-    return run_async(database.edit_player(int(player_id), name, position, int(overall), int(market_value), int(age)))
+def reset_europe_tournaments():
+    """Reset button for European tournaments ONLY"""
+    run_async(database.reset_europe_tournaments())
+    return "Avrupa turnuvaları sıfırlandı!"
 
 @eel.expose
-def get_europe_data():
+def add_player(team_name, player_name, position, age, ovr, market_value, nationality):
+    """Adds a new player to the database via UI"""
     try:
-        # These can also be run in parallel for even more speed
-        ucl_id = run_async(database.get_tournament_by_name("UCL"))
-        uel_id = run_async(database.get_tournament_by_name("UEL"))
-        uecl_id = run_async(database.get_tournament_by_name("UECL"))
-        
-        data = {
-            "UCL": {
-                "fixtures": run_async(database.get_tournament_fixtures(ucl_id)) if ucl_id else [],
-                "standings": run_async(database.get_tournament_league_standings(ucl_id)) if ucl_id else []
-            },
-            "UEL": {
-                "fixtures": run_async(database.get_tournament_fixtures(uel_id)) if uel_id else [],
-                "standings": run_async(database.get_tournament_league_standings(uel_id)) if uel_id else []
-            },
-            "UECL": {
-                "fixtures": run_async(database.get_tournament_fixtures(uecl_id)) if uecl_id else [],
-                "standings": run_async(database.get_tournament_league_standings(uecl_id)) if uecl_id else []
-            }
-        }
-        return data
+        run_async(database.add_player(team_name, player_name, position, age, ovr, market_value, nationality))
+        return {"status": "success", "message": f"{player_name} başarıyla eklendi!"}
     except Exception as e:
-        print(f"Error in get_europe_data: {e}")
-        return {"UCL": {"fixtures": [], "standings": []}, "UEL": {"fixtures": [], "standings": []}, "UECL": {"fixtures": [], "standings": []}}
+        return {"status": "error", "message": str(e)}
 
 @eel.expose
-def get_recent_transfers():
-    return run_async(database.get_recent_transfers(limit=20))
+def delete_player(player_id):
+    run_async(database.delete_player(player_id))
+    return "Oyuncu silindi!"
 
 @eel.expose
-def cancel_transfer(transfer_id):
-    return run_async(database.cancel_transfer(transfer_id))
+def update_player(player_id, name, position, age, ovr):
+    run_async(database.update_player(player_id, name, position, age, ovr))
+    return "Oyuncu güncellendi!"
 
 @eel.expose
-def get_bot_logs():
-    """Reads the last 100 lines from bot.log"""
-    try:
-        log_path = os.path.join(os.path.dirname(__file__), "bot.log")
-        if not os.path.exists(log_path):
-            return "Log dosyası henüz oluşturulmadı."
+def run_command(command, channel="exxen-1"):
+    """Saves a command to database to be picked up by the Discord bot"""
+    run_async(database.add_gui_command(command, channel))
+    return f"Komut gönderildi: {command}"
+
+@eel.expose
+def get_bot_status():
+    """Returns lock status as a proxy for bot status"""
+    import os
+    if os.path.exists("bot.lock"):
+        return "Online"
+    return "Offline"
+
+def get_resource_path(relative_path):
+    """Get absolute path to resource, works for dev and for PyInstaller"""
+    if getattr(sys, 'frozen', False):
+        # In onefolder build, _internal is where assets are.
+        # But if we use --add-data, PyInstaller 6+ often maps it directly or in _internal
+        base_path = os.path.join(os.path.dirname(sys.executable), "_internal")
+        if not os.path.exists(base_path):
+            base_path = os.path.dirname(sys.executable)
         
-        with open(log_path, "r", encoding="utf-8", errors="replace") as f:
-            lines = f.readlines()
-            return "".join(lines[-100:]) # Return last 100 lines
-    except Exception as e:
-        return f"Log okuma hatası: {e}"
-
-@eel.expose
-def get_league_fixtures(round_no=None):
-    if round_no is None:
-        round_no = run_async(database.get_latest_played_round()) + 1
-    return run_async(database.get_fixtures(round_no=round_no))
-
-@eel.expose
-def sim_match(match_id, competition_type="League"):
-    """Simulate a single match (League or Tournament)"""
-    return run_async(_sim_single_match(match_id, competition_type))
-
-@eel.expose
-def sim_all_europe(tournament_name, round_name):
-    """Simulate all pending matches in a tournament round"""
-    return run_async(_sim_all_europe_logic(tournament_name, round_name))
-
-@eel.expose
-def sim_all_league(round_no):
-    """Simulate all pending matches in a league round"""
-    return run_async(_sim_all_league_logic(round_no))
-
-async def _sim_all_league_logic(round_no):
-    try:
-        async with database.get_db() as db:
-            db.row_factory = aiosqlite_row_factory
-            async with db.execute(
-                "SELECT id FROM matches WHERE round_no = ? AND status = 'Pending'",
-                (round_no,)
-            ) as cursor:
-                pending = await cursor.fetchall()
-        
-        for p in pending:
-            await _sim_single_match(p['id'], "League")
-        return True
-    except Exception as e:
-        print(f"Error in _sim_all_league_logic: {e}")
-        return False
-
-@eel.expose
-def trigger_live_sim(home_team, away_team, competition_type="Europe", is_live=True):
-    """Queue a match command for the bot (Live or Fast)"""
-    comp_str = competition_type
-    if competition_type == "League":
-        comp_str = "Lig"
-    elif competition_type == "Europe":
-        # Fallback if specific type isn't passed
-        comp_str = "UCL"
+        # If we have _MEIPASS (onefile), use it
+        if hasattr(sys, '_MEIPASS'):
+            base_path = sys._MEIPASS
+            
+        res_path = os.path.join(base_path, relative_path)
+    else:
+        res_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), relative_path)
     
-    command = f"!mac {home_team} vs {away_team} {comp_str}"
-    if is_live:
-        command += " Live"
-        
-    channel = 'beinsports-1' if competition_type == 'League' else 'exxen-1'
-    return run_async(database.add_gui_command(command, channel=channel))
-
-async def _sim_single_match(match_id, comp_type):
-    import random
-    try:
-        # 1. Get match info
-        async with database.get_db() as db:
-            db.row_factory = aiosqlite_row_factory
-            table = "matches" if comp_type == "League" else "tournament_fixtures"
-            async with db.execute(f"SELECT * FROM {table} WHERE id = ?", (match_id,)) as cursor:
-                match = await cursor.fetchone()
-                if not match or match['status'] == 'Played': return False
-        
-        h_name, a_name = match['home_team'], match['away_team']
-        
-        # 2. Get ratings
-        h_data = await database.get_team(h_name)
-        a_data = await database.get_team(a_name)
-        h_ovr = h_data['overall'] if h_data else 75
-        a_ovr = a_data['overall'] if a_data else 75
-        
-        # 3. Simple Math Sim (Big Team Bias)
-        BIG_TEAMS = ["Real Madrid", "Manchester City", "Bayern Munich", "PSG", "Liverpool", "Barcelona", "Inter", "Juventus", "AC Milan", "Galatasaray", "Fenerbahçe", "Beşiktaş", "Trabzonspor", "Kocaelispor"]
-        h_bias = 1.25 if any(bt in h_name for bt in BIG_TEAMS) else 1.0
-        a_bias = 1.25 if any(bt in a_name for bt in BIG_TEAMS) else 1.0
-        
-        h_str = (h_ovr * h_bias * 1.05) / 75.0 # Home advantage 1.05
-        a_str = (a_ovr * a_bias) / 75.0
-        
-        h_goals = random.choices([0,1,2,3,4,5], weights=[max(5, 20/h_str), 35*h_str, 20*h_str, 10, 3, 1])[0]
-        a_goals = random.choices([0,1,2,3,4,5], weights=[max(5, 30/a_str), 40*a_str, 15*a_str, 7, 2, 1])[0]
-        
-        # 4. Record
-        comp_name = comp_type
-        if comp_type in ["UCL", "UEL", "UECL"]:
-            comp_name = comp_type
-
-        
-        await database.record_match(h_name, a_name, h_goals, a_goals, comp_name, "Clear", [], leg=match.get('leg', 1), events=[])
-        return True
-    except Exception as e:
-        print(f"Error in _sim_single_match: {e}")
-        return False
-
-async def _sim_all_europe_logic(tournament_name, round_name):
-    try:
-        t_id = await database.get_tournament_by_name(tournament_name)
-        if not t_id: return False
-        
-        async with database.get_db() as db:
-            db.row_factory = aiosqlite_row_factory
-            async with db.execute(
-                "SELECT id FROM tournament_fixtures WHERE tournament_id = ? AND round = ? AND status = 'Pending'",
-                (t_id, round_name)
-            ) as cursor:
-                pending = await cursor.fetchall()
-        
-        for p in pending:
-            await _sim_single_match(p['id'], tournament_name)
-        return True
-    except Exception as e:
-        print(f"Error in _sim_all_europe_logic: {e}")
-        return False
-
-def aiosqlite_row_factory(cursor, row):
-    d = {}
-    for idx, col in enumerate(cursor.description):
-        d[col[0]] = row[idx]
-    return d
-
-@eel.expose
-def reset_league_standings_gui():
-    return run_async(database.reset_league_standings())
-
-@eel.expose
-def reset_europe_tournaments_gui():
-    return run_async(database.reset_europe_tournaments())
-
-@eel.expose
-def get_all_teams_gui():
-    return run_async(database.get_all_teams_simple())
-
-@eel.expose
-def setup_europe_gui(tournament_name, round_name, team_names, legs):
-    return run_async(database.setup_europe_from_gui(tournament_name, round_name, team_names, int(legs)))
-
-@eel.expose
-def handle_promotion_relegation_gui(relegated, promoted):
-    return run_async(database.handle_promotion_relegation(relegated, promoted))
-
-@eel.expose
-def generate_league_fixtures_gui():
-    return run_async(database.generate_league_fixtures())
-
-import subprocess
+    return res_path
 
 def start_bot():
-    """Starts the Discord bot in a separate background process"""
+    """Starts the Discord bot in a background thread within the same process."""
     try:
-        # Use sys.executable to ensure we use the same python environment
-        # Birlikte tek CMD penceresinde çalışmalar için CREATE_NEW_CONSOLE kaldırıldı.
-        # CREATE_NO_WINDOW eklenerek botun arka planda tamamen sessiz çalışması sağlandı.
-        bot_process = subprocess.Popen(
-            [sys.executable, "main.py", "--gui-mode", "--parent-pid", str(os.getpid())],
-            creationflags=subprocess.CREATE_NO_WINDOW
-        )
-        print("[Launcher] Discord bot started in background (hidden).")
-        return bot_process
+        # Force gui-mode so main.py handles logging/watchdog correctly
+        if "--gui-mode" not in sys.argv:
+            sys.argv.append("--gui-mode")
+            
+        from main import bot
+        import config
+        import traceback
+        
+        def bot_thread_func():
+            log_path = get_log_path()
+            
+            with open(log_path, "a", encoding="utf-8") as f:
+                f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] [BotThread] Starting...\n")
+            
+            try:
+                bot.run(config.BOT_TOKEN)
+            except Exception as e:
+                with open(log_path, "a", encoding="utf-8") as f:
+                    f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] [BotThread] CRITICAL ERROR: {e}\n")
+                    f.write(traceback.format_exc())
+                    f.write("\n" + "="*50 + "\n")
+                
+                # Show specific popup for Token error
+                if "Improper token" in str(e) or "Unauthorized" in str(e):
+                    show_error_popup("Discord Bağlantı Hatası", "Bot Tokenı (config.py/.env) geçersiz veya hatalı.\nLütfen ayarları kontrol edin.")
+                else:
+                    show_error_popup("Bot Hatası", f"Bot çalışırken bir hata oluştu: {e}")
+
+        bot_thread = threading.Thread(target=bot_thread_func, daemon=True)
+        bot_thread.start()
+        print("[Launcher] Discord bot started in background thread.")
+        return bot_thread
 
     except Exception as e:
-        print(f"[Launcher] Failed to start bot: {e}")
+        import traceback
+        log_path = get_log_path()
+        with open(log_path, "a", encoding="utf-8") as f:
+            f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Failed to start bot thread: {e}\n")
+            f.write(traceback.format_exc())
         return None
 
 def start_eel():
-    # Start the bot automatically
-    bot_process = start_bot()
-    
-    eel.init('web_ui')
+    """Initializes and starts the Eel web interface."""
+    # Start bot in background
+    start_bot()
+
+    log_path = get_log_path()
+    eel.init(get_resource_path('web_ui'))
     try:
-        import time
-        time.sleep(1)
-        eel.start('index.html', size=(1280, 800), port=0) 
-    except (SystemExit, KeyboardInterrupt):
-        pass
-    except Exception as e:
-        print(f"[Launcher] Eel Error: {e}")
-        # Do NOT restart eel here - that causes an infinite loop
+        # Try mode='edge' first, it's very reliable on Windows 10/11
+        eel.start('index.html', size=(1280, 800), mode='edge', port=0) 
+    except Exception as e1:
+        with open(log_path, "a", encoding="utf-8") as f:
+            f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Edge start failed, trying default: {e1}\n")
+        try:
+            # Fallback to default browser (which uses different launch logic)
+            eel.start('index.html', size=(1280, 800), port=0)
+        except Exception as e2:
+            with open(log_path, "a", encoding="utf-8") as f:
+                f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Final Eel start failure: {e2}\n")
+            show_error_popup("Arayüz Başlatılamadı", f"Tarayıcı hatası: {e2}\nLütfen Chrome veya Edge yüklü olduğundan emin olun.")
     finally:
-        if bot_process and bot_process.poll() is None:
-            print("[Launcher] Shutting down Discord bot...")
-            bot_process.terminate()
-            try:
-                bot_process.wait(timeout=5)
-            except subprocess.TimeoutExpired:
-                bot_process.kill()
         print("UI Closed.")
 
-
 if __name__ == "__main__":
-    # Ensure database is initialized
-    run_async(database.init_db())
-    start_eel()
+    log_path = get_log_path()
+    
+    try:
+        # 1. Ensure database is initialized
+        run_async(database.init_db())
+        
+        # 2. Start Eel GUI
+        start_eel()
+    except Exception as e:
+        import traceback
+        error_msg = f"Kritik Hata: {e}\n\n{traceback.format_exc()}"
+        with open(log_path, "a", encoding="utf-8") as f:
+            f.write(f"\n[{time.strftime('%Y-%m-%d %H:%M:%S')}] RUNTIME ERROR: {error_msg}\n")
+        show_error_popup("Uygulama Hatası", "Uygulama çalışırken bir hata oluştu.\nLütfen launcher_error.log dosyasını kontrol edin.")
+        sys.exit(1)

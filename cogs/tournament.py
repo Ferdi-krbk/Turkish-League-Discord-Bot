@@ -31,11 +31,11 @@ UECL_GIANTS = [
     "Chelsea", "Fiorentina", "Heidenheim", "Vitória SC", 
     "Gent", "Legia Warszawa", "Cercle Brugge", "FC Lugano", "Panathinaikos",
     "FC Copenhagen", "St Gallen", "SK Rapid Wien", 
-    "Djurgården", "İstanbul Başakşehir", "Omonia Nicosia", "APOEL Nicosia", "Vikingur", 
+    "Djurgården", "Omonia Nicosia", "APOEL Nicosia", "Vikingur", 
     "Larne FC", "Dinamo Minsk", "FC Noah", "Pafos FC", "Petrocub Hîncești", 
     "Jagiellonia", "Heart of Midlothian", "Shamrock Rovers", "The New Saints", "Borac Banja Luka", 
     "NK Celje", "Astana", "Mladá Boleslav", "Olimpija Ljubljana", 
-    "TSC Bačka Topola", "Ballkani", "Pyunik", "Spartak Trnava", "Shkupi"
+    "TSC Bačka Topola", "Ballkani", "Pyunik", "Spartak Trnava", "Shkupi" 
 ]
 
 class TournamentCog(commands.Cog, name="Kupa"):
@@ -209,10 +209,19 @@ class TournamentCog(commands.Cog, name="Kupa"):
         # 2. Takımları Güce Göre Sırala ve Torbalara Ayır (İSİM NORMALİZASYONU)
         team_data = []
         for t in current_teams:
+            # 1. Takımı veri tabanında ara veya "Dış Takım" olarak kaydet
             db_team = await database.search_team(t)
-            # Kritik: Veritabanındaki 'Resmi İsmi'ni kullan (Kocaeli vs Kocaelispor hatası için)
+            
+            if not db_team:
+                # Takım yoksa Avrupa takımı olarak ekle ki AI GPR tetiklensin
+                await database.add_team(t, league=t_name, overall=75, is_external=1)
+                db_team = await database.get_team(t)
+            
             official_name = db_team["name"] if db_team else t
-            ovr = db_team["overall"] if db_team else 75
+            
+            # 2. Dinamik GPR Hesapla (Türkler için TXT/Kadro, Avrupa için AI Transfermarkt)
+            ovr = await database.calculate_team_overall(official_name)
+                
             team_data.append({"name": official_name, "overall": ovr})
         
         # Tekrarla (Duplicate) kontrolü (Normalizasyon sonrası oluşmuş olabilir)

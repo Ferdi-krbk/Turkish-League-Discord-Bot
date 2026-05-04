@@ -33,6 +33,12 @@ if "--gui-mode" in sys.argv:
 
         def flush(self):
             self.log.flush()
+            
+        def fileno(self):
+            return self.log.fileno()
+            
+        def isatty(self):
+            return False
 
     sys.stdout = Logger()
     sys.stderr = sys.stdout

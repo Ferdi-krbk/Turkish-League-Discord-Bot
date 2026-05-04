@@ -78,14 +78,45 @@ def get_base_path():
         internal_path = os.path.join(os.path.dirname(sys.executable), "_internal")
         if os.path.exists(internal_path):
             return internal_path
+        
+        # Check _MEIPASS (onefile mode)
+        if hasattr(sys, '_MEIPASS'):
+            return sys._MEIPASS
+            
         return os.path.dirname(sys.executable)
     # Running as a script
-    return os.path.dirname(os.path.dirname(__file__))
+    return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 BASE_PATH = get_base_path()
-# DB should always be external in the same folder as the exe
-DB_ROOT = os.path.dirname(sys.executable) if getattr(sys, 'frozen', False) else BASE_PATH
-DB_PATH = os.path.join(DB_ROOT, "database", "league.db")
+# DB should always be external in the same folder as the exe to allow persistence
+DB_EXTERNAL_ROOT = os.path.dirname(sys.executable) if getattr(sys, 'frozen', False) else BASE_PATH
+DB_DIR = os.path.join(DB_EXTERNAL_ROOT, "database")
+
+# Ensure the external database directory exists
+try:
+    if not os.path.exists(DB_DIR):
+        os.makedirs(DB_DIR, exist_ok=True)
+except Exception as e:
+    print(f"CRITICAL: Could not create database directory {DB_DIR}: {e}")
+
+DB_PATH = os.path.join(DB_DIR, "league.db")
+
+# --- FIRST RUN DATA MIGRATION ---
+# If the external database is missing or empty, copy the initial data from the internal bundle
+if getattr(sys, 'frozen', False):
+    # PyInstaller internal path
+    internal_db_path = os.path.join(BASE_PATH, "database", "league.db")
+    
+    # If external DB doesn't exist OR is very small (empty schema), and internal one does, copy it
+    is_empty = not os.path.exists(DB_PATH) or os.path.getsize(DB_PATH) < 50000 
+    
+    if is_empty and os.path.exists(internal_db_path):
+        try:
+            import shutil
+            shutil.copy2(internal_db_path, DB_PATH)
+            print(f"✅ Initial database copied to: {DB_PATH}")
+        except Exception as e:
+            print(f"❌ Error copying initial database: {e}")
 
 
 @contextlib.asynccontextmanager
@@ -133,7 +164,8 @@ async def init_db():
                 points INTEGER DEFAULT 0,
                 budget INTEGER DEFAULT 50000000,
                 form_streak TEXT DEFAULT '',
-                league TEXT DEFAULT 'Super Lig'
+                league TEXT DEFAULT 'Super Lig',
+                is_external INTEGER DEFAULT 0
             )
         """)
         
@@ -161,7 +193,10 @@ async def init_db():
                 yellow_cards INTEGER DEFAULT 0,
                 red_cards INTEGER DEFAULT 0,
                 suspension_matches INTEGER DEFAULT 0,
-                form_rating INTEGER DEFAULT 0
+                form_rating INTEGER DEFAULT 0,
+                market_value INTEGER DEFAULT 0,
+                slug TEXT,
+                nationality TEXT DEFAULT 'Türkiye'
             )
         """)
         
@@ -199,6 +234,17 @@ async def init_db():
                 contract_years INTEGER
             )
         """)
+        
+        # --- NEW MIGRATIONS ---
+        try:
+            await db.execute("ALTER TABLE teams ADD COLUMN is_external INTEGER DEFAULT 0")
+        except: pass
+        
+        try:
+            await db.execute("ALTER TABLE players ADD COLUMN market_value INTEGER DEFAULT 0")
+            await db.execute("ALTER TABLE players ADD COLUMN slug TEXT")
+            await db.execute("ALTER TABLE players ADD COLUMN nationality TEXT DEFAULT 'Türkiye'")
+        except: pass
 
         # Injuries table
         await db.execute("""
@@ -590,6 +636,61 @@ async def update_team_overall(name: str, new_overall: float):
                     json.dump(data, f, ensure_ascii=False, indent=4)
         except Exception as e:
             print(f"Error updating teams.json: {e}")
+async def add_team(name: str, league: str = 'Super Lig', overall: float = 75.0, budget: int = 50000000, is_external: int = 0):
+    """Add a new team to the database."""
+    async with get_db() as db:
+        try:
+            slug = slugify(name)
+            await db.execute("""
+                INSERT INTO teams (name, league, overall, budget, slug, is_external)
+                VALUES (?, ?, ?, ?, ?, ?)
+            """, (name, league, overall, budget, slug, is_external))
+            await db.commit()
+            return True
+        except Exception as e:
+            print(f"Error adding team {name}: {e}")
+            return False
+
+async def calculate_external_team_gpr_ai(team_name: str) -> float:
+    """Uses Gemini knowledge to calculate GPR based on Top 18 Transfermarkt rule for European teams."""
+    from core.ai import generate_content
+    
+    prompt = f"""
+Lütfen '{team_name}' takımının BUGÜNKÜ (Mayıs 2026) Transfermarkt verilerine göre en değerli 18 oyuncusunu belirle.
+DİKKAT: Tarih Mayıs 2026'dır. 2024-2025-2026 transferlerini (Örn: Ederson, De Bruyne, Gündoğan gibi isimlerin ayrılışını) hesaba kat.
+1. Mayıs 2026 itibarıyla en yüksek piyasa değerine sahip 18 oyuncuyu seç.
+2. Bu oyuncular için şu bareme göre OVR (Reyting) ata:
+   -200M+ €: 94-100 OVR
+    -100M+ €: 90-94 OVR
+   - 60M-100M €: 86-89 OVR
+   - 30M-60M €: 82-85 OVR
+   - 15M-30M €: 78-81 OVR
+   - 5M-15M €: 73-77 OVR
+   - 1M-5M €: 68-72 OVR
+   - <1M €: 60-67 OVR
+
+3. Kesin Hibrit GPR Hesabı Yap:
+   - (İlk 11 oyuncunun OVR ortalaması * 0.85) + (Kalan en iyi 7 yedeğin OVR ortalaması * 0.15)
+
+SADECE şu JSON formatında cevap ver:
+{{
+  "team": "{team_name}",
+  "gpr": 84.5,
+  "top_18": [
+    {{"name": "Oyuncu A", "value_m": 180, "ovr": 94}},
+    {{"name": "Oyuncu B", "value_m": 100, "ovr": 90}}
+  ]
+}}
+"""
+    try:
+        res = await generate_content(prompt, "Sen uzman bir futbol veri analistisin.", temp=0.1, label="EXT_GPR", provider="gemini", attempts=10)
+        if res and "gpr" in res:
+            print(f"DEBUG: AI GPR Result for {team_name}: {res}")
+            return float(res["gpr"])
+    except Exception as e:
+        print(f"AI GPR Error for {team_name}: {e}")
+        
+    return 75.0 # Fallback
 
 async def calculate_team_overall(team_name: str) -> float:
     """Calculates team overall based on Top 18 players. 
@@ -598,50 +699,35 @@ async def calculate_team_overall(team_name: str) -> float:
     # 1. HER OYUNCUNUN REYTINGINI PIYASA DEGERINE GORE GUNCELLE (Senkronizasyon)
     players = await get_team_players(team_name)
     if not players:
+        # Eğer oyuncu yoksa ve TXT'si de yoksa External'dır
+        tactic_path = os.path.join("data", "tactics", f"{team_name}.txt")
+        if not os.path.exists(tactic_path):
+             new_gpr = await calculate_external_team_gpr_ai(team_name)
+             await update_team_overall(team_name, new_gpr)
+             return new_gpr
         return 0.0
         
     async with get_db() as db:
         for p in players:
-            mv = p.get('market_value') # Can be None if NULL in DB
+            mv = p.get('market_value')
             if mv is not None and mv > 0:
                 new_ovr = estimate_player_ovr(mv)
-                # Sadece fark varsa DB'ye yaz (Optimizasyon)
                 if new_ovr != p.get('overall', 0):
                     await db.execute("UPDATE players SET overall = ? WHERE id = ?", (new_ovr, p['id']))
         await db.commit()
 
-        # Fetch refreshed players and league
-        db.row_factory = aiosqlite.Row
-        async with db.execute("SELECT * FROM players WHERE LOWER(team) = LOWER(?)", (team_name,)) as cursor:
+        # TXT Kontrolü (Dış takım mı yoksa yerel mi?)
+        tactic_path = os.path.join("data", "tactics", f"{team_name}.txt")
+        is_external = not os.path.exists(tactic_path)
 
-            rows = await cursor.fetchall()
-            refreshed_players = [dict(r) for r in rows]
-
-        async with db.execute("SELECT league FROM teams WHERE name = ?", (team_name,)) as cursor:
-            row = await cursor.fetchone()
-            league = row[0] if row else 'Europe'
+    # 1.5. EXTERNAL AI HESAPLAMA (Eğer TXT yoksa Gemini devreye girer)
+    if is_external:
+        new_gpr = await calculate_external_team_gpr_ai(team_name)
+        await update_team_overall(team_name, new_gpr)
+        return new_gpr
     
-    is_turkish = league in ['Super Lig', '1. Lig']
-
-    # Sort by overall DESC
-    sorted_players = sorted(refreshed_players, key=lambda x: x.get('overall', 0) or 0, reverse=True)
-    
-    # Weighted Average: Top 11 + Bench 7
-    top_11 = sorted_players[:11]
-    bench_7 = sorted_players[11:18]
-    
-    if not top_11: return 0.0
-    
-    avg_11 = sum(p.get('overall', 0) or 0 for p in top_11) / len(top_11)
-    avg_bench = sum(p.get('overall', 0) or 0 for p in bench_7) / len(bench_7) if bench_7 else avg_11
-    
-    if is_turkish:
-        # Türk takımları için TÜM kadro ortalaması
-        weighted_avg = sum(p.get('overall', 0) or 0 for p in refreshed_players) / len(refreshed_players) if refreshed_players else 0.0
-    else:
-        # Avrupa takımları için as kadro odaklı oran (%85-%15)
-        weighted_avg = (avg_11 * 0.85) + (avg_bench * 0.15)
-        
+    # 2. YEREL TAKIM (TXT VAR): Tüm kadronun basit ortalaması
+    weighted_avg = sum(p.get('overall', 0) or 0 for p in players) / len(players) if players else 0.0
     weighted_avg = round(weighted_avg, 1)
     
     # 3. TEAM TABLOSUNU VE JSON'I GUNCELLE
@@ -2105,11 +2191,26 @@ async def reset_league_standings():
     return True
 
 async def reset_europe_tournaments():
-    """Deletes all data related to European tournaments (fixtures, standings, etc.)"""
+    """COMPREHENSIVE RESET for European tournaments"""
     async with get_db() as db:
+        # 1. Clear Tournament Structure
         await db.execute("DELETE FROM tournament_fixtures")
         await db.execute("DELETE FROM tournament_standings")
         await db.execute("DELETE FROM tournaments")
+        
+        # 2. Clear Match History for Europe
+        await db.execute("DELETE FROM match_scorers WHERE match_id IN (SELECT id FROM matches WHERE competition != 'League')")
+        await db.execute("DELETE FROM matches WHERE competition != 'League'")
+        
+        # 3. Clear External Teams (Teams added just for Europe)
+        # First find team IDs to delete players
+        async with db.execute("SELECT id FROM teams WHERE is_external = 1") as cursor:
+            ext_ids = [row[0] for row in await cursor.fetchall()]
+            for tid in ext_ids:
+                await db.execute("DELETE FROM players WHERE team_id = ?", (tid,))
+        
+        await db.execute("DELETE FROM teams WHERE is_external = 1")
+        
         await db.commit()
     return True
 

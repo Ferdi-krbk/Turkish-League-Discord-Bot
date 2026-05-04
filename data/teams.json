@@ -4,7 +4,7 @@
             "name": "Galatasaray",
             "city": "İstanbul",
             "stadium": "RAMS Park",
-            "overall": 81.8,
+            "overall": 81.9,
             "home_advantage": 0.15,
             "rivals": [
                 "Fenerbahçe",
@@ -15,7 +15,7 @@
             "name": "Fenerbahçe",
             "city": "İstanbul",
             "stadium": "Ülker Stadyumu",
-            "overall": 79.8,
+            "overall": 74.1,
             "home_advantage": 0.15,
             "rivals": [
                 "Galatasaray",
@@ -26,7 +26,7 @@
             "name": "Beşiktaş",
             "city": "İstanbul",
             "stadium": "Tüpraş Stadyumu",
-            "overall": 83.2,
+            "overall": 82.2,
             "home_advantage": 0.14,
             "rivals": [
                 "Galatasaray",
@@ -56,7 +56,7 @@
             "name": "Konyaspor",
             "city": "Konya",
             "stadium": "Konya Büyükşehir Stadyumu",
-            "overall": 75.1,
+            "overall": 75.0,
             "home_advantage": 0.12,
             "rivals": []
         },
@@ -64,7 +64,7 @@
             "name": "Kayserispor",
             "city": "Kayseri",
             "stadium": "Kadir Has Şehir Stadyumu",
-            "overall": 70.7,
+            "overall": 70.4,
             "home_advantage": 0.11,
             "rivals": []
         },
@@ -80,7 +80,7 @@
             "name": "Kasımpaşa",
             "city": "İstanbul",
             "stadium": "Recep Tayyip Erdoğan Stadyumu",
-            "overall": 72.5,
+            "overall": 71.3,
             "home_advantage": 0.08,
             "rivals": []
         },
@@ -96,7 +96,7 @@
             "name": "Kocaelispor",
             "city": "Kocaeli",
             "stadium": "Yıldız Entegre Kocaeli Stadyumu",
-            "overall": 82.9,
+            "overall": 81.9,
             "home_advantage": 0.13,
             "rivals": []
         },
@@ -104,7 +104,7 @@
             "name": "Göztepe",
             "city": "İzmir",
             "stadium": "Gürsel Aksel Stadyumu",
-            "overall": 72.9,
+            "overall": 71.3,
             "home_advantage": 0.14,
             "rivals": []
         },
@@ -112,7 +112,7 @@
             "name": "Alanyaspor",
             "city": "Antalya",
             "stadium": "Bahçeşehir Okulları Stadyumu",
-            "overall": 70.4,
+            "overall": 69.1,
             "home_advantage": 0.08,
             "rivals": []
         },
@@ -120,7 +120,7 @@
             "name": "Amedspor",
             "city": "Diyarbakır",
             "stadium": "Diyarbakır Stadyumu",
-            "overall": 67.8,
+            "overall": 67.7,
             "home_advantage": 0.15,
             "rivals": []
         },
@@ -128,7 +128,7 @@
             "name": "Erzurumspor",
             "city": "Erzurum",
             "stadium": "Kazım Karabekir Stadyumu",
-            "overall": 49.6,
+            "overall": 36.5,
             "home_advantage": 0.12,
             "rivals": []
         },
