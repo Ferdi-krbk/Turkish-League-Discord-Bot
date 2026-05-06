@@ -1,26 +1,26 @@
 Beşiktaş | 4-2-3-1 | Ofansif & Yüksek Pres | Dengeli
 
 İLK 11
-Ersin Destanoğlu | Kaleci | 25 | 2.50 M | Türkiye
-Amir Murillo | Sağ Bek | 30 | 8.0 M | Panama
-Emmanuel Agbadou | Stoper | 28 | 18.0 M | Fildişi Sahili
-Tiago Djaló | Stoper | 26 | 7.0 M | Portekiz
-Rıdvan Yılmaz | Sol Bek | 24 | 4.0 M | Türkiye
-Kristjan Asllani | Ön Libero | 24 | 13.0 M | Arnavutluk
-Wilfred Ndidi | Ön Libero | 29 | 10.0 M | Nijerya
-Orkun Kökçü | Merkez Orta Saha | 25 | 25.0 M | Türkiye
-Vaclav Cerny | Sağ Kanat | 28 | 8.0 M | Çek Cumhuriyeti
-El Bilal Touré | Sol Kanat | 24 | 15.0 M | Mali
-Hyeon-gyu Oh | Santrafor | 25 | 15.0 M | Güney Kore
+Ersin Destanoğlu | GK | 25 | 2.50 M | Türkiye
+Amir Murillo | RB | 30 | 8.0 M | Panama
+Emmanuel Agbadou | CB | 28 | 18.0 M | Fildişi Sahili
+Tiago Djaló | CB | 26 | 7.0 M | Portekiz
+Rıdvan Yılmaz | LB | 24 | 4.0 M | Türkiye
+Kristjan Asllani | CM | 24 | 13.0 M | Arnavutluk
+Wilfred Ndidi | CDM | 29 | 10.0 M | Nijerya
+Orkun Kökçü | CM | 25 | 25.0 M | Türkiye
+Vaclav Cerny | RW | 28 | 8.0 M | Çek Cumhuriyeti
+El Bilal Touré | ST | 24 | 15.0 M | Mali
+Hyeon-gyu Oh | ST | 25 | 15.0 M | Güney Kore
 
 YEDEKLER
-Devis Vásquez | Kaleci | 27 | 1.50 M | Kolombiya
-Emirhan Topçu | Stoper | 25 | 6.0 M | Türkiye
-Yasin Özcan | Stoper | 20 | 5.0 M | Türkiye
-Junior Olaitan | On Numara | 23 | 5.0 M | Benin
-Cengiz Ünder | Sağ Kanat | 28 | 6.0 M | Türkiye
-Jota Silva | Sol Kanat | 26 | 12.0 M | Portekiz
-Mustafa Hekimoğlu | Santrafor | 19 | 5.0 M | Türkiye
+Devis Vásquez | GK | 27 | 1.50 M | Kolombiya
+Emirhan Topçu | CB | 25 | 6.0 M | Türkiye
+Yasin Özcan | LB | 20 | 5.0 M | Türkiye
+Junior Olaitan | CAM | 23 | 5.0 M | Benin
+Cengiz Ünder | RW | 28 | 6.0 M | Türkiye
+Jota Silva | LW | 26 | 12.0 M | Portekiz
+Mustafa Hekimoğlu | ST | 19 | 5.0 M | Türkiye
 
 ### DEVASA TAKTİK ANALİZ VE TALİMATLAR (1000 SATIR) ###
 Satır 1: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
