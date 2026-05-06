@@ -196,7 +196,10 @@ async def init_db():
                 form_rating INTEGER DEFAULT 0,
                 market_value INTEGER DEFAULT 0,
                 slug TEXT,
-                nationality TEXT DEFAULT 'Türkiye'
+                nationality TEXT DEFAULT 'Türkiye',
+                is_loan INTEGER DEFAULT 0,
+                parent_team TEXT,
+                loan_expiry TEXT
             )
         """)
 
@@ -231,7 +234,8 @@ async def init_db():
                 from_team TEXT,
                 to_team TEXT,
                 fee INTEGER,
-                contract_years INTEGER
+                contract_years INTEGER,
+                transfer_type TEXT DEFAULT 'Transfer'
             )
         """)
 
@@ -1418,8 +1422,9 @@ async def sync_tournament_fixture(home_team: str, away_team: str, h_score: int, 
 
 
 async def record_transfer(player_name: str, from_team: str, to_team: str,
-                          fee: int, contract_years: int, player_details: Optional[Dict] = None) -> bool:
-    """Record a transfer and ensure player is in the players table. Returns True if successful."""
+                          fee: int, contract_years: int, player_details: Optional[Dict] = None,
+                          transfer_type: str = 'Transfer') -> bool:
+    """Record a transfer or loan and ensure player is in the players table. Returns True if successful."""
     async with get_db() as db:
         # 0. DOĞRULAMA: Oyuncu gerçekten bu takımdan mı gidiyor?
         # (Bu kontrol mükerrer satışları engeller)
@@ -1435,9 +1440,9 @@ async def record_transfer(player_name: str, from_team: str, to_team: str,
                     return False
 
         await db.execute("""
-            INSERT INTO transfers (date, player_name, from_team, to_team, fee, contract_years)
-            VALUES (?, ?, ?, ?, ?, ?)
-        """, (datetime.now().strftime("%Y-%m-%d"), player_name, from_team, to_team, fee, contract_years))
+            INSERT INTO transfers (date, player_name, from_team, to_team, fee, contract_years, transfer_type)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (datetime.now().strftime("%Y-%m-%d"), player_name, from_team, to_team, fee, contract_years, transfer_type))
 
         # Transfer bütçelerini düş ve ekle
         await db.execute("UPDATE teams SET budget = budget - ? WHERE name = ?", (fee, to_team))
@@ -1455,7 +1460,15 @@ async def record_transfer(player_name: str, from_team: str, to_team: str,
                     row2 = await cursor2.fetchone()
                     if row2:
                         # Varsa sadece takımını güncelle
-                        await db.execute("UPDATE players SET team = ? WHERE id = ?", (to_team, row2[0]))
+                        is_loan = 1 if transfer_type == 'Loan' else 0
+                        parent = from_team if transfer_type == 'Loan' else None
+                        expiry = "Sezon Sonu" if transfer_type == 'Loan' else None
+                        
+                        await db.execute("""
+                            UPDATE players 
+                            SET team = ?, is_loan = ?, parent_team = ?, loan_expiry = ? 
+                            WHERE id = ?
+                        """, (to_team, is_loan, parent, expiry, row2[0]))
                     elif player_details:
                         # 3. Hiç yoksa ve bilgi gelmişse YENİ EKLE
                         ovr = player_details.get('overall', 0)
@@ -2187,6 +2200,40 @@ async def reset_league_standings():
         await db.execute("UPDATE players SET suspension_matches = 0, goals = 0, assists = 0, yellow_cards = 0, red_cards = 0")
         await db.execute("DELETE FROM injuries")
 
+        await db.commit()
+
+async def full_season_reset():
+    """DEEP RESET: Clears ALL history, rosters, and resets budgets to 2025-2026 starting values."""
+    async with get_db() as db:
+        # 1. Clear everything from reset_league_standings
+        await db.execute("UPDATE teams SET played=0, won=0, drawn=0, lost=0, gf=0, ga=0, points=0, form_streak='', morale_boost=0")
+        await db.execute("DELETE FROM matches")
+        await db.execute("DELETE FROM fixtures")
+        await db.execute("DELETE FROM goal_scorers")
+        await db.execute("DELETE FROM player_stats")
+        await db.execute("DELETE FROM transfers")
+        await db.execute("DELETE FROM injuries")
+        await db.execute("DELETE FROM players") # Clear rosters for fresh re-load from TXT
+        
+        # 2. Reset Budgets based on 2025-2026 Season Hierarchy (Estimated in EUR)
+        # Big Four
+        await db.execute("UPDATE teams SET budget = 120000000 WHERE name = 'Galatasaray'")
+        await db.execute("UPDATE teams SET budget = 110000000 WHERE name = 'Fenerbahçe'")
+        await db.execute("UPDATE teams SET budget = 80000000 WHERE name = 'Beşiktaş'")
+        await db.execute("UPDATE teams SET budget = 60000000 WHERE name = 'Trabzonspor'")
+        
+        # Upper Mid
+        await db.execute("UPDATE teams SET budget = 35000000 WHERE name IN ('Kocaelispor', 'Göztepe', 'Samsunspor', 'Başakşehir')")
+        
+        # Mid
+        await db.execute("UPDATE teams SET budget = 25000000 WHERE name IN ('Konyaspor', 'Alanyaspor', 'Antalyaspor', 'Eyüpspor')")
+        
+        # Lower
+        await db.execute("UPDATE teams SET budget = 15000000 WHERE name IN ('Gaziantep FK', 'Kayserispor', 'Kasımpaşa', 'Rizespor')")
+        
+        # Others / New Teams
+        await db.execute("UPDATE teams SET budget = 10000000 WHERE budget = 50000000") # Default reset
+        
         await db.commit()
     return True
 

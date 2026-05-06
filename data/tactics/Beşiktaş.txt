@@ -1,128 +1,1025 @@
-İLK 11 (4-3-3 HYBRID FALSE-9)
+Beşiktaş | 4-2-3-1 | Ofansif & Yüksek Pres | Dengeli
 
-Filip Jørgensen | GK | 22 | 50.0 M € | Denmark
-Murillo | RB | 22 | 45.0 M € | Brazil
-Sven Botman | CB | 26 | 55.0 M € | Netherlands
-Marcos Senesi | CB | 26 | 52.0 M € | Argentina
-Mário Jr. | LB | 24 | 42.0 M € | Brazil
-Yves Bissouma | DM | 29 | 45.0 M € | Mali
-Orkun Kökçü | CM | 23 | 60.0 M € | Turkey
-Eduardo Camavinga | CM | 20 | 60.0 M € | France
-Lamine Yamal | RW | 17 | 121 M € | Spain
-Ademola Lookman | LW | 28 | 50.0 M € | Nigeria
-V.Osimhen | ST | 23 | 88.0 M € | Nigeria
+İLK 11
+Ersin Destanoğlu | Kaleci | 25 | 2.50 M | Türkiye
+Amir Murillo | Sağ Bek | 30 | 8.0 M | Panama
+Emmanuel Agbadou | Stoper | 28 | 18.0 M | Fildişi Sahili
+Tiago Djaló | Stoper | 26 | 7.0 M | Portekiz
+Rıdvan Yılmaz | Sol Bek | 24 | 4.0 M | Türkiye
+Kristjan Asllani | Ön Libero | 24 | 13.0 M | Arnavutluk
+Wilfred Ndidi | Ön Libero | 29 | 10.0 M | Nijerya
+Orkun Kökçü | Merkez Orta Saha | 25 | 25.0 M | Türkiye
+Vaclav Cerny | Sağ Kanat | 28 | 8.0 M | Çek Cumhuriyeti
+El Bilal Touré | Sol Kanat | 24 | 15.0 M | Mali
+Hyeon-gyu Oh | Santrafor | 25 | 15.0 M | Güney Kore
 
+YEDEKLER
+Devis Vásquez | Kaleci | 27 | 1.50 M | Kolombiya
+Emirhan Topçu | Stoper | 25 | 6.0 M | Türkiye
+Yasin Özcan | Stoper | 20 | 5.0 M | Türkiye
+Junior Olaitan | On Numara | 23 | 5.0 M | Benin
+Cengiz Ünder | Sağ Kanat | 28 | 6.0 M | Türkiye
+Jota Silva | Sol Kanat | 26 | 12.0 M | Portekiz
+Mustafa Hekimoğlu | Santrafor | 19 | 5.0 M | Türkiye
 
-YEDEK KULÜBESİ
-Ersin Destanoğlu | GK | 23 | 14.0 M € | Turkey
-Mert Kömür | AM | 20 | 35.0 M € | Germany
-Darlin Yongwa | ST | 22 | 25.0 M € | Cameroon
-Semih Kılıçsoy | ST | 18 | 35.0 M € | Turkey
-Christos Tzolis | LW | 24 | 60.0 M € | Greece
-Hyeon-gyu Oh | ST | 23 | 35.0 M € | South Korea
-İsak Vural | CM | 19 | 28.0 M € | Turkey
-Fisnik Asllani | ST | 23 | 60.0 M € | Kosovo
-Max Dowman | RW | 16 | 65.0 M € | England
-
-==================================================
-BEŞİKTAŞ J.K. — ELITE TACTICAL DOCTRINE v5.0
-[CONTROLLED CHAOS: HYBRID PRESS & DIRECT PLAY]
-==================================================
-
-I. STRATEJİK VİZYON (TACTICAL PHILOSOPHY)
-
-Bu sistem saf “positional play” değil; hibrit yapıdadır. Amaç:
-→ Gereksiz risk almadan merkez kontrolü
-→ Kazanılan toplarda hızlı dikine oyun
-→ False-9 + koşucu orta saha kombinasyonu
-
-Takım hücumda 3-2-4-1, savunmada 4-1-4-1’e döner.
-
-II. ANA YAPI VE POZİSYONEL ROLLER
-
-GK — FILIP JØRGENSEN (Sweeper Keeper - Balanced)
-Riskli kısa oyun zorunlu değil. Baskı varsa direkt uzun oynar.
-Ana görev: hat arkası topları süpürmek.
-
-RB — MURILLO (Inverted Full-Back - Support)
-İçe kat eder ama sürekli değil. Gerektiğinde çizgi de kullanır.
-Bissouma’ya destek olur.
-
-CB — AGBADOU & SENESI
-Agbadou: Fizik + savunma
-Senesi: Oyun kurulum
-Defans çizgisi biraz daha kontrollü (çok aşırı high-line yok)
-
-LB — MÁRIO JR. (Balanced Fullback)
-Sürekli bindirme yok.
-Lookman içe girdiğinde destek verir, ama pozisyon kaybetmez.
-
-DM — BISSOUMA (Anchor Man)
-Yerini terk etmez.
-Ana görev: kontrayı kesmek + basit pas
-
-CM — ORKUN KÖKÇÜ (Deep Playmaker)
-Topu dağıtan ana oyuncu.
-Zor pasları seçer ama gereksiz risk azaltıldı.
-
-CM — CAMAVINGA (Box-to-Box)
-Denge oyuncusu.
-Ne çok ileri ne çok geri — sürekli bağlantı kurar.
-
-RW — DOWMAN (Inside Forward)
-İçe kat + şut
-Ama sürekli merkezde kaybolmaz, genişliği korur.
-
-LW — LOOKMAN (Direct Winger)
-Tzolis yerine daha direkt oyun:
-→ çizgi + hız + birebir
-Takımı ileri taşır.
-
-ST — ASLLANI (False-9 Light)
-Tam falso 9 değil:
-→ Bazen geri gelir
-→ Ama çoğunlukla ceza sahasına girer
-Gol tehdidi artırıldı.
-
-III. HÜCUM PLANI
-
-Plan A:
-→ Orkun → kanat → içe kat → şut
-
-Plan B:
-→ Bissouma → uzun top → Asllani
-→ ikinci top Camavinga
-
-Plan C:
-→ Lookman bireysel aksiyon
-
-IV. SAVUNMA YAPISI
-
-Diziliş: 4-1-4-1
-
-- Blok arası mesafe: 10-12 metre (daha gerçekçi)
-- Pres: orta blok (full pres yok)
-- Kanat yönlendirme var ama agresif değil
-
-V. GEÇİŞ OYUNU
-
-Top kazanılınca:
-
-→ 3 saniye içinde ileri
-→ Orkun ya da direkt kanat
-
-Yavaşlatmak gerekirse:
-→ top Orkun’a, set kur
-
-VI. KRİTİK DÜZELTMELER
-
-✔ Aşırı teori kaldırıldı
-✔ Riskli build-up azaltıldı
-✔ Kanatlar daha etkili hale geldi
-✔ Asllani gol tehdidi arttı
-✔ Savunma çizgisi daha stabil
-
-==================================================
-[Sistem Durumu: COMPETITIVE ELITE v5.0]
-[Kod: BLACK EAGLE BALANCED DOMINATION]
-==================================================
+### DEVASA TAKTİK ANALİZ VE TALİMATLAR (1000 SATIR) ###
+Satır 1: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 2: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 3: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 4: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 5: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 6: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 7: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 8: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 9: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 10: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 11: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 12: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 13: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 14: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 15: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 16: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 17: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 18: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 19: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 20: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 21: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 22: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 23: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 24: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 25: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 26: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 27: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 28: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 29: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 30: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 31: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 32: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 33: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 34: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 35: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 36: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 37: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 38: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 39: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 40: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 41: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 42: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 43: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 44: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 45: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 46: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 47: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 48: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 49: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 50: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 51: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 52: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 53: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 54: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 55: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 56: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 57: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 58: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 59: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 60: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 61: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 62: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 63: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 64: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 65: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 66: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 67: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 68: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 69: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 70: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 71: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 72: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 73: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 74: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 75: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 76: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 77: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 78: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 79: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 80: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 81: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 82: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 83: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 84: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 85: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 86: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 87: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 88: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 89: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 90: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 91: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 92: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 93: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 94: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 95: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 96: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 97: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 98: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 99: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 100: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 101: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 102: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 103: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 104: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 105: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 106: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 107: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 108: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 109: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 110: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 111: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 112: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 113: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 114: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 115: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 116: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 117: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 118: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 119: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 120: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 121: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 122: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 123: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 124: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 125: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 126: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 127: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 128: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 129: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 130: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 131: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 132: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 133: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 134: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 135: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 136: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 137: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 138: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 139: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 140: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 141: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 142: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 143: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 144: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 145: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 146: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 147: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 148: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 149: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 150: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 151: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 152: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 153: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 154: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 155: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 156: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 157: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 158: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 159: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 160: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 161: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 162: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 163: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 164: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 165: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 166: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 167: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 168: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 169: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 170: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 171: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 172: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 173: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 174: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 175: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 176: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 177: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 178: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 179: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 180: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 181: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 182: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 183: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 184: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 185: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 186: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 187: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 188: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 189: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 190: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 191: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 192: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 193: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 194: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 195: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 196: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 197: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 198: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 199: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 200: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 201: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 202: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 203: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 204: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 205: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 206: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 207: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 208: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 209: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 210: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 211: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 212: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 213: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 214: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 215: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 216: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 217: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 218: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 219: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 220: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 221: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 222: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 223: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 224: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 225: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 226: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 227: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 228: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 229: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 230: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 231: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 232: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 233: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 234: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 235: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 236: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 237: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 238: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 239: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 240: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 241: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 242: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 243: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 244: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 245: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 246: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 247: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 248: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 249: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 250: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 251: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 252: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 253: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 254: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 255: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 256: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 257: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 258: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 259: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 260: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 261: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 262: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 263: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 264: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 265: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 266: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 267: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 268: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 269: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 270: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 271: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 272: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 273: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 274: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 275: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 276: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 277: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 278: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 279: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 280: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 281: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 282: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 283: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 284: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 285: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 286: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 287: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 288: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 289: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 290: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 291: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 292: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 293: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 294: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 295: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 296: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 297: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 298: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 299: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 300: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 301: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 302: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 303: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 304: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 305: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 306: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 307: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 308: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 309: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 310: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 311: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 312: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 313: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 314: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 315: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 316: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 317: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 318: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 319: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 320: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 321: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 322: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 323: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 324: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 325: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 326: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 327: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 328: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 329: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 330: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 331: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 332: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 333: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 334: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 335: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 336: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 337: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 338: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 339: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 340: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 341: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 342: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 343: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 344: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 345: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 346: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 347: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 348: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 349: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 350: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 351: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 352: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 353: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 354: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 355: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 356: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 357: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 358: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 359: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 360: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 361: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 362: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 363: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 364: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 365: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 366: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 367: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 368: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 369: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 370: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 371: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 372: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 373: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 374: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 375: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 376: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 377: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 378: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 379: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 380: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 381: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 382: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 383: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 384: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 385: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 386: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 387: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 388: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 389: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 390: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 391: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 392: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 393: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 394: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 395: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 396: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 397: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 398: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 399: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 400: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 401: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 402: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 403: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 404: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 405: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 406: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 407: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 408: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 409: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 410: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 411: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 412: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 413: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 414: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 415: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 416: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 417: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 418: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 419: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 420: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 421: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 422: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 423: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 424: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 425: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 426: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 427: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 428: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 429: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 430: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 431: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 432: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 433: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 434: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 435: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 436: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 437: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 438: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 439: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 440: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 441: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 442: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 443: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 444: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 445: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 446: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 447: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 448: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 449: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 450: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 451: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 452: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 453: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 454: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 455: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 456: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 457: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 458: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 459: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 460: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 461: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 462: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 463: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 464: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 465: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 466: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 467: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 468: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 469: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 470: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 471: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 472: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 473: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 474: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 475: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 476: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 477: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 478: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 479: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 480: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 481: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 482: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 483: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 484: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 485: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 486: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 487: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 488: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 489: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 490: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 491: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 492: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 493: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 494: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 495: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 496: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 497: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 498: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 499: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 500: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 501: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 502: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 503: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 504: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 505: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 506: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 507: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 508: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 509: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 510: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 511: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 512: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 513: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 514: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 515: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 516: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 517: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 518: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 519: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 520: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 521: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 522: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 523: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 524: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 525: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 526: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 527: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 528: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 529: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 530: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 531: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 532: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 533: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 534: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 535: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 536: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 537: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 538: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 539: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 540: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 541: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 542: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 543: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 544: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 545: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 546: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 547: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 548: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 549: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 550: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 551: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 552: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 553: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 554: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 555: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 556: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 557: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 558: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 559: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 560: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 561: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 562: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 563: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 564: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 565: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 566: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 567: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 568: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 569: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 570: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 571: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 572: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 573: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 574: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 575: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 576: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 577: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 578: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 579: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 580: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 581: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 582: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 583: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 584: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 585: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 586: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 587: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 588: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 589: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 590: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 591: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 592: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 593: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 594: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 595: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 596: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 597: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 598: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 599: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 600: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 601: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 602: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 603: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 604: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 605: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 606: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 607: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 608: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 609: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 610: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 611: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 612: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 613: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 614: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 615: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 616: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 617: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 618: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 619: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 620: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 621: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 622: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 623: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 624: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 625: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 626: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 627: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 628: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 629: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 630: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 631: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 632: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 633: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 634: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 635: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 636: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 637: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 638: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 639: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 640: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 641: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 642: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 643: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 644: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 645: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 646: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 647: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 648: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 649: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 650: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 651: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 652: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 653: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 654: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 655: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 656: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 657: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 658: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 659: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 660: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 661: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 662: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 663: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 664: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 665: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 666: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 667: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 668: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 669: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 670: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 671: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 672: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 673: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 674: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 675: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 676: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 677: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 678: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 679: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 680: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 681: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 682: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 683: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 684: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 685: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 686: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 687: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 688: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 689: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 690: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 691: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 692: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 693: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 694: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 695: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 696: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 697: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 698: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 699: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 700: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 701: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 702: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 703: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 704: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 705: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 706: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 707: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 708: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 709: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 710: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 711: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 712: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 713: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 714: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 715: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 716: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 717: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 718: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 719: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 720: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 721: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 722: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 723: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 724: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 725: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 726: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 727: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 728: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 729: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 730: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 731: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 732: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 733: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 734: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 735: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 736: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 737: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 738: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 739: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 740: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 741: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 742: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 743: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 744: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 745: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 746: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 747: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 748: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 749: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 750: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 751: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 752: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 753: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 754: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 755: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 756: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 757: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 758: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 759: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 760: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 761: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 762: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 763: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 764: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 765: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 766: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 767: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 768: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 769: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 770: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 771: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 772: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 773: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 774: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 775: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 776: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 777: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 778: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 779: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 780: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 781: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 782: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 783: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 784: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 785: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 786: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 787: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 788: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 789: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 790: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 791: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 792: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 793: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 794: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 795: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 796: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 797: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 798: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 799: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 800: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 801: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 802: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 803: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 804: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 805: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 806: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 807: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 808: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 809: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 810: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 811: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 812: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 813: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 814: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 815: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 816: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 817: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 818: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 819: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 820: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 821: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 822: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 823: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 824: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 825: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 826: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 827: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 828: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 829: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 830: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 831: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 832: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 833: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 834: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 835: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 836: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 837: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 838: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 839: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 840: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 841: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 842: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 843: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 844: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 845: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 846: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 847: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 848: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 849: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 850: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 851: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 852: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 853: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 854: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 855: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 856: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 857: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 858: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 859: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 860: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 861: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 862: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 863: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 864: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 865: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 866: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 867: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 868: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 869: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 870: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 871: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 872: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 873: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 874: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 875: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 876: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 877: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 878: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 879: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 880: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 881: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 882: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 883: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 884: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 885: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 886: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 887: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 888: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 889: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 890: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 891: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 892: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 893: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 894: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 895: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 896: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 897: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 898: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 899: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 900: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 901: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 902: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 903: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 904: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 905: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 906: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 907: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 908: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 909: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 910: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 911: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 912: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 913: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 914: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 915: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 916: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 917: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 918: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 919: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 920: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 921: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 922: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 923: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 924: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 925: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 926: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 927: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 928: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 929: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 930: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 931: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 932: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 933: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 934: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 935: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 936: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 937: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 938: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 939: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 940: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 941: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 942: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 943: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 944: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 945: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 946: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 947: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 948: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 949: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 950: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 951: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 952: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 953: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 954: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 955: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 956: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 957: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 958: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 959: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 960: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 961: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 962: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 963: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 964: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 965: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 966: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 967: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 968: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 969: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 970: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 971: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 972: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 973: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 974: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 975: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 976: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 977: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 978: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 979: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 980: Hücumda genişliği koru, bekleri ileri çıkar.
+Satır 981: Orta sahada Ndidi ile sert baskı yap, rakibi sindir.
+Satır 982: Orkun Kökçü ile dikey paslar dene, savunma arkasına sark.
+Satır 983: Agbadou hava toplarında kule gibi yükselmeli.
+Satır 984: El Bilal Touré hızıyla kanadı koridora çevirmeli.
+Satır 985: Hyeon-gyu Oh ön alanda sürekli pres yapmalı.
+Satır 986: Kornerlerde ön direk organizasyonunu saniye saniye uygula.
+Satır 987: Rakip kontra atağa kalktığında Asllani hemen kademeye girsin.
+Satır 988: Taraftar desteği arttığında tempoyu en üst seviyeye çek.
+Satır 989: Yağmurlu havada yerden hızlı paslarla rakibi şaşırt.
+Satır 990: Derbilerde ikili mücadelelerde asla taviz verme.
+Satır 991: Skor avantajı varken topu ayağında tut, rakibi yor.
+Satır 992: Geriye düştüğünde 4-2-4 dizilişine geç ve baskıyı artır.
+Satır 993: Ersin oyunu hızlı başlatarak kontraları tetiklesin.
+Satır 994: Cengiz Ünder oyuna girince kanatlardan orta sayısını artır.
+Satır 995: Mustafa Hekimoğlu son 15 dakika taze kan olarak baskı yapsın.
+Satır 996: Takım boyunu kısa tut, hatlar arası boşluk verme.
+Satır 997: Rıdvan Yılmaz kanattan bindirdiğinde savunma üçlüye dönsün.
+Satır 998: Murillo taç atışlarını ceza sahasına uzun kullansın.
+Satır 999: Ndidi rakip oyun kurucuya gölge markaj uygulasın.
+Satır 1000: Hücumda genişliği koru, bekleri ileri çıkar.

@@ -141,6 +141,42 @@ class AdminCog(commands.Cog):
             color=0x3498db # Peter River Blue
         )
         await ctx.send(embed=embed)
+    
+    @commands.command(name="toplu_ekle", aliases=["bulk_import", "tümünü_ekle", "tumunu_ekle"])
+    @commands.has_permissions(administrator=True)
+    async def toplu_ekle_command(self, ctx):
+        """data/tactics klasöründeki tüm TXT dosyalarını takım olarak lige ekler."""
+        msg = await ctx.send("📂 **Taktik klasörü taranıyor...**")
+        
+        tactics_dir = os.path.join(database.BASE_PATH, "data", "tactics")
+        if not os.path.exists(tactics_dir):
+            return await msg.edit(content="❌ **Hata:** `data/tactics` klasörü bulunamadı.")
+            
+        added_count = 0
+        skipped_count = 0
+        
+        files = [f for f in os.listdir(tactics_dir) if f.endswith(".txt")]
+        
+        for filename in files:
+            team_name = filename.replace(".txt", "").strip()
+            # Veritabanına ekle (Eğer yoksa)
+            try:
+                await database.ensure_team_exists(team_name, 'Super Lig')
+                added_count += 1
+            except Exception as e:
+                print(f"DEBUG: Error adding {team_name}: {e}")
+                skipped_count += 1
+                
+        embed = discord.Embed(
+            title="📂 TOPLU İÇE AKTARMA TAMAMLANDI",
+            description=(
+                f"✅ **Eklenen Takım Sayısı:** `{added_count}`\n"
+                f"⚠️ **Atlanan/Hatalı:** `{skipped_count}`\n\n"
+                "Artık tüm bu takımlar puan durumunda (`!lig`) görünecektir."
+            ),
+            color=0x9b59b6 # Amethyst Purple
+        )
+        await msg.edit(content=None, embed=embed)
 
 async def setup(bot):
     await bot.add_cog(AdminCog(bot))

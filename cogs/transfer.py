@@ -651,6 +651,78 @@ Page content:
             ]
         return {"status": "Counter", "msg": random.choice(counter_msgs), "val": new_ask}
 
+    async def _negotiate_loan(self, pending: Dict, offer: int, buying_team_name: str) -> Dict:
+        """Kiralama pazarlığı için özel mantık (Yaş ve Rol duyarlı)"""
+        market_val = pending.get("market_value_eur", 5000000)
+        from_team = pending.get("current_team", "")
+        age = pending.get("age", 25)
+        ovr = pending.get("overall", 75)
+        
+        # 1. KULÜP STRATEJİSİ (Zorluk Seviyeleri)
+        # Genç Yetenek (<21): Gelişimi için verilebilir ama "oynatma sözü" ister.
+        # Yaşlı (>32): Maaştan kurtulmak için hemen verilir.
+        # Prime (22-31): Sadece yedekse veya çok iyi teklifse verilir.
+        
+        is_young = age < 21
+        is_veteran = age > 35
+        is_star = ovr >= 84
+        
+        # --- PRESTİJ VE GÜÇ DENGESİ KONTROLÜ ---
+        # Eğer oyuncu gideceği takım için "fazla iyiyse" reddeder.
+        buying_team = await database.search_team(buying_team_name)
+        buying_ovr = buying_team['overall'] if buying_team else 70
+        
+        if ovr > buying_ovr + 6 and not is_veteran:
+            return {
+                "status": "Rejected", 
+                "msg": f"Oyuncu, {buying_team_name} projesini kariyeri için yetersiz buluyor. Daha iddialı bir takıma gitmek istiyor."
+            }
+        
+        # Kiralama Bedeli Beklentisi (Normalde Piyasa Değerinin %5-15'i arasıdır)
+        base_loan_ask = int(market_val * 0.10)
+        
+        if is_young:
+            base_loan_ask = int(market_val * 0.05) # Gençler daha ucuz kiralanır
+            loan_msg_pool = [
+                f"Gelişimi için {self._format_value(base_loan_ask)} karşılığında kiralayabiliriz ama mutlaka süre almalı.",
+                f"Gelecek vadeden bir isim. {self._format_value(base_loan_ask)} ve düzenli oynatma garantisiyle kabul ederiz."
+            ]
+        elif is_veteran:
+            base_loan_ask = int(market_val * 0.03) # Yaşlılar çok ucuza kiralanır
+            loan_msg_pool = [
+                f"Tecrübesiyle size çok şey katar. {self._format_value(base_loan_ask)} ödeyin, maaş yükünden kurtulalım.",
+                f"Kadromuzda yer bulması zor. {self._format_value(base_loan_ask)} gibi sembolik bir bedele evet deriz."
+            ]
+        elif is_star:
+            return {"status": "Rejected", "msg": "Bu oyuncu takımımızın yıldızı, kiralık vermeyi kesinlikle düşünmüyoruz!"}
+        else:
+            base_loan_ask = int(market_val * 0.15)
+            loan_msg_pool = [
+                f"Kiralık vermek için {self._format_value(base_loan_ask)} bekliyoruz. Daha aşağısı kurtarmaz.",
+                f"Normalde satmayı düşünürüz ama {self._format_value(base_loan_ask)} getirirseniz bir sezonluk kiralayabiliriz."
+            ]
+
+        # Pazarlık Mantığı
+        if offer >= base_loan_ask * 0.90:
+            # Maaş Paylaşımı Teklifi
+            salary_share = 100
+            if is_young: salary_share = 50 # Gençlerin maaşının yarısını ana kulüp ödeyebilir
+            elif is_veteran: salary_share = 100 # Yaşlılarınkini tamamen alan öder
+            
+            pending['salary_share'] = salary_share
+            return {
+                "status": "Accepted", 
+                "msg": f"{random.choice(loan_msg_pool)} Ayrıca oyuncu maaşının %{salary_share}'ini sizin ödemenizi bekliyoruz."
+            }
+        else:
+            new_ask = int(base_loan_ask * 0.95)
+            pending['last_club_counter'] = new_ask
+            return {
+                "status": "Counter", 
+                "msg": f"Teklifiniz çok düşük. {self._format_value(new_ask)} kiralama bedeli bekliyoruz.",
+                "val": new_ask
+            }
+
     async def _negotiate_salary(self, pending: Dict, offer: int, team_name: str) -> Dict:
         # --- Player Logic ---
         curr_sal = pending.get("current_salary_eur", 1000000)
@@ -2002,6 +2074,49 @@ CRITICAL REALITY CHECK RULES (2026):
             self._set_refusal(ctx.author.id, pending['player_name'])
             self.pending_transfers.pop(ctx.author.id, None)
 
+        self.pending_transfers.pop(ctx.author.id, None)
+
+    @commands.command(name="kirala", aliases=["kiralik", "loan"])
+    async def kirala_command(self, ctx: commands.Context, *, content: str):
+        """Bir oyuncuyu kiralamak için teklif verir (Yaş ve rol duyarlı)"""
+        pending = self.pending_transfers.get(ctx.author.id)
+        if not pending: return await ctx.send("❌ Önce oyuncu araştırmalısın! `!ara [İsim]`")
+        
+        offer = self._parse_money(content.split()[-1])
+        user_team = await database.get_user_team(ctx.author.id)
+        if not user_team:
+            return await ctx.send("❌ **Henüz bir takımı yönetmiyorsun!**")
+        
+        pending['is_loan_offer'] = True
+        res = await self._negotiate_loan(pending, offer, user_team['name'])
+        
+        if res['status'] == "Accepted":
+            pending['club_agreed'] = True
+            pending['agreed_price'] = offer
+            pending['transfer_type'] = 'Loan'
+            
+            embed = discord.Embed(
+                title="🤝 KİRALAMA ANLAŞMASI (KULÜP)",
+                description=f"🗣️ **{pending['current_team']}:** \"{res['msg']}\"",
+                color=discord.Color.blue()
+            )
+            embed.add_field(name="💰 Kiralama Bedeli", value=f"**{self._format_value(offer)}**", inline=True)
+            embed.set_footer(text=f"👉 Sonraki Adım: !maas {pending['player_name']} [Miktar]")
+            await ctx.send(embed=embed)
+            
+        elif res['status'] == "Counter":
+            pending['last_club_counter'] = res['val']
+            embed = discord.Embed(
+                title="⚖️ KİRALAMA KARŞI TEKLİFİ",
+                description=f"🗣️ **{pending['current_team']}:** \"{res['msg']}\"",
+                color=discord.Color.orange()
+            )
+            embed.add_field(name="📉 Talep Edilen", value=f"**{self._format_value(res['val'])}**", inline=True)
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send(f"❌ **{pending['current_team']}:** \"{res['msg']}\"")
+            self.pending_transfers.pop(ctx.author.id, None)
+
     @commands.command(name="onayla")
     async def onayla_command(self, ctx: commands.Context, *, name: str = None):
         pending = self.pending_transfers.get(ctx.author.id)
@@ -2015,24 +2130,42 @@ CRITICAL REALITY CHECK RULES (2026):
         if user_team['budget'] < pending['agreed_price']:
             return await ctx.send(f"❌ **YETERSIZ BÜTÇE!** Kasanızda {self._format_value(user_team['budget'])} var, gereken: {self._format_value(pending['agreed_price'])}")
 
-        await database.record_transfer(pending['player_name'], pending['current_team'], user_team['name'], pending['agreed_price'], 3, player_details=pending)
+        t_type = pending.get('transfer_type', 'Transfer')
+        await database.record_transfer(
+            pending['player_name'], 
+            pending['current_team'], 
+            user_team['name'], 
+            pending['agreed_price'], 
+            3, 
+            player_details=pending,
+            transfer_type=t_type
+        )
+        
+        title = "✍️ TRANSFER RESMİLEŞTİ!" if t_type == 'Transfer' else "🤝 KİRALAMA RESMİLEŞTİ!"
+        color = discord.Color.gold() if t_type == 'Transfer' else discord.Color.blue()
         
         embed = discord.Embed(
-            title="✍️ TRANSFER RESMİLEŞTİ!",
+            title=title,
             description=f"🚀 **Hayırlı olsun başkan! {pending['player_name']} artık senin emrinde.**",
-            color=discord.Color.gold()
+            color=color
         )
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/3135/3135768.png") # Signature icon
         
         embed.add_field(name="👤 Oyuncu", value=pending['player_name'], inline=True)
         embed.add_field(name="🏟️ Yeni Takım", value=user_team['name'], inline=True)
-        embed.add_field(name="💰 Bonservis", value=self._format_value(pending['agreed_price']), inline=True)
+        
+        price_label = "💰 Bonservis" if t_type == 'Transfer' else "💰 Kiralama Bedeli"
+        embed.add_field(name=price_label, value=self._format_value(pending['agreed_price']), inline=True)
         embed.add_field(name="💶 Yıllık Maaş", value=self._format_value(pending['final_salary']), inline=True)
+        
+        if t_type == 'Loan':
+            embed.add_field(name="📅 Süre", value="Sezon Sonu", inline=True)
+            embed.add_field(name="🏠 Asıl Kulüp", value=pending['current_team'], inline=True)
         
         # 📈 TAKIM REYTINGINI GÜNCELLE
         new_ovr = await database.calculate_team_overall(user_team['name'])
         embed.add_field(name="📈 Takım Reyting Ortalaması", value=f"### {new_ovr}", inline=False)
-        embed.set_footer(text=f"💡 Yeni transfer sonrası kadro gücünüz (En İyi 18) yeniden hesaplandı.")
+        embed.set_footer(text=f"💡 İşlem sonrası kadro gücünüz (En İyi 18) yeniden hesaplandı.")
 
         await ctx.send(embed=embed)
         self.pending_transfers.pop(ctx.author.id)
