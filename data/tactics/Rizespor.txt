@@ -1,0 +1,23 @@
+Rizespor
+
+İLK 11
+Yahia Fofana | GK | 25 | 5M | CI
+Taha Şahin | RB | 25 | 3M | TR
+Qazim Laci | CM | 30 | 2.8M | AL
+Frantzdy Pierrot | ST | 31 | 2.5M | HT
+Ibrahim Olawoyin | CM | 28 | 2.2M | NG
+Attila Mocsi | CB | 25 | 2M | HU
+Modibo Sagnan | CB | 26 | 2M | ML
+Mithat Pala | RB | 25 | 1.8M | TR
+Giannis Papanikolaou | CDM | 27 | 1.5M | GR
+Khusniddin Alikulov | CB | 27 | 1.5M | UZ
+Ali Sowe | ST | 31 | 1.5M | GM
+
+YEDEKLER
+Casper Højer | LB | 31 | 1.2M | DK
+Adedire Mebude | RW | 21 | 1.2M | NG
+Samet Akaydin | CB | 32 | 1.2M | TR
+Taylan Antalyalı | CDM | 31 | 0.8M | TR
+Halil Dervişoğlu | ST | 26 | 0.8M | TR
+Emrecan Bulut | LW | 23 | 0.6M | TR
+Erdem Canpolat | GK | 25 | 0.5M | TR

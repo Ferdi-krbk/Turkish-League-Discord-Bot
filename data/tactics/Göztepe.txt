@@ -1,0 +1,23 @@
+Göztepe
+
+İLK 11
+Anthony Dennis | CDM | 21 | 8M | NG
+Juan | ST | 24 | 8M | BR
+Taha Altıkardeş | CB | 22 | 5M | TR
+Malcom Bokele | CB | 26 | 4.5M | CM
+Janderson | ST | 27 | 4.5M | BR
+Novatus Miroshi | CDM | 23 | 3.5M | TZ
+Victor Hugo | CM | 22 | 3.5M | BR
+Mateusz Lis | GK | 28 | 2.5M | PL
+Alexis Antunes | CAM | 25 | 1.5M | CH
+Guilherme Luiz | ST | 21 | 1.5M | BR
+Furkan Bayır | CB | 26 | 1.2M | TR
+
+YEDEKLER
+Efkan Bekiroğlu | CAM | 30 | 1.2M | TR
+Romulo | ST | 24 | 1M | BR
+Héliton | CB | 30 | 1M | BR
+Jeh | ST | 26 | 0.7M | BR
+Ekrem Kılıçarslan | GK | 28 | 0.25M | TR
+Ismail Köybaşı | LB | 36 | 0.2M | TR
+Erkam Kömür | RB | 20 | 0.075M | TR

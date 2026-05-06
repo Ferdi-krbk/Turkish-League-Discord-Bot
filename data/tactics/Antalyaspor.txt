@@ -1,0 +1,23 @@
+Antalyaspor
+
+İLK 11
+Kenan Piric | GK | 31 | 0.8M | BA
+Bünyamin Balcı | RB | 25 | 2.0M | TR
+Thalisson | CB | 27 | 2.0M | BR
+Veysel Sarı | CB | 37 | 0.1M | TR
+Güray Vural | LB | 37 | 0.15M | TR
+Erdal Rakip | CDM | 29 | 1.5M | MK
+Jakub Kaluzinski | CM | 23 | 2.5M | PL
+Abdülkadir Ömür | RW | 26 | 2.2M | TR
+Samuel Ballet | CAM | 25 | 2.0M | CH
+Nikola Storm | LW | 31 | 1.5M | BE
+Yohan Boli | ST | 32 | 1.0M | CI
+
+YEDEKLER
+Doğukan Özkan | GK | 26 | 0.05M | TR
+Amar Gerxhaliu | CB | 23 | 0.4M | XK
+Mert Yılmaz | RB | 27 | 0.5M | TR
+Dario Saric | CM | 28 | 0.7M | BA
+Soner Dikmen | CM | 32 | 0.7M | TR
+Doğukan Sinik | LW | 27 | 1.0M | TR
+Sander van de Streek | ST | 33 | 0.6M | NL

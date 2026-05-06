@@ -1,0 +1,23 @@
+Trabzonspor
+
+İLK 11
+Christ Inao Oulaï | CM | 20 | 17M | CI
+André Onana | GK | 30 | 12M | CM
+Arseniy Batagov | CB | 24 | 11M | UA
+Felipe Augusto | ST | 22 | 10M | BR
+Wagner Pina | RB | 23 | 8M | CV
+Chibuike Nwaiwu | CB | 22 | 7M | NG
+Oleksandr Zubkov | RW | 29 | 7M | UA
+Tim Jabol-Folcarelli | CM | 26 | 6M | FR
+Paul Onuachu | ST | 31 | 6M | NG
+Cihan Çanak | RW | 21 | 5M | TR
+Mathias Løvik | LB | 22 | 4M | NO
+
+YEDEKLER
+Denis Drăguș | LW | 26 | 4M | RO
+Mustafa Eskihellaç | LB | 29 | 3.5M | TR
+Okay Yokuşlu | CDM | 32 | 1.5M | TR
+Onuralp Çevikkan | GK | 20 | 1M | TR
+Salih Malkoçoğlu | CDM | 21 | 1M | TR
+Umut Nayir | ST | 32 | 0.7M | TR
+Stefan Savic | CB | 35 | 0.5M | ME

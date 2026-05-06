@@ -1,0 +1,23 @@
+Kocaelispor
+
+İLK 11
+Botond Balogh | CB | 23 | 2.5M | HU
+Hrvoje Smolcic | CB | 25 | 2M | HR
+Bruno Petkovic | ST | 31 | 2M | HR
+Habib Keïta | CM | 24 | 1.8M | ML
+Show | CDM | 27 | 1.5M | AO
+Karol Linetty | CM | 31 | 1.5M | PL
+Can Keleş | RW | 24 | 1.5M | AT
+Joseph Nonge | CM | 21 | 1.5M | BE
+Anfernee Dijksteel | RB | 29 | 1.2M | SR
+Mateusz Wieteska | CB | 29 | 1.2M | PL
+Mahamadou Susoho | CDM | 21 | 1M | ES
+
+YEDEKLER
+Aleksandar Jovanovic | GK | 33 | 0.8M | RS
+Massadio Haidara | LB | 33 | 0.8M | ML
+Dan Agyei | LW | 28 | 0.8M | EN
+Ahmet Oğuz | RB | 32 | 0.4M | TR
+Serdar Dursun | ST | 34 | 0.3M | TR
+Ahmet Sağat | ST | 29 | 0.25M | TR
+Serhat Öztaşdelen | GK | 20 | 0.2M | TR

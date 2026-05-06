@@ -1,0 +1,23 @@
+Gaziantep FK
+
+İLK 11
+Sokratis Dioudis | GK | 33 | 0.4M | GR
+Deian Sorescu | RB | 28 | 1.8M | RO
+Tayyip Talha Sanuç | CB | 26 | 1.8M | TR
+Nihad Mujakic | CB | 28 | 1.2M | BA
+Kévin Rodrigues | LB | 32 | 1.0M | PT
+Drissa Camara | CM | 24 | 3.0M | CI
+Kacper Kozlowski | CAM | 22 | 5.0M | PL
+Alexandru Maxim | CAM | 35 | 0.5M | RO
+Mohamed Bayo | ST | 27 | 4.0M | GN
+Denis Dragus | ST | 26 | 2.5M | RO
+Yusuf Kabadayi | LW | 22 | 1.5M | TR
+
+YEDEKLER
+Halil Bağcı | GK | 22 | 0.1M | TR
+Arda Kızıldağ | CB | 27 | 0.9M | TR
+Mustafa Eskihellaç | RW | 28 | 1.2M | TR
+Christopher Lungoyi | LW | 25 | 1.0M | CH
+Luis Pérez | RB | 31 | 1.0M | ES
+Melih Kabasakal | CDM | 30 | 0.7M | TR
+Myenty Abena | CB | 31 | 0.6M | SR

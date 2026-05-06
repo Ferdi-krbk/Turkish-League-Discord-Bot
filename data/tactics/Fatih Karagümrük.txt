@@ -1,0 +1,23 @@
+Fatih Karagümrük
+
+İLK 11
+Berke Can Evli | GK | 21 | 0.1M | TR
+Ricardo Esgaio | RB | 33 | 0.8M | PT
+Igor Lichnovsky | CB | 32 | 0.8M | CL
+Davide Biraschi | CB | 31 | 0.4M | IT
+Çağtay Kurukalıp | LB | 24 | 0.6M | TR
+Bartuğ Elmaz | CDM | 23 | 1.5M | TR
+Berkay Özcan | CM | 28 | 1.5M | TR
+Shavy Babicka | RW | 25 | 1.5M | GA
+Sam Larsson | CAM | 33 | 0.7M | SE
+Serginho | LW | 31 | 0.6M | BR
+Tiago Çukur | ST | 23 | 0.4M | TR
+
+YEDEKLER
+Furkan Bekleviç | GK | 27 | 0.05M | TR
+Salih Dursun | CB | 34 | 0.05M | TR
+Daniel Johnson | CM | 33 | 0.35M | JM
+Daniele Verde | RW | 29 | 0.7M | IT
+Barış Kalaycı | LW | 20 | 0.6M | TR
+João Camacho | RW | 31 | 0.3M | PT
+Moussa Kone | ST | 18 | 0.1M | CI

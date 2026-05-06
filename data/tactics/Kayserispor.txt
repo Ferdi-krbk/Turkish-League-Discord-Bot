@@ -1,0 +1,23 @@
+Kayserispor
+
+İLK 11
+Bilal Bayazit | GK | 26 | 3.5M | TR
+Joshua Brenet | RB | 32 | 1.2M | CW
+Semih Güler | CB | 31 | 0.9M | TR
+Stefano Denswil | CB | 33 | 0.8M | SR
+Lionel Carole | LB | 35 | 0.3M | FR
+Youssef Ait Bennasser | CDM | 29 | 1.0M | MA
+Laszlo Benes | CM | 28 | 2.8M | SK
+Joao Mendes | CAM | 31 | 1.2M | PT
+Denis Makarov | RW | 28 | 1.5M | RU
+Miguel Cardoso | LW | 31 | 1.5M | PT
+Fedor Chalov | ST | 28 | 5.0M | RU
+
+YEDEKLER
+Onurcan Piri | GK | 31 | 0.35M | TR
+Majid Hosseini | CB | 29 | 0.8M | IR
+Gökhan Sazdağı | RB | 31 | 1.0M | TR
+Görkem Sağlam | CM | 28 | 0.9M | TR
+Carlos Mané | RW | 32 | 0.8M | GW
+German Onugkha | ST | 29 | 1.8M | RU
+Indrit Tuci | ST | 25 | 0.7M | AL

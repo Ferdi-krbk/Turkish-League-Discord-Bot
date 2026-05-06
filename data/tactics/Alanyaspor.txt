@@ -1,0 +1,23 @@
+Alanyaspor
+
+İLK 11
+Ertuğrul Taşkıran | GK | 36 | 0.15M | TR
+Florent Hadergjonaj | RB | 31 | 1.5M | XK
+Furkan Bayır | CB | 26 | 1.5M | TR
+Nuno Lima | CB | 25 | 1.5M | PT
+Jure Balkovec | LB | 31 | 0.5M | SI
+Maestro | CDM | 22 | 7.0M | AO
+Gaius Makouta | CM | 28 | 2.0M | CG
+Ianis Hagi | CAM | 27 | 1.8M | RO
+Meschack Elia | RW | 28 | 2.0M | CD
+Ruan | LW | 24 | 2.0M | BR
+Sergio Córdova | ST | 28 | 1.5M | VE
+
+YEDEKLER
+Yusuf Karagöz | GK | 26 | 0.1M | TR
+Fatih Aksoy | CB | 28 | 1.2M | TR
+Richard | CDM | 32 | 1.2M | BR
+Loide Augusto | RW | 26 | 1.5M | AO
+Nicolas Janvier | CM | 27 | 1.0M | FR
+Hwang Ui-jo | ST | 33 | 0.5M | KR
+Bamba Dieng | ST | 31 | 2.5M | SN
