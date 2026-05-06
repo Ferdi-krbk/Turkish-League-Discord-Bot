@@ -1,56 +1,47 @@
-
-
-
 🏛️ KOCAELİSPOR v16.0: "THE ARCHITECT" SİSTEMİ
 KADRO LİSTESİ
 
+
+
 İlk 11
-Aleksandar Jovanović | Kaleci | 33 Yaş | 800 Bin € | 🇷🇸
+Aleksandar Jovanović | KL | 33 Yaş | 800 Bin € | 🇷🇸
 
-Ahmet Oğuz | Sağ Bek | 33 Yaş | 400 Bin € | 🇹🇷
+Ahmet Oğuz | SĞB | 33 Yaş | 400 Bin € | 🇹🇷
 
-Anfernee Dijksteel | Stoper | 29 Yaş | 1.20 M € | 🇸🇷
+Anfernee Dijksteel | STP | 29 Yaş | 1.20 M € | 🇸🇷
 
-Botond Balogh | Stoper | 23 Yaş | 2.50 M € | 🇭🇺
+Botond Balogh | STP | 23 Yaş | 2.50 M € | 🇭🇺
 
-Hrvoje Smolčić | Stoper | 25 Yaş | 2.00 M € | 🇭🇷
+Hrvoje Smolčić | STP | 25 Yaş | 2.00 M € | 🇭🇷
 
-Massadio Haïdara | Sol Bek | 33 Yaş | 800 B € | 🇲🇱
+Massadio Haïdara | SLB | 33 Yaş | 800 B € | 🇲🇱
 
-Show | Ön Libero | 27 Yaş | 1.50 M € | 🇦🇴
+Show | DOS | 27 Yaş | 1.50 M € | 🇦🇴
 
-Orçun | Orta Saha | 24 Yaş | 21.5 M € | 🇹🇷
+Orçun | OS | 24 Yaş | 21.5 M € | 🇹🇷
 
-Ramiz | Sağ Kanat | 18 Yaş | 21.50 M € | 🇫🇷
+Ramiz | RW | 18 Yaş | 21.50 M € | 🇫🇷
 
-Kaan Çakmak | On Numara | 19 Yaş | 23.5 M € | 🇹🇷
+Kaan Çakmak | OOS | 19 Yaş | 23.5 M € | 🇹🇷
 
-Abdullah Dağlı | Sol Kanat | 19 Yaş | 27 M € | 🇹🇷
+Abdullah Dağlı | LW | 19 Yaş | 27 M € | 🇹🇷
 
-Ahmet Bozkurt | Forvet | 18 Yaş | 50 M € | 🇹🇷
+Ahmet Bozkurt | ST | 18 Yaş | 50 M € | 🇹🇷
 
 Yedek Kulübesi
-Gökhan Değirmenci | Kaleci | 37 Yaş | 50 Bin € | 🇹🇷
+Serhat Öztaşdelen | KL | 21 Yaş | 200 Bin € | 🇹🇷
 
-Serhat Öztaşdelen | Kaleci | 21 Yaş | 200 Bin € | 🇹🇷
+Mateusz Wieteska | STP | 29 Yaş | 1.20 M € | 🇵🇱
 
-Mateusz Wieteska | Stoper | 29 Yaş | 1.20 M € | 🇵🇱
+Joseph Nonge | OS | 21 Yaş | 1.00 M € | 🇧🇪
 
-Muharrem Cinan | Sol Bek | 27 Yaş | 500 Bin € | 🇹🇷
+Darko Churlinov | RW | 25 Yaş | 1.50 M € | 🇲🇰
 
-Samet Yalçın | Orta Saha | 32 Yaş | 250 Bin € | 🇹🇷
+Rigoberto Rivas | LW | 27 Yaş | 1.20 M € | 🇭🇳
 
-Joseph Nonge | Orta Saha | 21 Yaş | 1.00 M € | 🇧🇪
+Tayfur Bingöl | SĞK | 33 Yaş | 500 Bin € | 🇹🇷
 
-Darko Churlinov | Kanat | 25 Yaş | 1.50 M € | 🇲🇰
 
-Rigoberto Rivas | Kanat | 27 Yaş | 1.20 M € | 🇭🇳
-
-Tayfur Bingöl | Kanat | 33 Yaş | 500 Bin € | 🇹🇷
-
-Serdar Dursun | Forvet | 34 Yaş | 300 Bin € | 🇹🇷
-
-Ahmet Sağat | Forvet | 29 Yaş | 250 Bin € | 🇹🇷
 ziliş: 4-2-3-1 (Ofansif Varyant)
 Bu diziliş, orta sahadaki yıldızlarını en verimli kullanabileceğin yapıdır.
 

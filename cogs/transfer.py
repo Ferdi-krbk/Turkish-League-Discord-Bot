@@ -807,6 +807,17 @@ Page content:
             
         new_ask = max(int(asking * 0.95), target_min)
         
+        # --- SMART ACCEPTANCE FIX (SALARY) ---
+        # If the user offers more than or equal to what we were going to ask anyway, ACCEPT IT!
+        if offer >= new_ask:
+            accept_pools = [
+                "Şartlar benim için harika. Yarın kampa katılıyorum!",
+                "Bu cömert maaş teklifi beklentilerimi karşılıyor. İmzaları atalım.",
+                "Değerimi bildiğiniz için teşekkürler. Yeni maceram başlıyor!",
+                "Bu maaş ve sunduğunuz proje beni ikna etti. Kabul ediyorum."
+            ]
+            return {"status": "Accepted", "msg": random.choice(accept_pools)}
+
         # Karakter Bazlı Karşı Teklifler
         if is_free_agent:
             msg = f"Boştaki bir oyuncu olarak beklentim {self._format_value(new_ask)}. Bu benim için adil."

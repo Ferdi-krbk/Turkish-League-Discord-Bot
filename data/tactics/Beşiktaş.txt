@@ -1,6 +1,5 @@
 [SQUAD]
 İLK 11:
-Ersin Destanoğlu | GK | 25 | 2.5M | TR
 Amir Murillo | RB | 30 | 8.0M | PA
 Emmanuel Agbadou | CB | 28 | 18.0M | CI
 Tiago Djaló | CB | 26 | 7.0M | PT
