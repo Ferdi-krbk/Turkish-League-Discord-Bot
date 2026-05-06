@@ -596,20 +596,18 @@ async def resolve_canonical_team(q_name: str) -> str:
 
 
 def estimate_player_ovr(value_eur: Optional[int]) -> int:
-    """Calculates a realistic OVR based on the 2025/26 market value (MV) scale."""
+    """Calculates a realistic OVR based on the 2025/26 market value (MV) scale. (CÖMERT BAREM)"""
     if value_eur is None or value_eur <= 0: return 65
-    value_m = value_eur / 1_000_000.0
+    vm = value_eur / 1_000_000.0
 
-    # ELITE 2026 SCALE
-    if value_m >= 200.0: res = 96 + min(3, int((value_m - 200) / 20)) # 200M -> 96, 220M -> 97
-    elif value_m >= 150.0: res = 92 + int((value_m - 150) / 50 * 4)   # 150M -> 92, 200M -> 96
-    elif value_m >= 100.0: res = 89 + int((value_m - 100) / 50 * 3)   # 100M -> 89, 150M -> 92
-    elif value_m >= 75.0: res = 86 + int((value_m - 75) / 25 * 3)    # 75M -> 86, 100M -> 89
-    elif value_m >= 50.0: res = 83 + int((value_m - 50) / 25 * 3)    # 50M -> 83, 75M -> 86
-    elif value_m >= 30.0: res = 79 + int((value_m - 30) / 20 * 4)    # 30M -> 79, 50M -> 83
-    elif value_m >= 15.0: res = 75 + int((value_m - 15) / 15 * 4)    # 15M -> 75, 30M -> 79
-    elif value_m >= 5.0: res = 70 + int((value_m - 5) / 10 * 5)      # 5M -> 70, 15M -> 75
-    elif value_m >= 1.0: res = 66 + int((value_m - 1) / 4 * 4)       # 1M -> 66, 5M -> 70
+    # GÜNCELLENMİŞ CÖMERT BAREM (MatchEngine ile senkronize)
+    if vm >= 120.0: res = 92 + min(7, int((vm - 120) / 15)) # 120M=92, 180M=96, 225M=99
+    elif vm >= 80.0: res = 88 + int((vm - 80) / 40 * 4)     # 80M=88, 119M=91
+    elif vm >= 50.0: res = 85 + int((vm - 50) / 30 * 3)     # 50M=85, 79M=87
+    elif vm >= 30.0: res = 82 + int((vm - 30) / 20 * 3)     # 30M=82, 49M=84
+    elif vm >= 15.0: res = 78 + int((vm - 15) / 15 * 4)     # 15M=78, 29M=81
+    elif vm >= 5.0: res = 73 + int((vm - 5) / 10 * 5)       # 5M=73, 14M=77
+    elif vm >= 1.0: res = 68 + int((vm - 1) / 4 * 5)        # 1M=68, 4M=72
     else: res = 64
 
     return min(99, res)
