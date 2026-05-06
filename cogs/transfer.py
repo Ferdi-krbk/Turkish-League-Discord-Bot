@@ -629,6 +629,24 @@ Page content:
         # Standard drop logic (if not stubborn)
         new_ask = max(int(asking * drop_rate), int(market_val * floor_pct))
         
+        # --- SMART ACCEPTANCE FIX ---
+        # If the user offers more than what we were going to ask anyway, ACCEPT IT!
+        if offer >= new_ask:
+            if is_free_agent:
+                accept_msgs = [
+                    "İstediğim rakamın bile üzerindesiniz. Projeniz ilgimi çekiyor!",
+                    "Bu cömert teklif beklentilerimi fazlasıyla karşılıyor. İmza atmaya yakınız.",
+                    "Menajerim teklifi çok beğendi, artık maaşı konuşabiliriz."
+                ]
+            else:
+                accept_msgs = [
+                    "Beklentilerimizin de üzerinde bir teklif. El sıkışalım!",
+                    "Rakamlar kulübümüzün hedeflerini fazlasıyla karşılıyor. Hayırlı olsun.",
+                    "Pazarlığı burada bitirebiliriz, teklifiniz bizi ikna etti. Onaylıyoruz.",
+                    "Resmi evrakları hazırlatıyorum, hayırlı olsun."
+                ]
+            return {"status": "Accepted", "msg": random.choice(accept_msgs)}
+
         # If the drop is too small (e.g. at the floor), stay final
         if new_ask == last_counter:
             best_offer_msg = f"Bu bizim son ve en iyi teklifimizdir:{role_note} {self._format_value(new_ask)}." if not is_free_agent else f"İmza parası için son sözüm: {self._format_value(new_ask)}."

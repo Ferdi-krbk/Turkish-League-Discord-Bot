@@ -1,66 +1,50 @@
-İLK 11
-André Onana | GK | 29 | 12M € | Kamerun
-Wagner Pina | RB | 23 | 8M € | Portekiz
-Arseniy Batagov | CB | 23 | 11M € | Ukrayna
-Chibuike Nwaiwu | CB | 21 | 7M € | Nijerya
-Mustafa Eskihellaç | LB | 27 | 3.5M € | Türkiye
-Christ Inao Oulaï | CDM | 22 | 17M € | Fildişi Sahili
-Tim Jabol-Folcarelli | CM | 25 | 6M € | Fransa
-Ernest Muçi | CAM | 24 | 11M € | Arnavutluk
-Oleksandr Zubkov | RW | 27 | 7M € | Ukrayna
-Anthony Nwakaeme | LW | 35 | 0.2M € | Nijerya
-Felipe Augusto | ST | 21 | 10M € | Brezilya
-YEDEKLER
-Onuralp Çevikkan | GK | 19 | 1M € | Türkiye
-Stefan Savić | CB | 33 | 0.5M € | Karadağ
-Mathias Lövik | LB | 21 | 4M € | Norveç
-Benjamin Bouchouari | CM | 23 | 5M € | Fas
-Okay Yokuşlu | CDM | 31 | 1.5M € | Türkiye
-Mauro Aziz | ST | 17| 6M € | Türkiye 
-Paul Onuachu | ST | 30 | 6M € | Nijerya
-
-🔥 ANA SİSTEM: 4-2-3-1 (DENGELİ → DEFANSİFE EVRİLEN)
-⚙️ GENEL OYUN PLANI
-Başlangıç: Dengeli
-Top rakipteyken: Orta pres
-Top sende: Kanatlar + hızlı geçiş
-Tempo: Orta
-👉 Ama en önemli fark:
-Skora göre otomatik değişen yapı
-🧠 SAHA İÇİ ROLLER
-🧤 Onana → Geriden oyun kurar + gerektiğinde uzun oynar
-🛡️ DEFANS
-Pina → Hücumcu bek (bindirme)
-Eskihellaç → Dengeli (geri kal)
-Batagov → Pas yapan stoper
-Nwaiwu → Fizik + savunma
-⚙️ ORTA SAHA
-Oulaï → Saf kesici 🧱
-Folcarelli → Box-to-box 🔄
-🎯 HÜCUM
-Zubkov → İçe kat + şut
-Muçi → Serbest oyun kurucu ⭐
-Nwakaeme → Top taşıyan lider
-⚡ FORVET
-Felipe Augusto → Koşucu forvet
-🔁 MAÇ İÇİ OTOMATİK GEÇİŞ
-🟢 ÖNDEYKEN (EN KRİTİK KISIM)
-Hiç riske girme:
-👉 Muçi ⬅️ çık → Okay gir
-👉 Sistem: 4-3-3 defansif
+(4-2-3-1)
+ GENEL AYAR
+Mentalite: Pozitif (hafif agresif)
+Tempo: Orta-üst
+Pres: Orta-üst (ama full koşu değil)
+Genişlik: Orta-geniş
+ Amaç:
+Rakibi boğmadan, sürekli pozisyon üretmek
+ SAHA İÇİ TALİMATLAR
+ DEFANS
+Bekler → sırayla çık (ikisi birden değil)
+Defans çizgisi → orta seviyede
+Gereksiz öne basma yok
+ ORTA SAHA (EN KRİTİK)
+Defansif orta saha → arkayı süpür
+Diğer orta saha → ileri koşular
+ Altın kural:
+Orta sahalar sürekli ara pası düşünsün 
+Düz oynamasınlar
+Forvet arkası koşuları görsünler
+ HÜCUM
+Kanatlar:
+Biri → içe kat + şut
+Biri → çizgiye in + orta
+10 numara:
+Serbest oyna
+Ara pas + kilit pas
+Forvet:
+Ceza sahasında kal
+Tek vuruş
+Sürekli boşluk kovala 
+ MAÇ İÇİ AKILLI PLAN
+ ÖNE GEÇTİĞİNDE
+Defansif orta saha oyuna girer
+Sistem → 4-3-3 defansif
+ Ayarlar:
 Tempo düşür
+Pres azalt
+Bekler → defansa yardım etsin
 Uzun top oyna
-Presi azalt
-👉 70’ten sonra:
-Felipe ⬅️ Onuachu
-Top tut, faul al, süre geçir
-🔴 GOL LAZIMSA
-👉 Sistem: 4-4-2
-Onuachu + Aziz çift forvet
-Bekler sürekli orta aç
+ Ama tamamen kapanma:
+Ara ara kontra dene
+ GOL LAZIMSA
+Sistem → 4-4-2
+ Ayarlar:
 Tempo yükselt
-🎯 TAKTİĞİN ÖZÜ
-🔥 Başta: kontrollü + üretken
-🛡️ Öne geçince: kapat
-⚡ Geriye düşünce: direkt yüklen
-
+Sürekli orta aç
+Ceza sahasına 2 forvet sok
+ Son 15 dk:
+Gerekirse 3 forvete dön (all-in)
