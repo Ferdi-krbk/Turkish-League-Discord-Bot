@@ -491,19 +491,19 @@ class MatchCog(commands.Cog):
         return all_text, lineup_text, total_val_m, team_ovr
 
     def _estimate_ovr_from_val(self, value_eur: float) -> int:
-        """Kadro analizi için ORİJİNAL baremi taklit eder. (120M = 90 Scale)"""
+        """Kadro analizi için CÖMERT baremi taklit eder. (200M+ = 96-99 Scale)"""
         if value_eur <= 0: return 62
         vm = value_eur / 1_000_000.0
         
-        # ORIGINAL BAREM (scratch/final_sync_to_db.py referanslı)
-        if vm >= 120.0: res = 90 + min(6, int((vm - 120) / 20))
-        elif vm >= 80.0: res = 86 + int((vm - 80) / 40 * 4)
-        elif vm >= 50.0: res = 83 + int((vm - 50) / 30 * 3)
-        elif vm >= 30.0: res = 80 + int((vm - 30) / 20 * 3)
-        elif vm >= 15.0: res = 75 + int((vm - 15) / 15 * 4)
-        elif vm >= 5.0: res = 70 + int((vm - 5) / 10 * 5)
-        elif vm >= 1.0: res = 67 + int((vm - 1) / 4 * 6)
-        else: res = 62
+        # GÜNCELLENMİŞ CÖMERT BAREM (User Request: "ovrları biraz arttır düşük geldi")
+        if vm >= 120.0: res = 92 + min(7, int((vm - 120) / 15)) # 120M=92, 180M=96, 225M=99
+        elif vm >= 80.0: res = 88 + int((vm - 80) / 40 * 4)     # 80M=88, 119M=91
+        elif vm >= 50.0: res = 85 + int((vm - 50) / 30 * 3)     # 50M=85, 79M=87
+        elif vm >= 30.0: res = 82 + int((vm - 30) / 20 * 3)     # 30M=82, 49M=84
+        elif vm >= 15.0: res = 78 + int((vm - 15) / 15 * 4)     # 15M=78, 29M=81
+        elif vm >= 5.0: res = 73 + int((vm - 5) / 10 * 5)       # 5M=73, 14M=77
+        elif vm >= 1.0: res = 68 + int((vm - 1) / 4 * 5)        # 1M=68, 4M=72
+        else: res = 64
         
         return min(99, res)
 
