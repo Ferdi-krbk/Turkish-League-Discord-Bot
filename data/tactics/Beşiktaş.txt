@@ -1,19 +1,18 @@
-Beşiktaş
-
-İLK 11
+[SQUAD]
+İLK 11:
 Ersin Destanoğlu | GK | 25 | 2.5M | TR
 Amir Murillo | RB | 30 | 8.0M | PA
 Emmanuel Agbadou | CB | 28 | 18.0M | CI
 Tiago Djaló | CB | 26 | 7.0M | PT
 Rıdvan Yılmaz | LB | 24 | 4.0M | TR
-Kristjan Asllani | CM | 24 | 13.0M | AL
 Wilfred Ndidi | CDM | 29 | 10.0M | NG
-Orkun Kökçü | CM | 25 | 31.0M | TR
+Kristjan Asllani | CM | 24 | 13.0M | AL
+Orkun Kökçü | CM | 25 | 25.0M | TR
 Vaclav Cerny | RW | 28 | 8.0M | CZ
 El Bilal Touré | ST | 24 | 15.0M | ML
 Semih Kılıçsoy | ST | 20 | 12.0M | TR
 
-YEDEKLER
+YEDEKLER:
 Devis Vásquez | GK | 27 | 1.5M | CO
 Emirhan Topçu | CB | 25 | 6.0M | TR
 Yasin Özcan | LB | 20 | 5.0M | TR
@@ -21,3 +20,28 @@ Junior Olaitan | CAM | 23 | 5.0M | BJ
 Cengiz Ünder | RW | 28 | 6.0M | TR
 Jota Silva | LW | 26 | 12.0M | PT
 Mustafa Hekimoğlu | ST | 19 | 5.0M | TR
+
+[ROLES]
+Kaptan: Orkun Kökçü
+Penaltı: Semih Kılıçsoy
+Serbest Vuruş: Orkun Kökçü
+Korner: Vaclav Cerny
+
+[TACTICS]
+Oyun Felsefesi: "YIKICI DOMİNASYON & SİYAH BEYAZ BASKI"
+Beşiktaş sahaya 4-3-1-2 (veya dar elmas 4-4-2) varyasyonuyla yayılacak. Temel amaç merkezi kilitleyip, kanat beklerinin bindirmeleriyle rakibi genişletmek ve Orkun'un öldürücü paslarıyla Touré/Semih ikilisini kaleciyle karşı karşıya bırakmaktır.
+
+Savunma Kurgusu:
+Emmanuel Agbadou savunmanın "General"i olacak. Rakip forvetleri fiziksel olarak ezecek, Tiago Djaló ise hızıyla arkaya atılan topları süpürecek. Rıdvan Yılmaz ve Murillo modern bek gibi oynayacak; savunmada 4'lü kalsa da hücumda çizgiye kadar inip orta kesecekler. Ndidi savunmanın hemen önünde "Yıkıcı" (Destroyer) rolünde oynayacak, rakip atakları daha başlamadan bitirecek.
+
+Orta Saha ve Hücum Akışkanlığı:
+Asllani ve Orkun Kökçü ikilisi orta sahanın beyni olacak. Asllani topu savunmadan alıp güvenli bir şekilde Orkun'a taşıyacak. Orkun Kökçü "Serbest Oyun Kurucu" (Free Roam) olarak sahanın her yerinde basmadık yer bırakmayacak. Vaclav Cerny sağ kanattan içe katederek (Inside Forward) rakip savunmanın dengesini bozacak.
+
+Hücum İkilisi:
+Semih Kılıçsoy "Fırsatçı Golcü" olarak ceza sahası çevresinde pusuda beklerken, El Bilal Touré "Pivot/Yırtıcı" rolüyle rakip stoperleri üzerine çekip Semih'e alan yaratacak. Bu ikili arasındaki telepatik bağ, maçın skorunu belirleyen en büyük güç olacak.
+
+Duran Top Stratejisi:
+Kornerlerde Agbadou ve Ndidi ön direğe hareketlenerek savunmayı dağıtacak, Semih ise arka direkte boşluk arayacak. Orkun Kökçü'nün serbest vuruşları direkt kaleye veya "curve" yaparak arka direğe sert ortalar şeklinde olacak.
+
+Geçiş Oyunu:
+Top kaybedildiğinde 5 saniye içinde şok pres uygulanacak. Top kazanıldığında ise Orkun veya Asllani bekletmeden uzun diyagonal toplarla Cerny veya Semih'i savunma arkasına kaçıracak.
