@@ -402,8 +402,8 @@ class MatchCog(commands.Cog):
                 
                 avg_11 = sum(int(p.get('overall') or 70) for p in top_11) / 11 if top_11 else 70
                 avg_bench = sum(int(p.get('overall') or 70) for p in bench_7) / 7 if bench_7 else avg_11
-                # Veritabanı ile uyumlu olması için %70-%30 oranına çekildi
-                avg_ovr = round((avg_11 * 0.70) + (avg_bench * 0.30), 1)
+                # Kullanıcı talebi: %85 İlk 11, %15 Yedek etkisi
+                avg_ovr = round((avg_11 * 0.85) + (avg_bench * 0.15), 1)
 
                 
                 # Kadro textini optimize et (Sadece Top 18)
