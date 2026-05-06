@@ -1675,31 +1675,40 @@ SADECE aşağıdaki JSON formatında bir cevap ver:
         }
 
     async def _get_tactical_scores(self, home_team: str, home_tactics: str, away_team: str, away_tactics: str) -> Dict[str, Any]:
-        """Evaluates tactics using AI and returns scores from 0 to 6."""
+        """Evaluates tactics using AI and returns scores from 0 to 8 based on INDIVIDUAL quality."""
+        # Read up to 50,000 characters to capture massive 1000-line tactic files
         prompt = f"""
-Saha Kenarı Taktiksel Analiz Müellifi olarak görevlendirildin.
+Saha Kenarı Taktiksel Analiz Müellifi olarak görevlendirildin. 
 Aşağıda iki takımın maç öncesi sunduğu detaylı taktik/kadro metinleri yer alıyor.
 
 🏠 Ev Sahibi ({home_team}):
-{home_tactics[:2000]}
+{home_tactics[:50000]}
 
 🚌 Deplasman ({away_team}):
-{away_tactics[:2000]}
+{away_tactics[:50000]}
 
-GÖREV: Bu taktiklerin 'derinliğini', 'gerçekçiliğini', 'stratejik tutarlılığını' ve 'detay seviyesini' analiz et. 
-KRİTİK KURAL: Eğer bir takımın metni SADECE kadrodan (oyuncu isimleri, mevkiler, değerler vb.) ibaretse ve hiçbir detaylı taktiksel felsefe, maç içi senaryo veya doktrin içermiyorsa, o takıma KESİNLİKLE TAM OLARAK 4 puan vermelisin! 3 veya 5 puan verilmemelidir.
-ÖZELLİKLE: 'Positional Play', 'Zonal Overload', 'Geri Dönüş Senaryoları' gibi detaylı oyun kurallarını, harika oyuncu tanımlamalarını ve detaylı felsefeleri içeren GERÇEK Taktik Doktrinlerine ise 5, 6 veya 7 puan vermekten çekinme.
+GÖREV: Bu taktikleri analiz et ve 0-8 arası bir puan ver.
+
+KRİTİK ANALİZ KURALLARI:
+1. BAĞIMSIZ DEĞERLENDİRME: Takımları birbirleriyle kıyaslama. Bir takımın taktiği mükemmelse ona 8 ver, diğerininki sadece kadrodan ibaretse ona 4 ver.
+2. KALİTE > UZUNLUK: Metnin 1000 satır olması tek başına 8 puan yetmez. Puanı belirleyen; stratejik tutarlılık, oyuncu rolleri, maç içi senaryolar ve futbol aklıdır. 
+3. AVRUPA MAÇLARI: Eğer bir taraf 'Dış Takım' ise ve sadece temel kadro bilgisi varsa, Türk takımının detaylı taktiğini KENDİ İÇİNDE (Bireysel) değerlendir ve hak ettiği yüksek puanı (7-8) vermekten çekinme.
+4. PUANLAMA SKALASI:
+   - Sadece Kadro Listesi: 4 Puan
+   - Temel Taktik ve Diziliş: 5 Puan
+   - Detaylı Rol ve Senaryolar: 6-7 Puan
+   - Kusursuz, 1000 Satırlık veya Masterclass Taktik Doktrini: 8 Puan
 
 SADECE aşağıdaki JSON formatında cevap ver:
 {{
-  "home_tactical_score": [0-7],
-  "away_tactical_score": [0-7],
+  "home_tactical_score": [0-8],
+  "away_tactical_score": [0-8],
   "reasoning_short": "Kısa bir gerekçe (max 15 kelime)"
 }}
 """
         result = await ai.generate_content(
             prompt=prompt,
-            system="Sen profesyonel bir futbol taktik analistisin. SADECE JSON formatında cevap ver.",
+            system="Sen profesyonel bir futbol taktik analistisin. Takımları bireysel olarak değerlendir. SADECE JSON formatında cevap ver.",
             temp=0.4,
             is_json=True,
             label=f"Tactical Analysis: {home_team} vs {away_team}",
@@ -1711,15 +1720,14 @@ SADECE aşağıdaki JSON formatında cevap ver:
         if result:
             try:
                 return {
-                    "home": min(7, max(0, int(result.get("home_tactical_score", 0)))),
-                    "away": min(7, max(0, int(result.get("away_tactical_score", 0)))),
+                    "home": min(8, max(0, int(result.get("home_tactical_score", 0)))),
+                    "away": min(8, max(0, int(result.get("away_tactical_score", 0)))),
                     "reason": result.get("reasoning_short", "Analiz tamamlandı.")
                 }
             except:
                 pass
         
         return {"home": 0, "away": 0, "reason": "Analiz başarısız."}
-
     async def _smart_parse_match_query(self, query: str) -> tuple:
         """
         Smartly parse the match command query to extract home team, away team, 

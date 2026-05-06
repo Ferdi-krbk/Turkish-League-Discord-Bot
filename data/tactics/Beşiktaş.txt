@@ -1,4 +1,4 @@
-Beşiktaş | 4-2-3-1 | Ofansif & Yüksek Pres | Dengeli
+Beşiktaş
 
 İLK 11
 Ersin Destanoğlu | GK | 25 | 2.50 M | Türkiye
@@ -10,7 +10,7 @@ Kristjan Asllani | CM | 24 | 13.0 M | Arnavutluk
 Wilfred Ndidi | CDM | 29 | 10.0 M | Nijerya
 Orkun Kökçü | CM | 25 | 25.0 M | Türkiye
 Vaclav Cerny | RW | 28 | 8.0 M | Çek Cumhuriyeti
-El Bilal Touré | ST | 24 | 15.0 M | Mali
+El Bilal Touré | LW | 24 | 15.0 M | Mali
 Hyeon-gyu Oh | ST | 25 | 15.0 M | Güney Kore
 
 YEDEKLER
