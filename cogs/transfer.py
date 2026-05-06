@@ -2092,8 +2092,6 @@ CRITICAL REALITY CHECK RULES (2026):
             self._set_refusal(ctx.author.id, pending['player_name'])
             self.pending_transfers.pop(ctx.author.id, None)
 
-        self.pending_transfers.pop(ctx.author.id, None)
-
     @commands.command(name="kirala", aliases=["kiralik", "loan"])
     async def kirala_command(self, ctx: commands.Context, *, content: str):
         """Bir oyuncuyu kiralamak için teklif verir (Yaş ve rol duyarlı)"""
