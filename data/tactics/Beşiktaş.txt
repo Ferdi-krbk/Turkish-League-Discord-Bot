@@ -23,25 +23,36 @@ Mustafa Hekimoğlu | ST | 19 | 5.0M | TR
 
 [ROLES]
 Kaptan: Orkun Kökçü
-Penaltı: Semih Kılıçsoy
+Penaltı: Hyen Gyu Oh
 Serbest Vuruş: Orkun Kökçü
 Korner: Vaclav Cerny
 
 [TACTICS]
-Oyun Felsefesi: "YIKICI DOMİNASYON & SİYAH BEYAZ BASKI"
-Beşiktaş sahaya 4-3-1-2 (veya dar elmas 4-4-2) varyasyonuyla yayılacak. Temel amaç merkezi kilitleyip, kanat beklerinin bindirmeleriyle rakibi genişletmek ve Orkun'un öldürücü paslarıyla Touré/Semih ikilisini kaleciyle karşı karşıya bırakmaktır.
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║     THE BLACK EAGLE BLUEPRINT — TAKTİK v2.0 // Ω-LEVEL DOMINANCE                      ║
+║                      BEŞİKTAŞ JK // 2025–26 SEZONU                                     ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
 
-Savunma Kurgusu:
-Emmanuel Agbadou savunmanın "General"i olacak. Rakip forvetleri fiziksel olarak ezecek, Tiago Djaló ise hızıyla arkaya atılan topları süpürecek. Rıdvan Yılmaz ve Murillo modern bek gibi oynayacak; savunmada 4'lü kalsa da hücumda çizgiye kadar inip orta kesecekler. Ndidi savunmanın hemen önünde "Yıkıcı" (Destroyer) rolünde oynayacak, rakip atakları daha başlamadan bitirecek.
+I. HİBRİT FORMASYON & ASİMETRİK YAYILIM
+Kağıt üzerinde 4-3-1-2 gibi dursa da, top bizdeyken takım 3-2-2-3 (WM Formasyonu) düzenine geçer.
+- Ndidi: Savunmanın hemen önünde çapa gibi kalır.
+- Rıdvan Yılmaz: Sol bekten ziyade bir sol kanat gibi ileri çıkar, Rıdvan çıktığında Tiago Djaló sola kayarak savunmayı üçler (Agbadou-Djaló-Murillo).
+- Asllani: "Regista" rolünde, savunmadan aldığı topları dikey paslarla (Line-breaking passes) Orkun'a ulaştırır.
 
-Orta Saha ve Hücum Akışkanlığı:
-Asllani ve Orkun Kökçü ikilisi orta sahanın beyni olacak. Asllani topu savunmadan alıp güvenli bir şekilde Orkun'a taşıyacak. Orkun Kökçü "Serbest Oyun Kurucu" (Free Roam) olarak sahanın her yerinde basmadık yer bırakmayacak. Vaclav Cerny sağ kanattan içe katederek (Inside Forward) rakip savunmanın dengesini bozacak.
+II. MİKRO-MEKANİKLER (OYUNCU ÖZEL TALİMATLARI)
+- Orkun Kökçü (Nöro-Oyun Kurucu): Orkun'un sahanın her yerinde serbestliği vardır. Top rakipteyken presin tetikleyicisidir. Top bizdeyken, topun olduğu bölgeye giderek sayısal üstünlük yaratır.
+- Vaclav Cerny (Inverted Shadow): Sağ kanattan sadece içeri katetmekle kalmaz, El Bilal Touré stoperleri dışarı çektiğinde oluşan "Half-Space" boşluklarına sızarak gizli forvet gibi gol arar.
+- Emmanuel Agbadou (Hava Hakimiyeti): Defansın hava sahasını kapatır. Rakip uzun top attığında Agbadou mutlaka ilk müdahaleyi yapar, Djaló sekenleri toplar.
 
-Hücum İkilisi:
-Hyen Gyu Oh "Fırsatçı/Yırtıcı" olarak ceza sahası çevresinde pusuda beklerken, El Bilal Touré "Pivot" rolüyle rakip stoperleri üzerine çekip Oh'ya alan yaratacak. Koreli forvetin bitiriciliği ve Touré'nin fiziksel gücü arasındaki telepatik bağ, maçın skorunu belirleyen en büyük güç olacak.
+III. "HYEN GYU OH" - KORELİ KESKİN NİŞANCI PROTOKOLÜ
+Oh, ceza sahası içinde "Gölge Koşuları" yapacak. Touré fiziksel gücüyle rakip stoperleri fiziksel bir savaşa sürüklerken, Oh onların arkasından dolaşarak Orkun'un "No-look" paslarına hedef olacak. Oh, sadece bitirici değil, aynı zamanda rakip kaleciye yapılan presin de lideridir.
 
-Duran Top Stratejisi:
-Kornerlerde Agbadou ve Ndidi ön direğe hareketlenerek savunmayı dağıtacak, Hyen Gyu Oh ise arka direkte boşluk arayacak. Orkun Kökçü'nün serbest vuruşları direkt kaleye veya "curve" yaparak arka direğe sert ortalar şeklinde olacak.
+IV. ŞOK PRES & GEÇİŞ SAVUNMASI (GEGENPRESSING)
+Top kaybedildiği an "5 Saniye Kuralı" devreye girer. Ndidi ve Asllani en yakın rakibe saldırırken, Orkun pas yollarını kapatır. Eğer top 5 saniye içinde kazanılmazsa, takım hemen "Mid-Block" (Orta Blok) savunmasına geçer ve Agbadou liderliğinde alanı daraltır.
 
-Geçiş Oyunu:
-Top kaybedildiğinde 5 saniye içinde şok pres uygulanacak. Top kazanıldığında ise Orkun veya Asllani bekletmeden uzun diyagonal toplarla Cerny veya Oh'yu savunma arkasına kaçıracak.
+V. DURAN TOP ORGANİZASYONLARI
+- Kornerler: Cerny'nin kavisli ortaları penaltı noktasına iner. Agbadou ön direğe sahte koşu yapar, Oh ise kalecinin önünde kargaşa çıkarır. Orkun ceza sahası yayında "Rebound" topları için bekler.
+- Serbest Vuruşlar: Orkun Kökçü hem direkt kaleye hem de asiste yönelik vuruşlarda en üst düzey yetkili.
+
+VI. MAÇ İÇİ PSİKOLOJİK ÜSTÜNLÜK
+Beşiktaş, maçın ilk 15 dakikasında "Overload" (Aşırı Yükleme) yaparak rakibi kendi yarı sahasına hapseder. Bu baskı rakibi hata yapmaya zorlar. Skor avantajı alındığında tempoyu Orkun ve Asllani kontrol eder, rakibi pas trafiğiyle yorar.
