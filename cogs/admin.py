@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import aiosqlite
+import os
 from core import database
 from typing import Optional, Dict
 
