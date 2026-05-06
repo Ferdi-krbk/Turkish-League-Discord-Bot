@@ -1880,10 +1880,17 @@ SADECE aşağıdaki JSON formatında cevap ver:
             ) as cursor:
                 rows = await cursor.fetchall()
                 for row in rows:
-                    if row["overall"]:
                         mv_str = str(row["market_value"] or "0")
                         mv_int = database.parse_market_value(mv_str)
-                        all_players.append((int(row["overall"]), mv_int))
+                        
+                        db_ovr = int(row["overall"] or 70)
+                        # Cömert Avrupa Skalası (Değer -> OVR)
+                        val_ovr = self._estimate_ovr_from_val(float(mv_int))
+                        
+                        # Hangisi daha cömertse onu kullan (User Request: "Avrupa skalasını lige de getir")
+                        final_p_ovr = max(db_ovr, val_ovr)
+                        
+                        all_players.append((final_p_ovr, mv_int))
         
         if not all_players:
             return 0.0, 0.0
