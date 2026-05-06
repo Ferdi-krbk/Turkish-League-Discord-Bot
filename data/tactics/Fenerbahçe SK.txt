@@ -7,15 +7,14 @@ Jayden Oosterwolde | CB | 25 | 18M | NL
 Edson Álvarez | CDM | 28 | 18M | MX
 Dorgeles Nene | RW | 23 | 18M | ML
 Sidiki Chérif | ST | 19 | 18M | ML
-Allan Saint-Maximin | LW | 29 | 18M | FR
 İsmail Yüksek | CDM | 27 | 15M | TR
 Marco Asensio | CAM | 30 | 15M | ES
 Ederson | GK | 32 | 13M | BR
 Milan Skriniar | CB | 31 | 11M | SK
+Talisca | CAM | 32 | 8M | BR
 
 YEDEKLER
 Archie Brown | LB | 23 | 9M | EN
-Talisca | CAM | 32 | 8M | BR
 Mert Müldür | RB | 27 | 7M | TR
 Nélson Semedo | RB | 32 | 7M | PT
 Fred | CM | 33 | 6M | BR

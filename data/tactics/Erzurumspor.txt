@@ -1,0 +1,34 @@
+[SQUAD]
+İLK 11:
+Matija Orbanic | GK | 25 | 0.9M | HR
+Emin Bayram | CB | 23 | 4.0M | TR
+Yakup Kırtay | CB | 22 | 1.0M | TR
+Guram Giorbelidze | LB | 30 | 0.35M | GE
+Ali Ülgen | RB | 26 | 0.4M | TR
+Brandon Baiye | CDM | 25 | 1.0M | BE
+Giovanni Crociata | CDM | 28 | 0.55M | IT
+Mert Önal | CM | 21 | 0.1M | TR
+Furkan Özhan | LW | 25 | 0.2M | TR
+Benhur Keser | RW | 29 | 0.7M | TR
+Eren Tozlu | ST | 35 | 0.1M | TR
+
+YEDEKLER:
+Enes Yiğit | CB | 23 | 0.1M | TR
+Ömer Arda Kara | CB | 18 | 0.1M | TR
+Cengizhan Bayrak | LB | 26 | 0.125M | TR
+Orhan Ovacıklı | RB | 37 | 0.05M | TR
+Sefa Akgün | CM | 25 | 0.8M | TR
+Adem Eren Kabak | CDM | 25 | 0.45M | TR
+Mustafa Fettahoğlu | LW | 25 | 1.0M | TR
+
+[ROLES]
+Kaptan: Emin Bayram
+Penaltı: Eren Tozlu
+Serbest Vuruş: Benhur Keser
+Korner: Brandon Baiye
+
+[TACTICS]
+Ali Ülgen atak anlarında bindirme yapacak ve Guram Giorbelidze stoperleşerek Yakup Kırtay ve Emin Bayram ile stoperi üçleyecek. Brandon Baiye sahipsiz topları toplayacak ve çift yönlü orta saha olarak oynayacak. Giovanni Crociata gelişmiş oyun kurucu olarak Eren Tozlu'ya pozisyon yaratmaya çalışacak. Benhur Gezer ve Furkan Özhan çizgiden ortalar yapacaklar. Mert Önal oyun kurucu olacak.
+
+Duran Top Taktikleri:
+Brandon Baiye, sol taraftan korner kullanılırken ceza sahası dışında kalacak ve topun sekmesini bekleyecek. Sekmesi ihtimalinde topu toplayacak. Kornerlerde hedef oyuncu Eren Tozlu olacak.

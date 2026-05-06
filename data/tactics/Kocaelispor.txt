@@ -1,23 +1,109 @@
-Kocaelispor
+🏛️ KOCAELİSPOR v16.0: "THE ARCHITECT" SİSTEMİ
+KADRO LİSTESİ
 
-İLK 11
+İlk 11
+
+Aleksandar Jovanović | GK | 33 | 800K | RS
+Ahmet Oğuz | RB | 33 | 400K | TR
+
+Anfernee Dijksteel | CB | 29 | 1.2M | SR
 Botond Balogh | CB | 23 | 2.5M | HU
-Hrvoje Smolcic | CB | 25 | 2M | HR
-Bruno Petkovic | ST | 31 | 2M | HR
-Habib Keïta | CM | 24 | 1.8M | ML
-Show | CDM | 27 | 1.5M | AO
-Karol Linetty | CM | 31 | 1.5M | PL
-Can Keleş | RW | 24 | 1.5M | AT
-Joseph Nonge | CM | 21 | 1.5M | BE
-Anfernee Dijksteel | RB | 29 | 1.2M | SR
-Mateusz Wieteska | CB | 29 | 1.2M | PL
-Mahamadou Susoho | CDM | 21 | 1M | ES
+Hrvoje Smolčić | CB | 25 | 2M | HR
+Massadio Haïdara | Sol Bek | 33 | 800 B € | 🇲🇱
+Show | Ön Libero | 27 | 1.50 M € | 🇦🇴
+Orçun | Orta Saha | 24 | 21.5 M € | 🇹🇷
+Ramiz | Sağ Kanat | 18 | 21.50 M € | 🇫🇷
+Kaan Çakmak | On Numara | 19 | 23.5 M € | 🇹🇷
+Abdullah Dağlı | Sol Kanat | 19 | 27 M € | 🇹🇷
+Ahmet Bozkurt | Forvet | 18 | 50 M € | 🇹🇷
 
-YEDEKLER
-Aleksandar Jovanovic | GK | 33 | 0.8M | RS
-Massadio Haidara | LB | 33 | 0.8M | ML
-Dan Agyei | LW | 28 | 0.8M | EN
-Ahmet Oğuz | RB | 32 | 0.4M | TR
-Serdar Dursun | ST | 34 | 0.3M | TR
-Ahmet Sağat | ST | 29 | 0.25M | TR
-Serhat Öztaşdelen | GK | 20 | 0.2M | TR
+Yedek Kulübesi
+Gökhan Değirmenci | Kaleci | 37 | 50 Bin € | 🇹🇷
+Serhat Öztaşdelen | Kaleci | 21 | 200 Bin € | 🇹🇷
+
+Anfernee Dijksteel | Stoper | 29 | 1.20 M € | 🇸🇷
+
+Mateusz Wieteska | Stoper | 29  | 1.20 M € | 🇵🇱
+
+Muharrem Cinan | Sol Bek | 27  | 500 Bin € | 🇹🇷
+
+Samet Yalçın | Orta Saha | 32  | 250 Bin € | 🇹🇷
+
+Joseph Nonge | Orta Saha | 21  | 1.00 M € | 🇧🇪
+
+Darko Churlinov | Kanat | 25  | 1.50 M € | 🇲🇰
+
+Rigoberto Rivas | Kanat | 27  | 1.20 M € | 🇭🇳
+
+Tayfur Bingöl | Kanat | 33  | 500 Bin € | 🇹🇷
+
+Serdar Dursun | Forvet | 34  | 300 Bin € | 🇹🇷
+
+Ahmet Sağat | Forvet | 29  | 250 Bin € | 🇹🇷
+ziliş: 4-2-3-1 (Ofansif Varyant)
+Bu diziliş, orta sahadaki yıldızlarını en verimli kullanabileceğin yapıdır.
+
+Takım Talimatları
+Oyun Anlayışı: Hücum ağırlıklı ve yüksek tempo.
+
+Pas Şekli: Kısa ve hızlı paslar. Orkun Kökçü merkezden oyunun yönünü belirler.
+
+Savunma Çizgisi: Önde baskı (Gegenpressing). Kaybedilen topu 5 saniye içinde geri kazanmaya odaklan.
+
+Genişlik: Kanatları geniş kullan. Abdullah ve Doue çizgiden içeri kat ederek savunmanın dengesini bozsun.
+
+Oyuncu Rolleri
+Kaleci (Serhat): Standart kaleci, savunma arkasına atılan toplarda uyanık olmalı.
+
+Stoperler (Dijksteel & Smolčić): "Beton" ikili. Smolčić geriden oyun kurar, Dijksteel ise hızıyla açıkları kapatır.
+
+Bekler (Ahmet & Haïdara): Dengeli bek. Hücuma çok çıkıp arkada boşluk bırakmamalılar çünkü kanat oyuncuların zaten çok ofansif.
+
+Ön Libero (Show): "Süpürücü". Savunma ile orta saha arasındaki köprü. Sadece top çalar ve en yakınındaki Orkun'a verir.
+
+Merkez Orta Saha (Orçun): "Oyun Kurucu". Takımın beyni. Duran toplar ve uzaktan şutlar tamamen onda.
+
+On Numara (Kaan Çakmak): "Gizli Forvet". Ahmet Bozkurt'un yarattığı boşluklara sızarak gol arar.
+
+Kanatlar (Abdullah & Doue): "İçe Kat Eden Kanat". Çizgide topu alıp içeri dalarak hem şut hem de asist kovalamalılar.
+
+Forvet (Ahmet Bozkurt): "Komple Forvet". Top saklar, servis yapar ve bitiriciliğiyle maçı çözer.
+
+Maç İçi Stratejisi
+İlk 20 Dakika: Şok baskı uygula. Genç ve hızlı hücum hattınla rakibi sahasına hapset.
+
+Skoru Alınca: Tempoyu biraz düşür, Orkun ile topa sahip ol ve rakibi üzerine çekip kontra atakla (Abdullah/Doue hızıyla) bitirici darbeyi vur.
+
+Kritik Anlar: Eğer gol lazımsa, yedek kulübesinden Serdar Dursun'u çift forvete dönmek için oyuna alabilirsin; hava toplarında çok etkili olur. aktik Adı: "İzmit Hurricane" (Beton Üstü Fırtına)
+Bu taktik, oyun motorunun açıklarından ve senin yüksek değerli oyuncularının bireysel yeteneklerinden beslenir.
+
+1. Takım Talimatları (Hileli Seviye)
+Tempo: Extreme (Maksimum). Oyuncuların nefes almadan top çevirmeli.
+
+Genişlik: Dar (Narrow). Sahayı daralt ki Orkun, Kaan ve Ahmet arasındaki pas trafiği "ping-pong" hızına ulaşsın, rakip savunma topu göremesin.
+
+Savunma: Tam Saha Pres + Ofsayt Taktiği. Rakip kalecisi topu oyuna soktuğu an 5 kişiyle üzerine çök.
+
+Yaratıcılık: "Disiplini Bırak". Orkun ve Doue gibi 20M+ €'luk adamların kendi kafasına göre takılmasına izin ver; motorun öngöremediği hareketler yaparlar.
+
+2. Oyuncu Özel "Cheat" Rolleri
+Ahmet Bozkurt (Forvet): "Poacher / Fırsatçı Golcü". Hiç geriye gelmesin, sadece rakip stoperin dibinde dursun. 50M €'luk bitiriciliğiyle dokunduğu her top gol olur.
+
+Orçun (Orta Saha): "Roaming Playmaker". Sahada basmadık yer bırakmasın. Uzaktan şut talimatını "Sık Sık" yap; ceza sahası dışından "füze" gönderip kalecinin elini kırsın.
+
+Abdullah & Doue (Kanatlar): "Raumdeuter" (Alan Yorumcusu). Bu rol tam bir hiledir. Savunma arkasındaki boşlukları "koklayıp" sızarlar. Rakip bekler ne olduğunu anlamadan kaleciyle karşı karşıya kalırlar.
+
+Show (Ön Libero): "Anchor / Çapa". Sadece savunma dörtlüsünün önünde heykel gibi dursun. Geçişleri fizik gücüyle (Cheat güçleri) tamamen kapatsın.
+
+3. Duran Top Hileleri (Set Pieces)
+Kornerler: En uzun stoperin olan Smolčić'i "Ön Direğe Saldır" şeklinde ayarla. Orkun korneri ön direğe kessin; bu kombinasyon genellikle golle sonuçlanır.
+
+Serbest Vuruşlar: Doğrudan şutlarda tek yetkili Orkun Kökçü. Barajın içinden geçirecek kadar sert vurur.
+
+4. "Pis" Taktikler (Rakibi Oyundan Düşürme)
+Zaman Geçirme: Maçın 70. dakikasından itibaren (eğer öndeysen) maksimuma getir. Rakip oyuncuların sinir katsayısı artsın, hata yapsınlar.
+
+Sertlik: Rakibin en kilit oyuncusuna "Sıkı Markaj" ve "Her Zaman Sert Müdahale" talimatı ver. Sakatlık riskini göze alarak onu oyun dışı bırak.
+
+Maç İçi Gizli Silah
+Eğer maç sıkışırsa, yedekten Tayfur Bingöl'ü al ve onu "Joker" olarak sahada her yere koştur. Rakibin yorulan savunmasını Tayfur'un hırsıyla darmadağın edersin.
