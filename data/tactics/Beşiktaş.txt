@@ -10,7 +10,7 @@ Kristjan Asllani | CM | 24 | 13.0M | AL
 Orkun Kökçü | CM | 25 | 25.0M | TR
 Vaclav Cerny | RW | 28 | 8.0M | CZ
 El Bilal Touré | ST | 24 | 15.0M | ML
-Semih Kılıçsoy | ST | 20 | 12.0M | TR
+Hyen Gyu Oh | ST | 23 | 14.0M | KR
 
 YEDEKLER:
 Devis Vásquez | GK | 27 | 1.5M | CO
@@ -38,10 +38,10 @@ Orta Saha ve Hücum Akışkanlığı:
 Asllani ve Orkun Kökçü ikilisi orta sahanın beyni olacak. Asllani topu savunmadan alıp güvenli bir şekilde Orkun'a taşıyacak. Orkun Kökçü "Serbest Oyun Kurucu" (Free Roam) olarak sahanın her yerinde basmadık yer bırakmayacak. Vaclav Cerny sağ kanattan içe katederek (Inside Forward) rakip savunmanın dengesini bozacak.
 
 Hücum İkilisi:
-Semih Kılıçsoy "Fırsatçı Golcü" olarak ceza sahası çevresinde pusuda beklerken, El Bilal Touré "Pivot/Yırtıcı" rolüyle rakip stoperleri üzerine çekip Semih'e alan yaratacak. Bu ikili arasındaki telepatik bağ, maçın skorunu belirleyen en büyük güç olacak.
+Hyen Gyu Oh "Fırsatçı/Yırtıcı" olarak ceza sahası çevresinde pusuda beklerken, El Bilal Touré "Pivot" rolüyle rakip stoperleri üzerine çekip Oh'ya alan yaratacak. Koreli forvetin bitiriciliği ve Touré'nin fiziksel gücü arasındaki telepatik bağ, maçın skorunu belirleyen en büyük güç olacak.
 
 Duran Top Stratejisi:
-Kornerlerde Agbadou ve Ndidi ön direğe hareketlenerek savunmayı dağıtacak, Semih ise arka direkte boşluk arayacak. Orkun Kökçü'nün serbest vuruşları direkt kaleye veya "curve" yaparak arka direğe sert ortalar şeklinde olacak.
+Kornerlerde Agbadou ve Ndidi ön direğe hareketlenerek savunmayı dağıtacak, Hyen Gyu Oh ise arka direkte boşluk arayacak. Orkun Kökçü'nün serbest vuruşları direkt kaleye veya "curve" yaparak arka direğe sert ortalar şeklinde olacak.
 
 Geçiş Oyunu:
-Top kaybedildiğinde 5 saniye içinde şok pres uygulanacak. Top kazanıldığında ise Orkun veya Asllani bekletmeden uzun diyagonal toplarla Cerny veya Semih'i savunma arkasına kaçıracak.
+Top kaybedildiğinde 5 saniye içinde şok pres uygulanacak. Top kazanıldığında ise Orkun veya Asllani bekletmeden uzun diyagonal toplarla Cerny veya Oh'yu savunma arkasına kaçıracak.
